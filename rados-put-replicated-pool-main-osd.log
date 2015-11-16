@@ -6,144 +6,238 @@
 2015-10-26 13:28:08.230672 7f0984e8f700 10 osd.1 24 do_waiters -- finish
 2015-10-26 13:28:08.627922 7f0969105700 10 osd.1 24  new session 0x7f0993d84d00 con=0x7f0992f23860 addr=10.253.0.2:0/1001127
 2015-10-26 13:28:08.627951 7f0969105700 10 osd.1 24  session 0x7f0993d84d00 client.admin has caps osdcap[grant(*)] 'allow *'
-## OSD.cc:8399 (0.94.3)
+## ceph 0.94.3
+## OSD.cc:8399  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637391 7f0970517700 10 osd.1 24 dequeue_op 0x7f0993c18200 prio 63 cost 4194304 latency 0.006570 osd_op(client.4135.0:1 t4.dat [writefull 0~4194304] 3.f3e3b1e9 ondisk+write+known_if_redirected e24) v5 pg pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean]
-## ReplicatedBackend.cc:162 (0.94.3)
-## ReplicatedPG.cc:1274
-## OSD.cc:8492
+##
+## ReplicatedBackend.cc:162 (0.94.3)  bool ReplicatedBackend::handle_message(OpRequestRef) 
+## ReplicatedPG.cc:1274  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637415 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] handle_message: 0x7f0993c18200
-## ReplicatedPG.cc:1388 (0.94.3)
-## ReplicatedPG.cc:1296
-## OSD.cc:8492
+##
+## ReplicatedPG.cc:1388  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637419 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] do_op osd_op(client.4135.0:1 t4.dat [writefull 0~4194304] 3.f3e3b1e9 ondisk+write+known_if_redirected e24) v5 may_write -> write-ordered flags ondisk+write+known_if_redirected
-## ReplicatedPG.cc:7721 (0.94.3)
-## ReplicatedPG.cc:7859
-## ReplicatedPG.cc:1494
-## ReplicatedPG.cc:1296
-## OSD.cc:8492
+##
+## ReplicatedPG.cc:7721  ObjectContextRef ReplicatedPG::create_object_context(const hobect_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637432 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] get_object_context: obc NOT found in cache: f3e3b1e9/t4.dat/head//3
-## FileStore.cc:3876 (0.94.3)
-## ObjectStore.h:1922
-## PGBackend.cc:190
-## ReplicatedPG.cc:7728
+##
+## FileStore.cc:3876     int FileStore::gettattr(coll_t, const ghobject_t &, const char *, bufferptr &)
+## ObjectStore.h:1922    int ObjectStore::getattr(coll_t, const ghobject_t &, const char *, bufferlist &)
+## PGBackend.cc:190      int PGBackend::object_get_attr(const hobject_t &, const string &, bufferlist *)
+## ReplicatedPG.cc:7728  ObjectContextRef ReplicatedPG::create_object_context(const hobect_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637436 7f0970517700 15 filestore(/var/lib/ceph/osd/ceph-1) getattr 3.29_head/f3e3b1e9/t4.dat/head//3 '_'
-## FileStore.cc:288 (0.94.3)
+##
+## FileStore.cc:288      int FileStore::lfn_open(coll_t, const ghobject_t &, bool, FDRef *, Index *)
+## FileStore.cc:3878     int FileStore::gettattr(coll_t, const ghobject_t &, const char *, bufferptr &)
+## ObjectStore.h:1922    int ObjectStore::getattr(coll_t, const ghobject_t &, const char *, bufferlist &)
+## PGBackend.cc:190      int PGBackend::object_get_attr(const hobject_t &, const string &, bufferlist *)
+## ReplicatedPG.cc:7728  ObjectContextRef ReplicatedPG::create_object_context(const hobect_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637562 7f0970517700 10 filestore(/var/lib/ceph/osd/ceph-1) error opening file /var/lib/ceph/osd/ceph-1/current/3.29_head/t4.dat__head_F3E3B1E9__3 with flags=2: (2) No such file or directory
-## FileStore.cc:3910 (0.94.3)
+##
+## FileStore.cc:3910     int FileStore::gettattr(coll_t, const ghobject_t &, const char *, bufferptr &)
+## ObjectStore.h:1922    int ObjectStore::getattr(coll_t, const ghobject_t &, const char *, bufferlist &)
+## PGBackend.cc:190      int PGBackend::object_get_attr(const hobject_t &, const string &, bufferlist *)
+## ReplicatedPG.cc:7728  ObjectContextRef ReplicatedPG::get_object_context(const hobect_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637572 7f0970517700 10 filestore(/var/lib/ceph/osd/ceph-1) getattr 3.29_head/f3e3b1e9/t4.dat/head//3 '_' = -2
-## ReplicatedPG.cc:7737 (0.94.3)
-## ReplicatedPG.cc:7859
-## ReplicatedPG.cc:1494
-## ReplicatedPG.cc:1296
+##
+## ReplicatedPG.cc:7737  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637574 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] get_object_context: no obc for soid f3e3b1e9/t4.dat/head//3 but can_create
-## FileStore.cc:3876 (0.94.3)
-## ObjectStore.h:1922
-## PGBackend.cc:190
-## ReplicatedPG.cc:8133
-## ReplicatedPG.cc:7742
-## ReplicatedPG.cc:7859
-## ReplicatedPG.cc:1494
-## ReplicatedPG.cc:1296
+##
+## FileStore.cc:3876     int FileStore::gettattr(coll_t, const ghobject_t &, const char *, bufferptr &)
+## ObjectStore.h:1922    int ObjectStore::getattr(coll_t, const ghobject_t &, const char *, bufferlist &)
+## PGBackend.cc:190      int PGBackend::object_get_attr(const hobject_t &, const string &, bufferlist *)
+## ReplicatedPG.cc:8133  SnapSetContext ReplicatedPG::get_snapset_context(const hobject &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7742  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637580 7f0970517700 15 filestore(/var/lib/ceph/osd/ceph-1) getattr 3.29_head/f3e3b1e9/t4.dat/head//3 'snapset'
-## FileStore.cc:288 (0.94.3)
+##
+## FileStore.cc:288      int FileStore::lfn_open(coll_t, const ghobject_t &, bool, FDRef *, Index *)
+## FileStore.cc:3878     int FileStore::gettattr(coll_t, const ghobject_t &, const char *, bufferptr &)
+## ObjectStore.h:1922    int ObjectStore::getattr(coll_t, const ghobject_t &, const char *, bufferlist &)
+## PGBackend.cc:190      int PGBackend::object_get_attr(const hobject_t &, const string &, bufferlist *)
+## ReplicatedPG.cc:8133  SnapSetContext ReplicatedPG::get_snapset_context(const hobject &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7742  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637592 7f0970517700 10 filestore(/var/lib/ceph/osd/ceph-1) error opening file /var/lib/ceph/osd/ceph-1/current/3.29_head/t4.dat__head_F3E3B1E9__3 with flags=2: (2) No such file or directory
-## FileStore.cc:3910 (0.94.3)
+##
+## FileStore.cc:3910     int FileStore::gettattr(coll_t, const ghobject_t &, const char *, bufferptr &)
+## ObjectStore.h:1922    int ObjectStore::getattr(coll_t, const ghobject_t &, const char *, bufferlist &)
+## PGBackend.cc:190      int PGBackend::object_get_attr(const hobject_t &, const string &, bufferlist *)
+## ReplicatedPG.cc:8136  SnapSetContext ReplicatedPG::get_snapset_context(const hobject &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7742  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637594 7f0970517700 10 filestore(/var/lib/ceph/osd/ceph-1) getattr 3.29_head/f3e3b1e9/t4.dat/head//3 'snapset' = -2
-## FileStore.cc:3876 (0.94.3)
-## ObjectStore.h:1922
-## PGBackend.cc:190
-## ReplicatedPG.cc:8136
-## ReplicatedPG.cc:7742
-## ReplicatedPG.cc:7859
-## ReplicatedPG.cc:1494
-## ReplicatedPG.cc:1296
+##
+## FileStore.cc:3876     int FileStore::gettattr(coll_t, const ghobject_t &, const char *, bufferptr &)
+## ObjectStore.h:1922    int ObjectStore::getattr(coll_t, const ghobject_t &, const char *, bufferlist &)
+## PGBackend.cc:190      int PGBackend::object_get_attr(const hobject_t &, const string &, bufferlist *)
+## ReplicatedPG.cc:8136  SnapSetContext ReplicatedPG::get_snapset_context(const hobject &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7742  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637603 7f0970517700 15 filestore(/var/lib/ceph/osd/ceph-1) getattr 3.29_head/f3e3b1e9/t4.dat/snapdir//3 'snapset'
-## FileStore.cc:288 (0.94.3)
-## FileStore.cc:3878
-## ObjectStore.h:1922
-## PGBackend.cc:190
-## ReplicatedPG.cc:8136
-## ReplicatedPG.cc:7742
-## ReplicatedPG.cc:7859
-## ReplicatedPG.cc:1494
-## ReplicatedPG.cc:1296
+##
+## FileStore.cc:288      int FileStore::lfn_open(coll_t, const ghobject_t &, bool, FDRef *, Index *)
+## FileStore.cc:3878     int FileStore::gettattr(coll_t, const ghobject_t &, const char *, bufferptr &)
+## ObjectStore.h:1922    int ObjectStore::getattr(coll_t, const ghobject_t &, const char *, bufferlist &)
+## PGBackend.cc:190      int PGBackend::object_get_attr(const hobject_t &, const string &, bufferlist *)
+## ReplicatedPG.cc:8136  SnapSetContext ReplicatedPG::get_snapset_context(const hobject &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7742  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637612 7f0970517700 10 filestore(/var/lib/ceph/osd/ceph-1) error opening file /var/lib/ceph/osd/ceph-1/current/3.29_head/t4.dat__snapdir_F3E3B1E9__3 with flags=2: (2) No such file or directory
-## FileStore.cc:3910 (0.94.3)
-## ObjectStore.h:1922
-## PGBackend.cc:190
-## ReplicatedPG.cc:8136
-## ReplicatedPG.cc:7742
-## ReplicatedPG.cc:7859
-## ReplicatedPG.cc:1494
-## ReplicatedPG.cc:1296
+##
+## FileStore.cc:3910     int FileStore::gettattr(coll_t, const ghobject_t &, const char *, bufferptr &)
+## ObjectStore.h:1922    int ObjectStore::getattr(coll_t, const ghobject_t &, const char *, bufferlist &)
+## PGBackend.cc:190      int PGBackend::object_get_attr(const hobject_t &, const string &, bufferlist *)
+## ReplicatedPG.cc:8136  SnapSetContext ReplicatedPG::get_snapset_context(const hobject &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7742  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637614 7f0970517700 10 filestore(/var/lib/ceph/osd/ceph-1) getattr 3.29_head/f3e3b1e9/t4.dat/snapdir//3 'snapset' = -2
-## ReplicatedPG.cc:7698 (0.94.3)
-## ReplicatedPG.cc:7745
-## ReplicatedPG.cc:7859
-## ReplicatedPG.cc:1494
-## ReplicatedPG.cc:1296
+##
+## ReplicatedPG.cc:7698  ObjectContextRef ReplicatedPG::create_object_context(const object_info_t &, SnapSetContext *) 
+## ReplicatedPG.cc:7745  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637620 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] create_object_context 0x7f09a1183600 f3e3b1e9/t4.dat/head//3 
-## ReplicatedPG.cc:7597 (0.94.3)
-## ReplicatedPG.cc:7700
-## ReplicatedPG.cc:7745
-## ReplicatedPG.cc:7859
-## ReplicatedPG.cc:1494
-## ReplicatedPG.cc:1296
+##
+## ReplicatedPG.cc:7597  void ReplicatedPG::populate_obc_watchers(ObjectContextRef obc)
+## ReplicatedPG.cc:7700  ObjectContextRef ReplicatedPG::create_object_context(const object_info_t &, SnapSetContext *) 
+## ReplicatedPG.cc:7745  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637624 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] populate_obc_watchers f3e3b1e9/t4.dat/head//3
-## ReplicatedPG.cc:7746 (0.94.3)
-## ReplicatedPG.cc:7859
-## ReplicatedPG.cc:1494
-## ReplicatedPG.cc:1296
+##
+## ReplicatedPG.cc:7746  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:7859  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637631 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] get_object_context: 0x7f09a1183600 f3e3b1e9/t4.dat/head//3 rwstate(none n=0 w=0) oi: f3e3b1e9/t4.dat/head//3(0'0 unknown.0.0:0 wrlock_by=unknown.0.0:0 s 0 uv 0) ssc: 0x7f0992d6fd10 snapset: 0=[]:[]
-## ReplicatedPG.cc:7865 (0.94.3)
-## ReplicatedPG.cc:1494
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## ReplicatedPG.cc:7865  int  ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
+## ReplicatedPG.cc:1494  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637638 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] find_object_context f3e3b1e9/t4.dat/head//3 @head oi=f3e3b1e9/t4.dat/head//3(0'0 unknown.0.0:0 wrlock_by=unknown.0.0:0 s 0 uv 0)
-## ReplicatedPG.cc:7721 (0.94.3)
-## ReplicatedPG.cc:1692
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## ReplicatedPG.cc:7721  ObjectContextRef ReplicatedPG::get_object_context(const hobject &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:1692  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637647 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] get_object_context: obc NOT found in cache: f3e3b1e9/t4.dat/snapdir//3
-## FileStore.cc:3876 (0.94.3)
-## ObjectStore.h:1922
-## PGBackend.cc:190
-## ReplicatedPG.cc:7728
-## ReplicatedPG.cc:1692
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## FileStore.cc:3876     int FileStore::gettattr(coll_t, const ghobject_t &, const char *, bufferptr &)
+## ObjectStore.h:1922    int ObjectStore::getattr(coll_t, const ghobject_t &, const char *, bufferlist &)
+## PGBackend.cc:190      int PGBackend::object_get_attr(const hobject_t &, const string &, bufferlist *)
+## ReplicatedPG.cc:7728  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:1692  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637650 7f0970517700 15 filestore(/var/lib/ceph/osd/ceph-1) getattr 3.29_head/f3e3b1e9/t4.dat/snapdir//3 '_'
-## FileStore.cc:288
-## FileStore.cc:3876 (0.94.3)
-## ObjectStore.h:1922
-## PGBackend.cc:190
-## ReplicatedPG.cc:7728
-## ReplicatedPG.cc:1692
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## FileStore.cc:288      int FileStore::lfn_open(coll_t, const ghobject_t &, bool, FDRef *, Index *)
+## FileStore.cc:3878     int FileStore::gettattr(coll_t, const ghobject_t &, const char *, bufferptr &)
+## ObjectStore.h:1922    int ObjectStore::getattr(coll_t, const ghobject_t &, const char *, bufferlist &)
+## PGBackend.cc:190      int PGBackend::object_get_attr(const hobject_t &, const string &, bufferlist *)
+## ReplicatedPG.cc:7728  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:1692  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637658 7f0970517700 10 filestore(/var/lib/ceph/osd/ceph-1) error opening file /var/lib/ceph/osd/ceph-1/current/3.29_head/t4.dat__snapdir_F3E3B1E9__3 with flags=2: (2) No such file or directory
-## FileStore.cc:3910 (0.94.3)
-## ObjectStore.h:1922
-## PGBackend.cc:190
-## ReplicatedPG.cc:7728
-## ReplicatedPG.cc:1692
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## FileStore.cc:3910     int FileStore::gettattr(coll_t, const ghobject_t &, const char *, bufferptr &)
+## ObjectStore.h:1922    int ObjectStore::getattr(coll_t, const ghobject_t &, const char *, bufferlist &)
+## PGBackend.cc:190      int PGBackend::object_get_attr(const hobject_t &, const string &, bufferlist *)
+## ReplicatedPG.cc:7728  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:1692  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637660 7f0970517700 10 filestore(/var/lib/ceph/osd/ceph-1) getattr 3.29_head/f3e3b1e9/t4.dat/snapdir//3 '_' = -2
-## ReplicatedPG.cc:7731 (0.94.3)
-## ReplicatedPG.cc:1692
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## ReplicatedPG.cc:7731  ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
+## ReplicatedPG.cc:1692  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637661 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] get_object_context: no obc for soid f3e3b1e9/t4.dat/snapdir//3 and !can_create
-## ReplicatedPG.cc:2189 (0.94.3)
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## ReplicatedPG.cc:2189  void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637670 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] execute_ctx 0x7f0993c4d200
-## ReplicatedPG.cc:2232 (0.94.3)
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## ReplicatedPG.cc:2232  void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637675 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] do_op f3e3b1e9/t4.dat/head//3 [writefull 0~4194304] ov 0'0 av 24'1 snapc 0=[] snapset 0=[]:[]
 ## ReplicatedPG.cc:3332 (0.94.3)
 ## ReplicatedPG.cc:5640
@@ -258,13 +352,47 @@
 2015-10-26 13:28:08.647489 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( v 24'1 (0'0,24'1] local-les=24 n=1 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] eval_repop repgather(0x7f0994242d00 24'1 rep_tid=1577 committed?=0 applied?=0 lock=0 op=osd_op(client.4135.0:1 t4.dat [writefull 0~4194304] 3.f3e3b1e9 ondisk+write+known_if_redirected e24) v5) wants=d
 ## OSD.cc:8432
 2015-10-26 13:28:08.647632 7f0970517700 10 osd.1 24 dequeue_op 0x7f0993c18200 finish
+## FileStore.cc:1967
+## FileStore.cc:1845
+## [FileStore.cc:273]
+## [FileStore.cc:1908]
 2015-10-26 13:28:08.911126 7f0981e89700  5 filestore(/var/lib/ceph/osd/ceph-1) _journaled_ahead 0x7f09a1198f80 seq 2317 osr(3.29 0x7f09a10d3c80) 0x7f099384ef40
+## FileStore.cc:1725
+## FileStore.cc:1970
+## FileStore.cc:1845
 2015-10-26 13:28:08.911130 7f0981e89700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_op 0x7f09a1198f80 seq 2317 osr(3.29 0x7f09a10d3c80) 4196441 bytes   (queue has 1 ops and 4196441 bytes)
+## FileStore.cc:1978
+## FileStore.cc:1845
 2015-10-26 13:28:08.911134 7f0981e89700 10 filestore(/var/lib/ceph/osd/ceph-1)  queueing ondisk 0x7f0994356ce0
+## FileStore.cc:1801
+## FileStore.h:359
 2015-10-26 13:28:08.911143 7f0981688700  5 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f09a1198f80 seq 2317 osr(3.29 0x7f09a10d3c80)/0x7f09a10d3c80 start
+## FileStore.cc:2267
+## FileStore.cc:1997
+## FileStore.cc:1802
+## FileStore.h:359
 2015-10-26 13:28:08.911145 7f0981688700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_transaction on 0x7f099384ef40
+## FileStore.cc:4999
+## FileStore.cc:2601
+## FileStore.cc:1997
+## FileStore.cc:1802
+## FileStore.h:359
 2015-10-26 13:28:08.911157 7f0981688700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.29_head/29//head//3
+## DBObjectMap.cc:1233
+## DBObjectMap.cc:450
+## FileStore.cc:5015
+## FileStore.cc:2601
+## FileStore.cc:1997
+## FileStore.cc:1802
+## FileStore.h:359
 2015-10-26 13:28:08.911249 7f0981688700 10 filestore oid: 29//head//3 not skipping op, *spos 2317.0.0
+## DBObjectMap.cc:1238
+## DBObjectMap.cc:450
+## FileStore.cc:5015
+## FileStore.cc:2601
+## FileStore.cc:1997
+## FileStore.cc:1802
+## FileStore.h:359
 2015-10-26 13:28:08.911250 7f0981688700 10 filestore  > header.spos 0.0.0
 2015-10-26 13:28:08.911325 7f0981688700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.29_head/29//head//3
 2015-10-26 13:28:08.911334 7f0981688700 10 filestore oid: 29//head//3 not skipping op, *spos 2317.0.1
@@ -272,14 +400,28 @@
 2015-10-26 13:28:08.911375 7f0981688700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.29_head/29//head//3
 2015-10-26 13:28:08.911383 7f0981688700 10 filestore oid: 29//head//3 not skipping op, *spos 2317.0.2
 2015-10-26 13:28:08.911384 7f0981688700 10 filestore  > header.spos 0.0.0
+## FileStore.cc:3006
+## FileStore.cc:2310
+## FileStore.cc:1997
+## FileStore.cc:1802
+## FileStore.h:359
 2015-10-26 13:28:08.911400 7f0981688700 15 filestore(/var/lib/ceph/osd/ceph-1) write 3.29_head/f3e3b1e9/t4.dat/head//3 0~4194304
 2015-10-26 13:28:08.911503 7f097fe85700 10 osd.1 pg_epoch: 24 pg[3.29( v 24'1 (0'0,24'1] local-les=24 n=1 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_commit: 1577
+## FileStore.cc:3053
+## FileStore.cc:2310
+## FileStore.cc:1997
+## FileStore.cc:1802
+## FileStore.h:359
 2015-10-26 13:28:08.913137 7f0981688700 10 filestore(/var/lib/ceph/osd/ceph-1) write 3.29_head/f3e3b1e9/t4.dat/head//3 0~4194304 = 4194304
 2015-10-26 13:28:08.913202 7f0981688700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 3.29_head/f3e3b1e9/t4.dat/head//3
 2015-10-26 13:28:08.913220 7f0981688700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 3.29_head/f3e3b1e9/t4.dat/head//3 = 0
 2015-10-26 13:28:08.913231 7f0981688700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 3.29_head/f3e3b1e9/t4.dat/head//3
 2015-10-26 13:28:08.913237 7f0981688700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 3.29_head/f3e3b1e9/t4.dat/head//3 = 0
+## FileStore.cc:1804
+## FileStore.h:359
 2015-10-26 13:28:08.913240 7f0981688700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f09a1198f80 seq 2317 r = 0, finisher 0x7f0994355fa0 0x7f09a0d48f80
+## FileStore.cc:1813
+## FileStore.h:362
 2015-10-26 13:28:08.913242 7f0981688700 10 filestore(/var/lib/ceph/osd/ceph-1) _finish_op 0x7f09a1198f80 seq 2317 osr(3.29 0x7f09a10d3c80)/0x7f09a10d3c80
 2015-10-26 13:28:08.913277 7f0980686700 10 osd.1 pg_epoch: 24 pg[3.29( v 24'1 (0'0,24'1] local-les=24 n=1 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_applied: 1577
 2015-10-26 13:28:08.913309 7f0980686700 10 osd.1 pg_epoch: 24 pg[3.29( v 24'1 (0'0,24'1] local-les=24 n=1 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_applied version 24'1
