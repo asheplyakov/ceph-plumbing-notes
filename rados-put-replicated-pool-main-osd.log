@@ -239,118 +239,161 @@
 ## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
 ## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637675 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] do_op f3e3b1e9/t4.dat/head//3 [writefull 0~4194304] ov 0'0 av 24'1 snapc 0=[] snapset 0=[]:[]
-## ReplicatedPG.cc:3332 (0.94.3)
-## ReplicatedPG.cc:5640
-## ReplicatedPG.cc:2258
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## ReplicatedPG.cc:3332  int ReplicatedPG::do_osd_ops(OpContext *, vector<OSDOp> &)
+## ReplicatedPG.cc:5640  int ReplicatedPG::prepare_transaction(OpContext *)
+## ReplicatedPG.cc:2258  void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637680 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] do_osd_op f3e3b1e9/t4.dat/head//3 [writefull 0~4194304]
-## ReplicatedPG.cc:3344 (0.94.3)
-## ReplicatedPG.cc:5640
-## ReplicatedPG.cc:2258
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## ReplicatedPG.cc:3344  int ReplicatedPG::do_osd_ops(OpContext *, vector<OSDOp> &)
+## ReplicatedPG.cc:5640  int ReplicatedPG::prepare_transaction(OpContext *)
+## ReplicatedPG.cc:2258  void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.637684 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] do_osd_op  writefull 0~4194304
-## ReplicatedPG.cc:5776 (0.94.3)
+##
+## ReplicatedPG.cc:5776  void ReplicatedPG::finish_ctx(OpContext *, int, bool, bool)
+## ReplicatedPG.cc:5654  int ReplicatedPG::prepare_transaction(OpContext *)
+## ReplicatedPG.cc:2258  void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.639510 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean]  set mtime to 2015-10-26 13:28:08.629917
-## ReplicatedPG.cc:5787
-## ReplicatedPG.cc:5654
-## ReplicatedPG.cc:2258
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## ReplicatedPG.cc:5787  void ReplicatedPG::finish_ctx(OpContext *, int, bool, bool)
+## ReplicatedPG.cc:5654  int ReplicatedPG::prepare_transaction(OpContext *)
+## ReplicatedPG.cc:2258  void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.639528 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=0 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean]  final snapset 0=[]:[]+head in f3e3b1e9/t4.dat/head//3
-## ReplicatedPG.cc:7471
-## ReplicatedPG.cc:2359
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## ReplicatedPG.cc:7471  void ReplicatedPG::new_repop(OpContext *, ObjectContextRef, ceph_tid_t)
+## ReplicatedPG.cc:2359  void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.639540 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=1 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] new_repop rep_tid 1577 on osd_op(client.4135.0:1 t4.dat [writefull 0~4194304] 3.f3e3b1e9 ondisk+write+known_if_redirected e24) v5
-## ReplicatedPG.cc:7403
-## ReplicatedPG.cc:2364
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## ReplicatedPG.cc:7403  void ReplicatedPG::issue_repop(RepGather *)
+## ReplicatedPG.cc:2364  void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.639546 7f0970517700  7 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=1 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] issue_repop rep_tid 1577 o f3e3b1e9/t4.dat/head//3
-## PG.cc:2946
-## ReplicatedPG.h:386
-## ReplicatedBackend.cc:611
-## ReplicatedPG.cc:7449
-## ReplicatedPG.cc:2364
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## PG.cc:2946                void PG::applied_log(const vector<pg_log_entry_t> &, eversion_t, eversion_t, ObjectStore::Transaction &, bool)
+## ReplicatedPG.h:386        void ReplicatedPG::log_operation(const vector<pg_log_entry_t> &, boost::optional<pg_hit_set_history_t> &, const eversion_t &, const eversion_t &, bool, ObjectStore::Transaction *)
+## ReplicatedBackend.cc:611  void ReplicatedBackend::submit_transaction(const hobject_t &, const eversion_t &, PGTransaction *, const eversion_t &, const eversion_t &, const vector<pg_log_entry_t> &,i boost::optional<pg_hit_set_history_t> &, Context *, Context *, Context *, ceph_tid_t, osd_reqid_t, OpRequestRef)
+## ReplicatedPG.cc:7449      void ReplicatedPG::issue_repop(RepGather *)
+## ReplicatedPG.cc:2364      void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752      void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296      void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429               void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323               void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
 2015-10-26 13:28:08.643289 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( empty local-les=24 n=1 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 crt=0'0 mlcod 0'0 active+clean] append_log log((0'0,0'0], crt=0'0) [24'1 (0'0) modify   f3e3b1e9/t4.dat/head//3 by client.4135.0:1 2015-10-26 13:28:08.629917]
-## PG.cc:2922
-## PG.cc:2952
-## ReplicatedPG.h:386
-## ReplicatedBackend.cc:611
-## ReplicatedPG.cc:7449
-## ReplicatedPG.cc:2364
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## PG.cc:2922                void PG::add_log_entry(const pg_log_entry_t &, bufferlist &)
+## PG.cc:2952                void PG::applied_log(const vector<pg_log_entry_t> &, eversion_t, eversion_t, ObjectStore::Transaction &, bool)
+## ReplicatedPG.h:386        void ReplicatedPG::log_operation(const vector<pg_log_entry_t> &, boost::optional<pg_hit_set_history_t> &, const eversion_t &, const eversion_t &, bool, ObjectStore::Transaction *)
+## ReplicatedBackend.cc:611  void ReplicatedBackend::submit_transaction(const hobject_t &, const eversion_t &, PGTransaction *, const eversion_t &, const eversion_t &, const vector<pg_log_entry_t> &,i boost::optional<pg_hit_set_history_t> &, Context *, Context *, Context *, ceph_tid_t, osd_reqid_t, OpRequestRef)
+## ReplicatedPG.cc:7449      void ReplicatedPG::issue_repop(RepGather *)
+## ReplicatedPG.cc:2364      void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752      void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296      void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429               void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323               void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
+##
 2015-10-26 13:28:08.643347 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( v 24'1 (0'0,24'1] local-les=24 n=1 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] add_log_entry 24'1 (0'0) modify   f3e3b1e9/t4.dat/head//3 by client.4135.0:1 2015-10-26 13:28:08.629917
-## PG.cc:2974
-## ReplicatedPG.h:386
-## ReplicatedBackend.cc:611
-## ReplicatedPG.cc:7449
-## ReplicatedPG.cc:2364
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## PG.cc:2974                void PG::applied_log(const vector<pg_log_entry_t> &, eversion_t, eversion_t, ObjectStore::Transaction &, bool)
+## ReplicatedPG.h:386        void ReplicatedPG::log_operation(const vector<pg_log_entry_t> &, boost::optional<pg_hit_set_history_t> &, const eversion_t &, const eversion_t &, bool, ObjectStore::Transaction *)
+## ReplicatedBackend.cc:611  void ReplicatedBackend::submit_transaction(const hobject_t &, const eversion_t &, PGTransaction *, const eversion_t &, const eversion_t &, const vector<pg_log_entry_t> &,i boost::optional<pg_hit_set_history_t> &, Context *, Context *, Context *, ceph_tid_t, osd_reqid_t, OpRequestRef)
+## ReplicatedPG.cc:7449      void ReplicatedPG::issue_repop(RepGather *)
+## ReplicatedPG.cc:2364      void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752      void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296      void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429               void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323               void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
+##
 2015-10-26 13:28:08.643375 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( v 24'1 (0'0,24'1] local-les=24 n=1 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] append_log  adding 1 keys
-## PG.cc:2979
-## ReplicatedPG.h:386
-## ReplicatedBackend.cc:611
-## ReplicatedPG.cc:7449
-## ReplicatedPG.cc:2364
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## PG.cc:2979                void PG::applied_log(const vector<pg_log_entry_t> &, eversion_t, eversion_t, ObjectStore::Transaction &, bool)
+## ReplicatedPG.h:386        void ReplicatedPG::log_operation(const vector<pg_log_entry_t> &, boost::optional<pg_hit_set_history_t> &, const eversion_t &, const eversion_t &, bool, ObjectStore::Transaction *)
+## ReplicatedBackend.cc:611  void ReplicatedBackend::submit_transaction(const hobject_t &, const eversion_t &, PGTransaction *, const eversion_t &, const eversion_t &, const vector<pg_log_entry_t> &,i boost::optional<pg_hit_set_history_t> &, Context *, Context *, Context *, ceph_tid_t, osd_reqid_t, OpRequestRef)
+## ReplicatedPG.cc:7449      void ReplicatedPG::issue_repop(RepGather *)
+## ReplicatedPG.cc:2364      void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752      void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296      void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429               void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323               void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
+##
 2015-10-26 13:28:08.643391 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( v 24'1 (0'0,24'1] local-les=24 n=1 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] append_log: trimming to 0'0 entries 
-## PGLog.cc:728
-## PG.cc:2880
-## PG.cc:2985
-## ReplicatedPG.h:386
-## ReplicatedBackend.cc:611
-## ReplicatedPG.cc:7449
-## ReplicatedPG.cc:2364
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+## 
+## PGLog.cc:728              void PGLog::write_log(ObjectStore::Transaction &, const coll_t &, const ghobject_t &)
+## PG.cc:2880                void PG::write_if_dirty(ObjectStore::Transaction &)
+## PG.cc:2985                void PG::applied_log(const vector<pg_log_entry_t> &, eversion_t, eversion_t, ObjectStore::Transaction &, bool)
+## ReplicatedPG.h:386        void ReplicatedPG::log_operation(const vector<pg_log_entry_t> &, boost::optional<pg_hit_set_history_t> &, const eversion_t &, const eversion_t &, bool, ObjectStore::Transaction *)
+## ReplicatedBackend.cc:611  void ReplicatedBackend::submit_transaction(const hobject_t &, const eversion_t &, PGTransaction *, const eversion_t &, const eversion_t &, const vector<pg_log_entry_t> &,i boost::optional<pg_hit_set_history_t> &, Context *, Context *, Context *, ceph_tid_t, osd_reqid_t, OpRequestRef)
+## ReplicatedPG.cc:7449      void ReplicatedPG::issue_repop(RepGather *)
+## ReplicatedPG.cc:2364      void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752      void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296      void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429               void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323               void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
+##
 2015-10-26 13:28:08.643423 7f0970517700 10 write_log with: dirty_to: 0'0, dirty_from: 4294967295'18446744073709551615, dirty_divergent_priors: 0, writeout_from: 24'1, trimmed: 
-## FileStore.cc:1872 
-## ObjectStore.h:1711
-## ObjectStore.h:1698
-## ReplicatedPG.h:326
-## ReplicatedBackend.cc:632
-## ReplicatedPG.cc:7449
-## ReplicatedPG.cc:2364
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## FileStore.cc:1872         int FileStore::queue_transactions(Sequencer *, list<Transaction *> &, TrackedOpRef, ThreadPool::TPHandle *)
+## ObjectStore.h:1711        int ObjectStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
+## ObjectStore.h:1698        int ObjectStore::queue_transaction(Sequencer *, Transaction *, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
+## ReplicatedPG.h:326        void ReplicatedPG::queue_transaction(ObjectStore::Transaction *, OpRequestRef)
+## ReplicatedBackend.cc:632  void ReplicatedBackend::submit_transaction(const hobject_t &, const eversion_t &, PGTransaction *, const eversion_t &, const eversion_t &, const vector<pg_log_entry_t> &,i boost::optional<pg_hit_set_history_t> &, Context *, Context *, Context *, ceph_tid_t, osd_reqid_t, OpRequestRef)
+## ReplicatedPG.cc:7449      void ReplicatedPG::issue_repop(RepGather *)
+## ReplicatedPG.cc:2364      void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752      void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296      void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429               void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323               void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
+##
 2015-10-26 13:28:08.643541 7f0970517700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions existing osr(3.29 0x7f09a10d3c80)/0x7f09a10d3c80
-## FileStore.cc:1903
-## ObjectStore.h:1711
-## ObjectStore.h:1698
-## ReplicatedPG.h:326
-## ReplicatedBackend.cc:632
-## ReplicatedPG.cc:7449
-## ReplicatedPG.cc:2364
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## FileStore.cc:1903         int FileStore::queue_transactions(Sequencer *, list<Transaction *> &, TrackedOpRef, ThreadPool::TPHandle *)
+## ObjectStore.h:1711        int ObjectStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
+## ObjectStore.h:1698        int ObjectStore::queue_transaction(Sequencer *, Transaction *, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
+## ReplicatedPG.h:326        void ReplicatedPG::queue_transaction(ObjectStore::Transaction *, OpRequestRef)
+## ReplicatedBackend.cc:632  void ReplicatedBackend::submit_transaction(const hobject_t &, const eversion_t &, PGTransaction *, const eversion_t &, const eversion_t &, const vector<pg_log_entry_t> &,i boost::optional<pg_hit_set_history_t> &, Context *, Context *, Context *, ceph_tid_t, osd_reqid_t, OpRequestRef)
+## ReplicatedPG.cc:7449      void ReplicatedPG::issue_repop(RepGather *)
+## ReplicatedPG.cc:2364      void ReplicatedPG::execute_ctx(OpContext *)
+## ReplicatedPG.cc:1752      void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296      void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429               void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323               void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
+##
 2015-10-26 13:28:08.643559 7f0970517700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions (writeahead) 2317 0x7f099384ef40
-## ReplicatedPG.cc:7262
-## ReplicatedPG.cc:2366
-## ReplicatedPG.cc:1752
-## ReplicatedPG.cc:1296
-## OSD.cc:8429
+##
+## ReplicatedPG.cc:7262  void ReplicatedPG::eval_repop(RepGather *)
+## ReplicatedPG.cc:2366  void ReplicatedPG::execute_ctx(OpContext *)  
+## ReplicatedPG.cc:1752  void ReplicatedPG::do_op(OpRequestRef &)
+## ReplicatedPG.cc:1296  void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8429           void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323           void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
+##
 2015-10-26 13:28:08.647489 7f0970517700 10 osd.1 pg_epoch: 24 pg[3.29( v 24'1 (0'0,24'1] local-les=24 n=1 ec=23 les/c 24/24 23/23/23) [1,2,0] r=0 lpr=23 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] eval_repop repgather(0x7f0994242d00 24'1 rep_tid=1577 committed?=0 applied?=0 lock=0 op=osd_op(client.4135.0:1 t4.dat [writefull 0~4194304] 3.f3e3b1e9 ondisk+write+known_if_redirected e24) v5) wants=d
-## OSD.cc:8432
+##
+## OSD.cc:8432  void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8323  void OSD::ShardedOpWQ::_process(uint32t, heartbeat_handle_d*)
+##
 2015-10-26 13:28:08.647632 7f0970517700 10 osd.1 24 dequeue_op 0x7f0993c18200 finish
 ## FileStore.cc:1967
 ## FileStore.cc:1845
