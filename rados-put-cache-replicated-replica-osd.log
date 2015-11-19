@@ -1,0 +1,793 @@
+2015-11-17 13:02:26.738429 7f47807dc700 25 osd.1 27 heartbeat_check osd.0 first_tx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:22.670164 last_rx_back 2015-11-17 13:02:22.670164 last_rx_front 2015-11-17 13:02:22.670164
+2015-11-17 13:02:26.738453 7f47807dc700 25 osd.1 27 heartbeat_check osd.2 first_tx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:22.670164 last_rx_back 2015-11-17 13:02:22.670164 last_rx_front 2015-11-17 13:02:22.670164
+2015-11-17 13:02:26.738466 7f47807dc700  7 osd.1 27 do_mon_report
+2015-11-17 13:02:26.738470 7f47807dc700 10 osd.1 27 send_alive up_thru currently 18 want 15
+2015-11-17 13:02:26.738476 7f47807dc700 20 osd.1 27 send_pg_stats
+2015-11-17 13:02:26.738491 7f47807dc700 20 osd.1 27 scrub_random_backoff lost coin flip, randomly backing off
+2015-11-17 13:02:26.738496 7f47807dc700 10 osd.1 27 do_waiters -- start
+2015-11-17 13:02:26.738499 7f47807dc700 10 osd.1 27 do_waiters -- finish
+2015-11-17 13:02:26.802852 7f4774e76700 20 osd.1 27 share_map_peer 0x7f478e45db20 already has epoch 27
+2015-11-17 13:02:26.802970 7f4773673700 20 osd.1 27 share_map_peer 0x7f478e45db20 already has epoch 27
+2015-11-17 13:02:27.508417 7f4763a42700 10 osd.1 27  new session 0x7f4790c08d00 con=0x7f4790be6f20 addr=10.253.0.5:6801/3140
+2015-11-17 13:02:27.508465 7f4763a42700 10 osd.1 27  session 0x7f4790c08d00 osd.2 has caps osdcap[grant(*)] 'allow *'
+2015-11-17 13:02:27.508480 7f4763a42700  0 -- 10.253.0.4:6801/3165 >> 10.253.0.5:6801/3140 pipe(0x7f4790c22000 sd=106 :6801 s=0 pgs=0 cs=0 l=0 c=0x7f4790be6f20).accept connect_seq 44 vs existing 44 state standby
+2015-11-17 13:02:27.508872 7f4763a42700 10 osd.1 27  session 0x7f4790c08d00 osd.2 has caps osdcap[grant(*)] 'allow *'
+2015-11-17 13:02:27.508896 7f4763a42700  0 -- 10.253.0.4:6801/3165 >> 10.253.0.5:6801/3140 pipe(0x7f4790c22000 sd=106 :6801 s=0 pgs=0 cs=0 l=0 c=0x7f4790be6f20).accept connect_seq 45 vs existing 44 state standby
+2015-11-17 13:02:27.508978 7f477767b700  1 osd.1 27 ms_handle_reset con 0x7f4790be6f20 session 0x7f4790c08d00
+2015-11-17 13:02:27.514095 7f4763a42700 10 osd.1 27 handle_replica_op osd_repop(osd.2.0:5600 4.11 11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4 v 27'1, has_updated_hit_set_history) v1 epoch 27
+2015-11-17 13:02:27.514100 7f4763a42700 20 osd.1 27 should_share_map osd.2 10.253.0.5:6801/3140 27
+2015-11-17 13:02:27.514104 7f4763a42700 15 osd.1 27 enqueue_op 0x7f4790b57900 prio 127 cost 899 latency 0.004755 osd_repop(osd.2.0:5600 4.11 11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4 v 27'1, has_updated_hit_set_history) v1
+2015-11-17 13:02:27.514236 7f4763a42700 10 osd.1 27 handle_replica_op osd_repop(osd.2.0:5601 4.11 a8f50a91/t12.dat/head//4 v 27'2) v1 epoch 27
+2015-11-17 13:02:27.514239 7f4763a42700 20 osd.1 27 should_share_map osd.2 10.253.0.5:6801/3140 27
+2015-11-17 13:02:27.514228 7f476b663700 10 osd.1 27 dequeue_op 0x7f4790b57900 prio 127 cost 899 latency 0.004878 osd_repop(osd.2.0:5600 4.11 11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4 v 27'1, has_updated_hit_set_history) v1 pg pg[4.11( empty local-les=27 n=0 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 crt=0'0 active]
+2015-11-17 13:02:27.514244 7f4763a42700 15 osd.1 27 enqueue_op 0x7f478ef27a00 prio 127 cost 636 latency 0.000100 osd_repop(osd.2.0:5601 4.11 a8f50a91/t12.dat/head//4 v 27'2) v1
+2015-11-17 13:02:27.514250 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( empty local-les=27 n=0 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 crt=0'0 active] handle_message: 0x7f4790b57900
+2015-11-17 13:02:27.514256 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( empty local-les=27 n=0 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 crt=0'0 active] sub_op_modify trans 11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4 v 27'1 (transaction) 228
+2015-11-17 13:02:27.514274 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( empty local-les=27 n=1 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 crt=0'0 active] append_log log((0'0,0'0], crt=0'0) [27'1 (0'0) modify   11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4 by unknown.0.0:0 2015-11-17 13:02:27.508208]
+2015-11-17 13:02:27.514299 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] add_log_entry 27'1 (0'0) modify   11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4 by unknown.0.0:0 2015-11-17 13:02:27.508208
+2015-11-17 13:02:27.514314 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] append_log  adding 1 keys
+2015-11-17 13:02:27.514324 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] append_log: trimming to 0'0 entries 
+2015-11-17 13:02:27.514338 7f476b663700 10 write_log with: dirty_to: 0'0, dirty_from: 4294967295'18446744073709551615, dirty_divergent_priors: 0, writeout_from: 27'1, trimmed: 
+2015-11-17 13:02:27.514363 7f476b663700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions existing osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:27.514369 7f476b663700 10 journal op_submit_start 4289
+2015-11-17 13:02:27.514370 7f476b663700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions (writeahead) 4289 0x7f4790b81a38
+2015-11-17 13:02:27.514372 7f476b663700 10 journal op_journal_transactions 4289 0x7f4790b81a38
+2015-11-17 13:02:27.514376 7f476b663700  5 journal submit_entry seq 4289 len 2610 (0x7f478f780160)
+2015-11-17 13:02:27.514389 7f476b663700 10 journal op_submit_finish 4289
+2015-11-17 13:02:27.514390 7f476b663700 10 osd.1 27 dequeue_op 0x7f4790b57900 finish
+2015-11-17 13:02:27.514407 7f477e7d8700 20 journal write_thread_entry woke up
+2015-11-17 13:02:27.514410 7f477e7d8700 10 journal room 5368705023 max_size 5368709120 pos 101617664 header.start 101617664 top 4096
+2015-11-17 13:02:27.514412 7f477e7d8700 10 journal check_for_full at 101617664 : 4096 < 5368705023
+2015-11-17 13:02:27.514413 7f477e7d8700 15 journal prepare_single_write 1 will write 101617664 : seq 4289 len 2610 -> 4096 (head 40 pre_pad 0 ebl 2610 post_pad 1406 tail 40) (ebl alignment -1)
+2015-11-17 13:02:27.514427 7f477e7d8700 20 journal prepare_multi_write queue_pos now 101621760
+2015-11-17 13:02:27.514432 7f477e7d8700 15 journal do_aio_write writing 101617664~4096 + header
+2015-11-17 13:02:27.514433 7f477e7d8700 20 journal write_aio_bl 0~4096 seq 0
+2015-11-17 13:02:27.514435 7f477e7d8700 20 journal write_aio_bl .. 0~4096 in 1
+2015-11-17 13:02:27.514427 7f476de68700 10 osd.1 27 dequeue_op 0x7f478ef27a00 prio 127 cost 636 latency 0.000283 osd_repop(osd.2.0:5601 4.11 a8f50a91/t12.dat/head//4 v 27'2) v1 pg pg[4.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active]
+2015-11-17 13:02:27.514443 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] handle_message: 0x7f478ef27a00
+2015-11-17 13:02:27.514449 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] sub_op_modify trans a8f50a91/t12.dat/head//4 v 27'2 (transaction) 147
+2015-11-17 13:02:27.514461 7f477e7d8700 10 journal align_bl total memcopy: 4096
+2015-11-17 13:02:27.514463 7f477e7d8700 20 journal write_aio_bl 101617664~4096 seq 4289
+2015-11-17 13:02:27.514464 7f477e7d8700 20 journal write_aio_bl .. 101617664~4096 in 1
+2015-11-17 13:02:27.514463 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'1 (0'0,27'1] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] append_log log((0'0,27'1], crt=0'0) [27'2 (0'0) promote  a8f50a91/t12.dat/head//4 by osd.2.0:5601 2015-11-17 13:02:27.510231]
+2015-11-17 13:02:27.514483 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'2 (0'0,27'2] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] add_log_entry 27'2 (0'0) promote  a8f50a91/t12.dat/head//4 by osd.2.0:5601 2015-11-17 13:02:27.510231
+2015-11-17 13:02:27.514488 7f477e7d8700  5 journal put_throttle finished 1 ops and 2610 bytes, now 0 ops and 0 bytes
+2015-11-17 13:02:27.514491 7f477e7d8700 20 journal write_thread_entry going to sleep
+2015-11-17 13:02:27.514496 7f477dfd7700 20 journal write_finish_thread_entry waiting for aio(s)
+2015-11-17 13:02:27.514496 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'2 (0'0,27'2] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] append_log  adding 1 keys
+2015-11-17 13:02:27.514503 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'2 (0'0,27'2] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] append_log: trimming to 0'0 entries 
+2015-11-17 13:02:27.514750 7f476de68700 10 write_log with: dirty_to: 0'0, dirty_from: 4294967295'18446744073709551615, dirty_divergent_priors: 0, writeout_from: 27'2, trimmed: 
+2015-11-17 13:02:27.514780 7f476de68700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions existing osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:27.514786 7f476de68700 10 journal op_submit_start 4290
+2015-11-17 13:02:27.514787 7f476de68700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions (writeahead) 4290 0x7f4790a72d38
+2015-11-17 13:02:27.514788 7f476de68700 10 journal op_journal_transactions 4290 0x7f4790a72d38
+2015-11-17 13:02:27.514792 7f476de68700  5 journal submit_entry seq 4290 len 2185 (0x7f478f8134d0)
+2015-11-17 13:02:27.514810 7f476de68700 10 journal op_submit_finish 4290
+2015-11-17 13:02:27.514811 7f476de68700 10 osd.1 27 dequeue_op 0x7f478ef27a00 finish
+2015-11-17 13:02:27.514811 7f477e7d8700 20 journal write_thread_entry woke up
+2015-11-17 13:02:27.514815 7f477e7d8700 20 journal write_thread_entry aio throttle: aio num 2 bytes 8192 ... exp 4 min_new 16 ... pending 2185
+2015-11-17 13:02:27.514817 7f477e7d8700 10 journal room 5368700927 max_size 5368709120 pos 101621760 header.start 101617664 top 4096
+2015-11-17 13:02:27.514818 7f477e7d8700 10 journal check_for_full at 101621760 : 4096 < 5368700927
+2015-11-17 13:02:27.514819 7f477e7d8700 15 journal prepare_single_write 1 will write 101621760 : seq 4290 len 2185 -> 4096 (head 40 pre_pad 0 ebl 2185 post_pad 1831 tail 40) (ebl alignment -1)
+2015-11-17 13:02:27.514837 7f477e7d8700 20 journal prepare_multi_write queue_pos now 101625856
+2015-11-17 13:02:27.514838 7f477e7d8700 15 journal do_aio_write writing 101621760~4096
+2015-11-17 13:02:27.514844 7f477e7d8700 10 journal align_bl total memcopy: 4096
+2015-11-17 13:02:27.514844 7f477e7d8700 20 journal write_aio_bl 101621760~4096 seq 4290
+2015-11-17 13:02:27.514846 7f477e7d8700 20 journal write_aio_bl .. 101621760~4096 in 1
+2015-11-17 13:02:27.514870 7f477e7d8700  5 journal put_throttle finished 1 ops and 2185 bytes, now 0 ops and 0 bytes
+2015-11-17 13:02:27.514873 7f477e7d8700 20 journal write_thread_entry going to sleep
+2015-11-17 13:02:27.540666 7f4763a42700 10 osd.1 27 handle_replica_op osd_repop(client.4172.0:1 4.11 a8f50a91/t12.dat/head//4 v 27'3) v1 epoch 27
+2015-11-17 13:02:27.540671 7f4763a42700 20 osd.1 27 should_share_map osd.2 10.253.0.5:6801/3140 27
+2015-11-17 13:02:27.540675 7f4763a42700 15 osd.1 27 enqueue_op 0x7f4790b54c00 prio 127 cost 4195016 latency 0.022599 osd_repop(client.4172.0:1 4.11 a8f50a91/t12.dat/head//4 v 27'3) v1
+2015-11-17 13:02:27.540736 7f476b663700 10 osd.1 27 dequeue_op 0x7f4790b54c00 prio 127 cost 4195016 latency 0.022659 osd_repop(client.4172.0:1 4.11 a8f50a91/t12.dat/head//4 v 27'3) v1 pg pg[4.11( v 27'2 (0'0,27'2] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active]
+2015-11-17 13:02:27.540758 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'2 (0'0,27'2] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] handle_message: 0x7f4790b54c00
+2015-11-17 13:02:27.540765 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'2 (0'0,27'2] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] sub_op_modify trans a8f50a91/t12.dat/head//4 v 27'3 (transaction) 147
+2015-11-17 13:02:27.540784 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'2 (0'0,27'2] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] append_log log((0'0,27'2], crt=0'0) [27'3 (27'2) modify   a8f50a91/t12.dat/head//4 by client.4172.0:1 2015-11-17 13:02:27.566428]
+2015-11-17 13:02:27.540804 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] add_log_entry 27'3 (27'2) modify   a8f50a91/t12.dat/head//4 by client.4172.0:1 2015-11-17 13:02:27.566428
+2015-11-17 13:02:27.540817 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] append_log  adding 1 keys
+2015-11-17 13:02:27.540825 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] append_log: trimming to 0'0 entries 
+2015-11-17 13:02:27.540842 7f476b663700 10 write_log with: dirty_to: 0'0, dirty_from: 4294967295'18446744073709551615, dirty_divergent_priors: 0, writeout_from: 27'3, trimmed: 
+2015-11-17 13:02:27.540863 7f476b663700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions existing osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:27.540870 7f476b663700 10 journal op_submit_start 4291
+2015-11-17 13:02:27.540871 7f476b663700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions (writeahead) 4291 0x7f4790b7e1f8
+2015-11-17 13:02:27.540879 7f476b663700 10 journal op_journal_transactions 4291 0x7f4790b7e1f8
+2015-11-17 13:02:27.540884 7f476b663700  5 journal submit_entry seq 4291 len 4196565 (0x7f478fe77ab0)
+2015-11-17 13:02:27.540911 7f476b663700 10 journal op_submit_finish 4291
+2015-11-17 13:02:27.540913 7f476b663700 10 osd.1 27 dequeue_op 0x7f4790b54c00 finish
+2015-11-17 13:02:27.540920 7f477e7d8700 20 journal write_thread_entry woke up
+2015-11-17 13:02:27.540921 7f477e7d8700 20 journal write_thread_entry aio throttle: aio num 3 bytes 12288 ... exp 6 min_new 64 ... pending 4196565
+2015-11-17 13:02:27.540924 7f477e7d8700 10 journal room 5368696831 max_size 5368709120 pos 101625856 header.start 101617664 top 4096
+2015-11-17 13:02:27.540925 7f477e7d8700 10 journal check_for_full at 101625856 : 4202496 < 5368696831
+2015-11-17 13:02:27.540926 7f477e7d8700 15 journal prepare_single_write 1 will write 101625856 : seq 4291 len 4196565 -> 4202496 (head 40 pre_pad 4046 ebl 4196565 post_pad 1805 tail 40) (ebl alignment 4086)
+2015-11-17 13:02:27.543468 7f477e7d8700 20 journal prepare_multi_write queue_pos now 105828352
+2015-11-17 13:02:27.543470 7f477e7d8700 15 journal do_aio_write writing 101625856~4202496
+2015-11-17 13:02:27.544727 7f477e7d8700 10 journal align_bl total memcopy: 4202496
+2015-11-17 13:02:27.544736 7f477e7d8700 20 journal write_aio_bl 101625856~4202496 seq 4291
+2015-11-17 13:02:27.544739 7f477e7d8700 20 journal write_aio_bl .. 101625856~4202496 in 1
+2015-11-17 13:02:27.544984 7f477e7d8700  5 journal put_throttle finished 1 ops and 4196565 bytes, now 0 ops and 0 bytes
+2015-11-17 13:02:27.544986 7f477e7d8700 20 journal write_thread_entry going to sleep
+2015-11-17 13:02:27.547031 7f477dfd7700 10 journal write_finish_thread_entry aio 0~4096 done
+2015-11-17 13:02:27.547049 7f477dfd7700 20 journal check_aio_completion
+2015-11-17 13:02:27.547050 7f477dfd7700 20 journal check_aio_completion completed seq 0 0~4096
+2015-11-17 13:02:27.547057 7f477dfd7700 20 journal write_finish_thread_entry waiting for aio(s)
+2015-11-17 13:02:27.655327 7f477dfd7700 10 journal write_finish_thread_entry aio 101617664~4096 done
+2015-11-17 13:02:27.655342 7f477dfd7700 10 journal write_finish_thread_entry aio 101621760~4096 done
+2015-11-17 13:02:27.655343 7f477dfd7700 10 journal write_finish_thread_entry aio 101625856~4202496 done
+2015-11-17 13:02:27.655345 7f477dfd7700 20 journal check_aio_completion
+2015-11-17 13:02:27.655346 7f477dfd7700 20 journal check_aio_completion completed seq 4289 101617664~4096
+2015-11-17 13:02:27.655350 7f477dfd7700 20 journal check_aio_completion completed seq 4290 101621760~4096
+2015-11-17 13:02:27.655352 7f477dfd7700 20 journal check_aio_completion completed seq 4291 101625856~4202496
+2015-11-17 13:02:27.655355 7f477dfd7700 20 journal check_aio_completion queueing finishers through seq 4291
+2015-11-17 13:02:27.655357 7f477dfd7700 10 journal queue_completions_thru seq 4291 queueing seq 4289 0x7f478f780160 lat 0.140974
+2015-11-17 13:02:27.662428 7f477dfd7700 10 journal queue_completions_thru seq 4291 queueing seq 4290 0x7f478f8134d0 lat 0.140559
+2015-11-17 13:02:27.662500 7f477dfd7700 10 journal queue_completions_thru seq 4291 queueing seq 4291 0x7f478fe77ab0 lat 0.114467
+2015-11-17 13:02:27.662550 7f477dfd7700 20 journal write_finish_thread_entry sleeping
+2015-11-17 13:02:27.662611 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) _journaled_ahead 0x7f478fa6fa40 seq 4289 osr(4.11 0x7f478fc6c2f0) 0x7f4790b81a38
+2015-11-17 13:02:27.662634 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_op 0x7f478fa6fa40 seq 4289 osr(4.11 0x7f478fc6c2f0) 2596 bytes   (queue has 3 ops and 4201318 bytes)
+2015-11-17 13:02:27.662654 7f477c7d4700 10 journal op_apply_start 4289 open_ops 0 -> 1
+2015-11-17 13:02:27.662657 7f477c7d4700  5 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fa6fa40 seq 4289 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0 start
+2015-11-17 13:02:27.662659 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_transaction on 0x7f4790b81a38
+2015-11-17 13:02:27.662677 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:27.662719 7f477c7d4700 10 filestore oid: 11//head//4 not skipping op, *spos 4289.0.0
+2015-11-17 13:02:27.662721 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:27.662813 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:27.662819 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:27.662833 7f477c7d4700 10 filestore oid: 11//head//4 not skipping op, *spos 4289.0.1
+2015-11-17 13:02:27.662834 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:27.662853 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:27.662859 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:27.662870 7f477c7d4700 10 filestore oid: 11//head//4 not skipping op, *spos 4289.0.2
+2015-11-17 13:02:27.662871 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:27.662902 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:27.662906 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) write 4.11_head/11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4 0~83
+2015-11-17 13:02:27.663106 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) write 4.11_head/11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4 0~83 = 83
+2015-11-17 13:02:27.663127 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4
+2015-11-17 13:02:27.663208 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4 = 0
+2015-11-17 13:02:27.663228 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 101 getting '_'
+2015-11-17 13:02:27.663235 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4
+2015-11-17 13:02:27.663247 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4 = 0
+2015-11-17 13:02:27.663250 7f477c7d4700 10 journal op_apply_finish 4289 open_ops 1 -> 0, max_applied_seq 4288 -> 4289
+2015-11-17 13:02:27.663252 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fa6fa40 seq 4289 r = 0, finisher 0x7f478edcdf00 0
+2015-11-17 13:02:27.663254 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _finish_op 0x7f478fa6fa40 seq 4289 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:27.663277 7f477d7d6700 10 filestore(/var/lib/ceph/osd/ceph-1)  queueing ondisk 0x7f4790b7bde0
+2015-11-17 13:02:27.663288 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) _journaled_ahead 0x7f478fa70cb0 seq 4290 osr(4.11 0x7f478fc6c2f0) 0x7f4790a72d38
+2015-11-17 13:02:27.663290 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_op 0x7f478fa70cb0 seq 4290 osr(4.11 0x7f478fc6c2f0) 2171 bytes   (queue has 2 ops and 4198722 bytes)
+2015-11-17 13:02:27.663302 7f477cfd5700 10 journal op_apply_start 4290 open_ops 0 -> 1
+2015-11-17 13:02:27.663304 7f477cfd5700  5 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fa70cb0 seq 4290 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0 start
+2015-11-17 13:02:27.663306 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_transaction on 0x7f4790a72d38
+2015-11-17 13:02:27.663317 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:27.663308 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] sub_op_modify_applied on 0x7f4790b81840 op osd_repop(osd.2.0:5600 4.11 11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4 v 27'1, has_updated_hit_set_history) v1
+2015-11-17 13:02:27.663328 7f477bfd3700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:27.663339 7f477cfd5700 10 filestore oid: 11//head//4 not skipping op, *spos 4290.0.0
+2015-11-17 13:02:27.663340 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:27.663354 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] op_applied version 27'1
+2015-11-17 13:02:27.663366 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:27.663371 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:27.663384 7f477cfd5700 10 filestore oid: 11//head//4 not skipping op, *spos 4290.0.1
+2015-11-17 13:02:27.663386 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:27.663381 7f477b7d2700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'1 crt=0'0 lcod 0'0 active] sub_op_modify_commit on op osd_repop(osd.2.0:5600 4.11 11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4 v 27'1, has_updated_hit_set_history) v1, sending commit to osd.2
+2015-11-17 13:02:27.663401 7f477b7d2700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:27.663411 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:27.663417 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:27.663429 7f477cfd5700 10 filestore oid: 11//head//4 not skipping op, *spos 4290.0.2
+2015-11-17 13:02:27.663430 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:27.663449 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:27.663452 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) touch 4.11_head/a8f50a91/t12.dat/head//4
+2015-11-17 13:02:27.663516 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) touch 4.11_head/a8f50a91/t12.dat/head//4 = 0
+2015-11-17 13:02:27.663528 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4
+2015-11-17 13:02:27.663537 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4 = 0
+2015-11-17 13:02:27.663545 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting '_'
+2015-11-17 13:02:27.663549 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4
+2015-11-17 13:02:27.663557 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4 = 0
+2015-11-17 13:02:27.663560 7f477cfd5700 10 journal op_apply_finish 4290 open_ops 1 -> 0, max_applied_seq 4289 -> 4290
+2015-11-17 13:02:27.663561 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fa70cb0 seq 4290 r = 0, finisher 0x7f478ef07540 0
+2015-11-17 13:02:27.663564 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _finish_op 0x7f478fa70cb0 seq 4290 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:27.663602 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'1 crt=0'0 lcod 0'0 active] sub_op_modify_applied on 0x7f4790a72b40 op osd_repop(osd.2.0:5601 4.11 a8f50a91/t12.dat/head//4 v 27'2) v1
+2015-11-17 13:02:27.663676 7f477bfd3700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:27.663743 7f477d7d6700 10 filestore(/var/lib/ceph/osd/ceph-1)  queueing ondisk 0x7f478ee82f60
+2015-11-17 13:02:27.663758 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) _journaled_ahead 0x7f478fa6fef0 seq 4291 osr(4.11 0x7f478fc6c2f0) 0x7f4790b7e1f8
+2015-11-17 13:02:27.663761 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_op 0x7f478fa6fef0 seq 4291 osr(4.11 0x7f478fc6c2f0) 4196551 bytes   (queue has 1 ops and 4196551 bytes)
+2015-11-17 13:02:27.663686 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'1 crt=0'0 lcod 0'0 active] op_applied version 27'2
+2015-11-17 13:02:27.663771 7f477c7d4700 10 journal op_apply_start 4291 open_ops 0 -> 1
+2015-11-17 13:02:27.663773 7f477c7d4700  5 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fa6fef0 seq 4291 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0 start
+2015-11-17 13:02:27.663775 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_transaction on 0x7f4790b7e1f8
+2015-11-17 13:02:27.663782 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:27.663777 7f477b7d2700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'2 crt=0'0 lcod 0'0 active] sub_op_modify_commit on op osd_repop(osd.2.0:5601 4.11 a8f50a91/t12.dat/head//4 v 27'2) v1, sending commit to osd.2
+2015-11-17 13:02:27.663786 7f477b7d2700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:27.663801 7f477c7d4700 10 filestore oid: 11//head//4 not skipping op, *spos 4291.0.0
+2015-11-17 13:02:27.663808 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:27.663827 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:27.663832 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:27.663844 7f477c7d4700 10 filestore oid: 11//head//4 not skipping op, *spos 4291.0.1
+2015-11-17 13:02:27.663845 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:27.663860 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:27.663865 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:27.663875 7f477c7d4700 10 filestore oid: 11//head//4 not skipping op, *spos 4291.0.2
+2015-11-17 13:02:27.663876 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:27.663896 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:27.663898 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) truncate 4.11_head/a8f50a91/t12.dat/head//4 size 0
+2015-11-17 13:02:27.663917 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) truncate 4.11_head/a8f50a91/t12.dat/head//4 size 0 = 0
+2015-11-17 13:02:27.663920 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) write 4.11_head/a8f50a91/t12.dat/head//4 0~4194304
+2015-11-17 13:02:27.666307 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) write 4.11_head/a8f50a91/t12.dat/head//4 0~4194304 = 4194304
+2015-11-17 13:02:27.666336 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting '_'
+2015-11-17 13:02:27.666340 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting 'snapset'
+2015-11-17 13:02:27.666343 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4
+2015-11-17 13:02:27.666360 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4 = 0
+2015-11-17 13:02:27.666368 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting '_'
+2015-11-17 13:02:27.666370 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting 'snapset'
+2015-11-17 13:02:27.666372 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4
+2015-11-17 13:02:27.666377 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4 = 0
+2015-11-17 13:02:27.666379 7f477c7d4700 10 journal op_apply_finish 4291 open_ops 1 -> 0, max_applied_seq 4290 -> 4291
+2015-11-17 13:02:27.666381 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fa6fef0 seq 4291 r = 0, finisher 0x7f478ffe76e0 0
+2015-11-17 13:02:27.666384 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _finish_op 0x7f478fa6fef0 seq 4291 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:27.666412 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'2 crt=0'0 lcod 27'1 active] sub_op_modify_applied on 0x7f4790b7e000 op osd_repop(client.4172.0:1 4.11 a8f50a91/t12.dat/head//4 v 27'3) v1
+2015-11-17 13:02:27.666426 7f477bfd3700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:27.666442 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'2 crt=0'0 lcod 27'1 active] op_applied version 27'3
+2015-11-17 13:02:27.666496 7f477d7d6700 10 filestore(/var/lib/ceph/osd/ceph-1)  queueing ondisk 0x7f4790c70ce0
+2015-11-17 13:02:27.666522 7f477b7d2700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=0'0 lcod 27'1 active] sub_op_modify_commit on op osd_repop(client.4172.0:1 4.11 a8f50a91/t12.dat/head//4 v 27'3) v1, sending commit to osd.2
+2015-11-17 13:02:27.666533 7f477b7d2700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:27.738592 7f47807dc700  5 osd.1 27 tick
+2015-11-17 13:02:27.738616 7f47807dc700 25 osd.1 27 heartbeat_check osd.0 first_tx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:22.670164 last_rx_back 2015-11-17 13:02:22.670164 last_rx_front 2015-11-17 13:02:22.670164
+2015-11-17 13:02:27.738623 7f47807dc700 25 osd.1 27 heartbeat_check osd.2 first_tx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:22.670164 last_rx_back 2015-11-17 13:02:22.670164 last_rx_front 2015-11-17 13:02:22.670164
+2015-11-17 13:02:27.738630 7f47807dc700 20 osd.1 27 scrub_random_backoff lost coin flip, randomly backing off
+2015-11-17 13:02:27.738631 7f47807dc700 10 osd.1 27 do_waiters -- start
+2015-11-17 13:02:27.738632 7f47807dc700 10 osd.1 27 do_waiters -- finish
+2015-11-17 13:02:27.744461 7f4763a42700 10 osd.1 27 handle_replica_op osd_repop(client.4172.0:2 4.11 a8f50a91/t12.dat/head//4 v 27'4) v1 epoch 27
+2015-11-17 13:02:27.744476 7f4763a42700 20 osd.1 27 should_share_map osd.2 10.253.0.5:6801/3140 27
+2015-11-17 13:02:27.744483 7f4763a42700 15 osd.1 27 enqueue_op 0x7f4790b54100 prio 127 cost 4194944 latency 0.010328 osd_repop(client.4172.0:2 4.11 a8f50a91/t12.dat/head//4 v 27'4) v1
+2015-11-17 13:02:27.744506 7f476de68700 10 osd.1 27 dequeue_op 0x7f4790b54100 prio 127 cost 4194944 latency 0.010351 osd_repop(client.4172.0:2 4.11 a8f50a91/t12.dat/head//4 v 27'4) v1 pg pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=0'0 lcod 27'2 active]
+2015-11-17 13:02:27.744523 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=0'0 lcod 27'2 active] handle_message: 0x7f4790b54100
+2015-11-17 13:02:27.744529 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=0'0 lcod 27'2 active] sub_op_modify trans a8f50a91/t12.dat/head//4 v 27'4 (transaction) 147
+2015-11-17 13:02:27.744549 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'3 (0'0,27'3] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=0'0 lcod 27'2 active] append_log log((0'0,27'3], crt=0'0) [27'4 (27'3) modify   a8f50a91/t12.dat/head//4 by client.4172.0:2 2015-11-17 13:02:27.795972]
+2015-11-17 13:02:27.744559 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'4 (0'0,27'4] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'3 crt=0'0 lcod 27'2 active] add_log_entry 27'4 (27'3) modify   a8f50a91/t12.dat/head//4 by client.4172.0:2 2015-11-17 13:02:27.795972
+2015-11-17 13:02:27.744586 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'4 (0'0,27'4] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'3 crt=27'2 lcod 27'2 active] append_log  adding 1 keys
+2015-11-17 13:02:27.744594 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'4 (0'0,27'4] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'3 crt=27'2 lcod 27'2 active] append_log: trimming to 27'2 entries 27'1 (0'0) modify   11/hit_set_4.11_archive_2015-11-09 09:56:00.917870_2015-11-17 13:02:27.508104/head/.ceph-internal/4 by unknown.0.0:0 2015-11-17 13:02:27.508208,27'2 (0'0) promote  a8f50a91/t12.dat/head//4 by osd.2.0:5601 2015-11-17 13:02:27.510231
+2015-11-17 13:02:27.744611 7f476de68700 10 write_log with: dirty_to: 0'0, dirty_from: 4294967295'18446744073709551615, dirty_divergent_priors: 0, writeout_from: 27'4, trimmed: 
+2015-11-17 13:02:27.744645 7f476de68700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions existing osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:27.744652 7f476de68700 10 journal op_submit_start 4292
+2015-11-17 13:02:27.744653 7f476de68700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions (writeahead) 4292 0x7f4790c503b8
+2015-11-17 13:02:27.744654 7f476de68700 10 journal op_journal_transactions 4292 0x7f4790c503b8
+2015-11-17 13:02:27.744657 7f476de68700  5 journal submit_entry seq 4292 len 4196493 (0x7f478f5293e0)
+2015-11-17 13:02:27.744673 7f476de68700 10 journal op_submit_finish 4292
+2015-11-17 13:02:27.744675 7f476de68700 10 osd.1 27 dequeue_op 0x7f4790b54100 finish
+2015-11-17 13:02:27.744889 7f477e7d8700 20 journal write_thread_entry woke up
+2015-11-17 13:02:27.744897 7f477e7d8700 10 journal room 5364494335 max_size 5368709120 pos 105828352 header.start 101617664 top 4096
+2015-11-17 13:02:27.744899 7f477e7d8700 10 journal check_for_full at 105828352 : 4202496 < 5364494335
+2015-11-17 13:02:27.744900 7f477e7d8700 15 journal prepare_single_write 1 will write 105828352 : seq 4292 len 4196493 -> 4202496 (head 40 pre_pad 4046 ebl 4196493 post_pad 1877 tail 40) (ebl alignment 4086)
+2015-11-17 13:02:27.747348 7f477e7d8700 20 journal prepare_multi_write queue_pos now 110030848
+2015-11-17 13:02:27.747349 7f477e7d8700 15 journal do_aio_write writing 105828352~4202496
+2015-11-17 13:02:27.747949 7f477e7d8700 10 journal align_bl total memcopy: 4202496
+2015-11-17 13:02:27.747954 7f477e7d8700 20 journal write_aio_bl 105828352~4202496 seq 4292
+2015-11-17 13:02:27.747957 7f477e7d8700 20 journal write_aio_bl .. 105828352~4202496 in 1
+2015-11-17 13:02:27.748327 7f477e7d8700  5 journal put_throttle finished 1 ops and 4196493 bytes, now 0 ops and 0 bytes
+2015-11-17 13:02:27.748331 7f477e7d8700 20 journal write_thread_entry going to sleep
+2015-11-17 13:02:27.748584 7f477dfd7700 20 journal write_finish_thread_entry waiting for aio(s)
+2015-11-17 13:02:27.889291 7f477dfd7700 10 journal write_finish_thread_entry aio 105828352~4202496 done
+2015-11-17 13:02:27.889374 7f477dfd7700 20 journal check_aio_completion
+2015-11-17 13:02:27.889400 7f477dfd7700 20 journal check_aio_completion completed seq 4292 105828352~4202496
+2015-11-17 13:02:27.889428 7f477dfd7700 20 journal check_aio_completion queueing finishers through seq 4292
+2015-11-17 13:02:27.889453 7f477dfd7700 10 journal queue_completions_thru seq 4292 queueing seq 4292 0x7f478f5293e0 lat 0.144790
+2015-11-17 13:02:27.889506 7f477dfd7700 20 journal write_finish_thread_entry sleeping
+2015-11-17 13:02:27.889565 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) _journaled_ahead 0x7f478fd3e550 seq 4292 osr(4.11 0x7f478fc6c2f0) 0x7f4790c503b8
+2015-11-17 13:02:27.894733 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_op 0x7f478fd3e550 seq 4292 osr(4.11 0x7f478fc6c2f0) 4196479 bytes   (queue has 1 ops and 4196479 bytes)
+2015-11-17 13:02:27.894760 7f477cfd5700 10 journal op_apply_start 4292 open_ops 0 -> 1
+2015-11-17 13:02:27.894762 7f477cfd5700  5 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fd3e550 seq 4292 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0 start
+2015-11-17 13:02:27.894765 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_transaction on 0x7f4790c503b8
+2015-11-17 13:02:27.894777 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:27.894816 7f477cfd5700 10 filestore oid: 11//head//4 not skipping op, *spos 4292.0.0
+2015-11-17 13:02:27.894817 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:27.894860 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:27.894864 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:27.894876 7f477cfd5700 10 filestore oid: 11//head//4 not skipping op, *spos 4292.0.1
+2015-11-17 13:02:27.894877 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:27.894900 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:27.894906 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:27.894916 7f477cfd5700 10 filestore oid: 11//head//4 not skipping op, *spos 4292.0.2
+2015-11-17 13:02:27.894917 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:27.894936 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:27.894940 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) write 4.11_head/a8f50a91/t12.dat/head//4 4194304~4194304
+2015-11-17 13:02:27.896826 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) write 4.11_head/a8f50a91/t12.dat/head//4 4194304~4194304 = 4194304
+2015-11-17 13:02:27.896867 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting '_'
+2015-11-17 13:02:27.896873 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting 'snapset'
+2015-11-17 13:02:27.896876 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4
+2015-11-17 13:02:27.896899 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4 = 0
+2015-11-17 13:02:27.896908 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting '_'
+2015-11-17 13:02:27.896911 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting 'snapset'
+2015-11-17 13:02:27.896913 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4
+2015-11-17 13:02:27.896920 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4 = 0
+2015-11-17 13:02:27.896923 7f477cfd5700 10 journal op_apply_finish 4292 open_ops 1 -> 0, max_applied_seq 4291 -> 4292
+2015-11-17 13:02:27.896924 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fd3e550 seq 4292 r = 0, finisher 0x7f4790b7a020 0
+2015-11-17 13:02:27.896928 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _finish_op 0x7f478fd3e550 seq 4292 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:27.896950 7f477d7d6700 10 filestore(/var/lib/ceph/osd/ceph-1)  queueing ondisk 0x7f4790b7d7e0
+2015-11-17 13:02:27.896967 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'4 (0'0,27'4] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'3 crt=27'2 lcod 27'2 active] sub_op_modify_applied on 0x7f4790c501c0 op osd_repop(client.4172.0:2 4.11 a8f50a91/t12.dat/head//4 v 27'4) v1
+2015-11-17 13:02:27.896985 7f477bfd3700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:27.897010 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'4 (0'0,27'4] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'3 crt=27'2 lcod 27'2 active] op_applied version 27'4
+2015-11-17 13:02:27.897146 7f477b7d2700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'4 (0'0,27'4] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=27'2 lcod 27'2 active] sub_op_modify_commit on op osd_repop(client.4172.0:2 4.11 a8f50a91/t12.dat/head//4 v 27'4) v1, sending commit to osd.2
+2015-11-17 13:02:27.897159 7f477b7d2700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:27.899270 7f4773673700 20 osd.1 27 share_map_peer 0x7f478e45db20 already has epoch 27
+2015-11-17 13:02:27.899674 7f4774e76700 20 osd.1 27 share_map_peer 0x7f478e45db20 already has epoch 27
+2015-11-17 13:02:27.929766 7f4763a42700 10 osd.1 27 handle_replica_op osd_repop(client.4172.0:3 4.11 a8f50a91/t12.dat/head//4 v 27'5) v1 epoch 27
+2015-11-17 13:02:27.929770 7f4763a42700 20 osd.1 27 should_share_map osd.2 10.253.0.5:6801/3140 27
+2015-11-17 13:02:27.929774 7f4763a42700 15 osd.1 27 enqueue_op 0x7f4790b54800 prio 127 cost 4194944 latency 0.006990 osd_repop(client.4172.0:3 4.11 a8f50a91/t12.dat/head//4 v 27'5) v1
+2015-11-17 13:02:27.929799 7f476b663700 10 osd.1 27 dequeue_op 0x7f4790b54800 prio 127 cost 4194944 latency 0.007014 osd_repop(client.4172.0:3 4.11 a8f50a91/t12.dat/head//4 v 27'5) v1 pg pg[4.11( v 27'4 (0'0,27'4] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=27'2 lcod 27'3 active]
+2015-11-17 13:02:27.929819 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'4 (0'0,27'4] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=27'2 lcod 27'3 active] handle_message: 0x7f4790b54800
+2015-11-17 13:02:27.929825 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'4 (0'0,27'4] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=27'2 lcod 27'3 active] sub_op_modify trans a8f50a91/t12.dat/head//4 v 27'5 (transaction) 147
+2015-11-17 13:02:27.929848 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'4 (0'0,27'4] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=27'2 lcod 27'3 active] append_log log((0'0,27'4], crt=27'2) [27'5 (27'4) modify   a8f50a91/t12.dat/head//4 by client.4172.0:3 2015-11-17 13:02:27.974838]
+2015-11-17 13:02:27.929857 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'5 (0'0,27'5] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'4 crt=27'2 lcod 27'3 active] add_log_entry 27'5 (27'4) modify   a8f50a91/t12.dat/head//4 by client.4172.0:3 2015-11-17 13:02:27.974838
+2015-11-17 13:02:27.929868 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'5 (0'0,27'5] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'4 crt=27'3 lcod 27'3 active] append_log  adding 1 keys
+2015-11-17 13:02:27.929874 7f476b663700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'5 (0'0,27'5] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'4 crt=27'3 lcod 27'3 active] append_log: trimming to 27'3 entries 27'3 (27'2) modify   a8f50a91/t12.dat/head//4 by client.4172.0:1 2015-11-17 13:02:27.566428
+2015-11-17 13:02:27.929888 7f476b663700 10 write_log with: dirty_to: 0'0, dirty_from: 4294967295'18446744073709551615, dirty_divergent_priors: 0, writeout_from: 27'5, trimmed: 
+2015-11-17 13:02:27.929904 7f476b663700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions existing osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:27.929910 7f476b663700 10 journal op_submit_start 4293
+2015-11-17 13:02:27.929910 7f476b663700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions (writeahead) 4293 0x7f478f4f63b8
+2015-11-17 13:02:27.929911 7f476b663700 10 journal op_journal_transactions 4293 0x7f478f4f63b8
+2015-11-17 13:02:27.929914 7f476b663700  5 journal submit_entry seq 4293 len 4196493 (0x7f478f84da80)
+2015-11-17 13:02:27.929923 7f476b663700 10 journal op_submit_finish 4293
+2015-11-17 13:02:27.929924 7f476b663700 10 osd.1 27 dequeue_op 0x7f4790b54800 finish
+2015-11-17 13:02:27.929930 7f477e7d8700 20 journal write_thread_entry woke up
+2015-11-17 13:02:27.929932 7f477e7d8700 10 journal room 5360291839 max_size 5368709120 pos 110030848 header.start 101617664 top 4096
+2015-11-17 13:02:27.929933 7f477e7d8700 10 journal check_for_full at 110030848 : 4202496 < 5360291839
+2015-11-17 13:02:27.929934 7f477e7d8700 15 journal prepare_single_write 1 will write 110030848 : seq 4293 len 4196493 -> 4202496 (head 40 pre_pad 4046 ebl 4196493 post_pad 1877 tail 40) (ebl alignment 4086)
+2015-11-17 13:02:27.933112 7f477e7d8700 20 journal prepare_multi_write queue_pos now 114233344
+2015-11-17 13:02:27.933114 7f477e7d8700 15 journal do_aio_write writing 110030848~4202496
+2015-11-17 13:02:27.934229 7f477e7d8700 10 journal align_bl total memcopy: 4202496
+2015-11-17 13:02:27.934361 7f477e7d8700 20 journal write_aio_bl 110030848~4202496 seq 4293
+2015-11-17 13:02:27.934365 7f477e7d8700 20 journal write_aio_bl .. 110030848~4202496 in 1
+2015-11-17 13:02:27.934708 7f477dfd7700 20 journal write_finish_thread_entry waiting for aio(s)
+2015-11-17 13:02:27.934725 7f477e7d8700  5 journal put_throttle finished 1 ops and 4196493 bytes, now 0 ops and 0 bytes
+2015-11-17 13:02:27.934728 7f477e7d8700 20 journal write_thread_entry going to sleep
+2015-11-17 13:02:27.970467 7f476865d700 20 osd.1 27 update_osd_stat osd_stat(104 MB used, 255 GB avail, 255 GB total, peers [0,2]/[] op hist [0,0,0,0,0,0,1])
+2015-11-17 13:02:27.970499 7f476865d700  5 osd.1 27 heartbeat: osd_stat(104 MB used, 255 GB avail, 255 GB total, peers [0,2]/[] op hist [0,0,0,0,0,0,1])
+2015-11-17 13:02:27.970552 7f476865d700 25 osd.1 27 heartbeat_check osd.0 first_tx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:27.970503 last_rx_back 2015-11-17 13:02:22.670164 last_rx_front 2015-11-17 13:02:22.670164
+2015-11-17 13:02:27.970556 7f476865d700 25 osd.1 27 heartbeat_check osd.2 first_tx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:27.970503 last_rx_back 2015-11-17 13:02:22.670164 last_rx_front 2015-11-17 13:02:22.670164
+2015-11-17 13:02:27.970995 7f4775e78700 25 osd.1 27 handle_osd_ping got reply from osd.2 first_rx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:27.970503 last_rx_back 2015-11-17 13:02:22.670164 last_rx_front 2015-11-17 13:02:22.670164 -> 2015-11-17 13:02:27.970503
+2015-11-17 13:02:27.971004 7f4775e78700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:27.971013 7f4775e78700 25 osd.1 27 handle_osd_ping got reply from osd.0 first_rx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:27.970503 last_rx_back 2015-11-17 13:02:22.670164 -> 2015-11-17 13:02:27.970503 last_rx_front 2015-11-17 13:02:22.670164
+2015-11-17 13:02:27.971058 7f4775e78700 20 osd.1 27 share_map_peer 0x7f478e45db20 already has epoch 27
+2015-11-17 13:02:27.971069 7f4775e78700 25 osd.1 27 handle_osd_ping got reply from osd.0 first_rx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:27.970503 last_rx_back 2015-11-17 13:02:27.970503 last_rx_front 2015-11-17 13:02:22.670164 -> 2015-11-17 13:02:27.970503
+2015-11-17 13:02:27.971101 7f4775e78700 20 osd.1 27 share_map_peer 0x7f478e45db20 already has epoch 27
+2015-11-17 13:02:27.971111 7f4775e78700 25 osd.1 27 handle_osd_ping got reply from osd.2 first_rx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:27.970503 last_rx_back 2015-11-17 13:02:22.670164 -> 2015-11-17 13:02:27.970503 last_rx_front 2015-11-17 13:02:27.970503
+2015-11-17 13:02:27.971140 7f4775e78700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:28.050614 7f477dfd7700 10 journal write_finish_thread_entry aio 110030848~4202496 done
+2015-11-17 13:02:28.050669 7f477dfd7700 20 journal check_aio_completion
+2015-11-17 13:02:28.050673 7f477dfd7700 20 journal check_aio_completion completed seq 4293 110030848~4202496
+2015-11-17 13:02:28.050679 7f477dfd7700 20 journal check_aio_completion queueing finishers through seq 4293
+2015-11-17 13:02:28.050682 7f477dfd7700 10 journal queue_completions_thru seq 4293 queueing seq 4293 0x7f478f84da80 lat 0.120762
+2015-11-17 13:02:28.050703 7f477dfd7700 20 journal write_finish_thread_entry sleeping
+2015-11-17 13:02:28.050714 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) _journaled_ahead 0x7f478fa6e820 seq 4293 osr(4.11 0x7f478fc6c2f0) 0x7f478f4f63b8
+2015-11-17 13:02:28.050718 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_op 0x7f478fa6e820 seq 4293 osr(4.11 0x7f478fc6c2f0) 4196479 bytes   (queue has 1 ops and 4196479 bytes)
+2015-11-17 13:02:28.050729 7f477d7d6700 10 filestore(/var/lib/ceph/osd/ceph-1)  queueing ondisk 0x7f478f306b00
+2015-11-17 13:02:28.050743 7f477c7d4700 10 journal op_apply_start 4293 open_ops 0 -> 1
+2015-11-17 13:02:28.050749 7f477c7d4700  5 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fa6e820 seq 4293 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0 start
+2015-11-17 13:02:28.050753 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_transaction on 0x7f478f4f63b8
+2015-11-17 13:02:28.050765 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:28.050752 7f477b7d2700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'5 (0'0,27'5] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'4 crt=27'3 lcod 27'3 active] sub_op_modify_commit on op osd_repop(client.4172.0:3 4.11 a8f50a91/t12.dat/head//4 v 27'5) v1, sending commit to osd.2
+2015-11-17 13:02:28.050774 7f477b7d2700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:28.050810 7f477c7d4700 10 filestore oid: 11//head//4 not skipping op, *spos 4293.0.0
+2015-11-17 13:02:28.050812 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:28.050890 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:28.050896 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:28.050908 7f477c7d4700 10 filestore oid: 11//head//4 not skipping op, *spos 4293.0.1
+2015-11-17 13:02:28.050909 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:28.050924 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:28.050928 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:28.050938 7f477c7d4700 10 filestore oid: 11//head//4 not skipping op, *spos 4293.0.2
+2015-11-17 13:02:28.050939 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:28.050957 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:28.050961 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) write 4.11_head/a8f50a91/t12.dat/head//4 8388608~4194304
+2015-11-17 13:02:28.052852 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) write 4.11_head/a8f50a91/t12.dat/head//4 8388608~4194304 = 4194304
+2015-11-17 13:02:28.052888 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting '_'
+2015-11-17 13:02:28.052894 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting 'snapset'
+2015-11-17 13:02:28.052897 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4
+2015-11-17 13:02:28.052920 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4 = 0
+2015-11-17 13:02:28.052929 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting '_'
+2015-11-17 13:02:28.052932 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting 'snapset'
+2015-11-17 13:02:28.052934 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4
+2015-11-17 13:02:28.052941 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4 = 0
+2015-11-17 13:02:28.052944 7f477c7d4700 10 journal op_apply_finish 4293 open_ops 1 -> 0, max_applied_seq 4292 -> 4293
+2015-11-17 13:02:28.052946 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fa6e820 seq 4293 r = 0, finisher 0x7f478f3063a0 0
+2015-11-17 13:02:28.052948 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _finish_op 0x7f478fa6e820 seq 4293 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:28.053201 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'5 (0'0,27'5] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'4 crt=27'3 lcod 27'4 active] sub_op_modify_applied on 0x7f478f4f61c0 op osd_repop(client.4172.0:3 4.11 a8f50a91/t12.dat/head//4 v 27'5) v1
+2015-11-17 13:02:28.053218 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'5 (0'0,27'5] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'4 crt=27'3 lcod 27'4 active] op_applied version 27'5
+2015-11-17 13:02:28.140738 7f4763a42700 10 osd.1 27 handle_replica_op osd_repop(client.4172.0:4 4.11 a8f50a91/t12.dat/head//4 v 27'6) v1 epoch 27
+2015-11-17 13:02:28.140787 7f4763a42700 20 osd.1 27 should_share_map osd.2 10.253.0.5:6801/3140 27
+2015-11-17 13:02:28.140806 7f4763a42700 15 osd.1 27 enqueue_op 0x7f4790b54200 prio 127 cost 4194944 latency 0.009173 osd_repop(client.4172.0:4 4.11 a8f50a91/t12.dat/head//4 v 27'6) v1
+2015-11-17 13:02:28.140870 7f476de68700 10 osd.1 27 dequeue_op 0x7f4790b54200 prio 127 cost 4194944 latency 0.009237 osd_repop(client.4172.0:4 4.11 a8f50a91/t12.dat/head//4 v 27'6) v1 pg pg[4.11( v 27'5 (0'0,27'5] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=27'3 lcod 27'4 active]
+2015-11-17 13:02:28.140888 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'5 (0'0,27'5] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=27'3 lcod 27'4 active] handle_message: 0x7f4790b54200
+2015-11-17 13:02:28.140895 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'5 (0'0,27'5] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=27'3 lcod 27'4 active] sub_op_modify trans a8f50a91/t12.dat/head//4 v 27'6 (transaction) 147
+2015-11-17 13:02:28.140922 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'5 (0'0,27'5] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=27'3 lcod 27'4 active] append_log log((0'0,27'5], crt=27'3) [27'6 (27'5) modify   a8f50a91/t12.dat/head//4 by client.4172.0:4 2015-11-17 13:02:28.187104]
+2015-11-17 13:02:28.140934 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'6 (0'0,27'6] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'5 crt=27'3 lcod 27'4 active] add_log_entry 27'6 (27'5) modify   a8f50a91/t12.dat/head//4 by client.4172.0:4 2015-11-17 13:02:28.187104
+2015-11-17 13:02:28.140946 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'6 (0'0,27'6] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'5 crt=27'4 lcod 27'4 active] append_log  adding 1 keys
+2015-11-17 13:02:28.140953 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'6 (0'0,27'6] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'5 crt=27'4 lcod 27'4 active] append_log: trimming to 27'4 entries 27'4 (27'3) modify   a8f50a91/t12.dat/head//4 by client.4172.0:2 2015-11-17 13:02:27.795972
+2015-11-17 13:02:28.140970 7f476de68700 10 write_log with: dirty_to: 0'0, dirty_from: 4294967295'18446744073709551615, dirty_divergent_priors: 0, writeout_from: 27'6, trimmed: 
+2015-11-17 13:02:28.141000 7f476de68700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions existing osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:28.141008 7f476de68700 10 journal op_submit_start 4294
+2015-11-17 13:02:28.141008 7f476de68700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions (writeahead) 4294 0x7f4790b7e1f8
+2015-11-17 13:02:28.141010 7f476de68700 10 journal op_journal_transactions 4294 0x7f4790b7e1f8
+2015-11-17 13:02:28.141015 7f476de68700  5 journal submit_entry seq 4294 len 4196493 (0x7f478f82c5e0)
+2015-11-17 13:02:28.141035 7f476de68700 10 journal op_submit_finish 4294
+2015-11-17 13:02:28.141037 7f476de68700 10 osd.1 27 dequeue_op 0x7f4790b54200 finish
+2015-11-17 13:02:28.141044 7f477e7d8700 20 journal write_thread_entry woke up
+2015-11-17 13:02:28.141052 7f477e7d8700 10 journal room 5356089343 max_size 5368709120 pos 114233344 header.start 101617664 top 4096
+2015-11-17 13:02:28.141054 7f477e7d8700 10 journal check_for_full at 114233344 : 4202496 < 5356089343
+2015-11-17 13:02:28.141055 7f477e7d8700 15 journal prepare_single_write 1 will write 114233344 : seq 4294 len 4196493 -> 4202496 (head 40 pre_pad 4046 ebl 4196493 post_pad 1877 tail 40) (ebl alignment 4086)
+2015-11-17 13:02:28.144059 7f477e7d8700 20 journal prepare_multi_write queue_pos now 118435840
+2015-11-17 13:02:28.144062 7f477e7d8700 15 journal do_aio_write writing 114233344~4202496
+2015-11-17 13:02:28.144869 7f477e7d8700 10 journal align_bl total memcopy: 4202496
+2015-11-17 13:02:28.144893 7f477e7d8700 20 journal write_aio_bl 114233344~4202496 seq 4294
+2015-11-17 13:02:28.144899 7f477e7d8700 20 journal write_aio_bl .. 114233344~4202496 in 1
+2015-11-17 13:02:28.145263 7f477dfd7700 20 journal write_finish_thread_entry waiting for aio(s)
+2015-11-17 13:02:28.145281 7f477e7d8700  5 journal put_throttle finished 1 ops and 4196493 bytes, now 0 ops and 0 bytes
+2015-11-17 13:02:28.145284 7f477e7d8700 20 journal write_thread_entry going to sleep
+2015-11-17 13:02:28.356042 7f477dfd7700 10 journal write_finish_thread_entry aio 114233344~4202496 done
+2015-11-17 13:02:28.356066 7f477dfd7700 20 journal check_aio_completion
+2015-11-17 13:02:28.356067 7f477dfd7700 20 journal check_aio_completion completed seq 4294 114233344~4202496
+2015-11-17 13:02:28.356073 7f477dfd7700 20 journal check_aio_completion queueing finishers through seq 4294
+2015-11-17 13:02:28.356075 7f477dfd7700 10 journal queue_completions_thru seq 4294 queueing seq 4294 0x7f478f82c5e0 lat 0.215053
+2015-11-17 13:02:28.356093 7f477dfd7700 20 journal write_finish_thread_entry sleeping
+2015-11-17 13:02:28.356099 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) _journaled_ahead 0x7f478fd3e4b0 seq 4294 osr(4.11 0x7f478fc6c2f0) 0x7f4790b7e1f8
+2015-11-17 13:02:28.356103 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_op 0x7f478fd3e4b0 seq 4294 osr(4.11 0x7f478fc6c2f0) 4196479 bytes   (queue has 1 ops and 4196479 bytes)
+2015-11-17 13:02:28.356113 7f477d7d6700 10 filestore(/var/lib/ceph/osd/ceph-1)  queueing ondisk 0x7f478f620860
+2015-11-17 13:02:28.356124 7f477b7d2700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'6 (0'0,27'6] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'5 crt=27'4 lcod 27'4 active] sub_op_modify_commit on op osd_repop(client.4172.0:4 4.11 a8f50a91/t12.dat/head//4 v 27'6) v1, sending commit to osd.2
+2015-11-17 13:02:28.356142 7f477b7d2700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:28.356141 7f477cfd5700 10 journal op_apply_start 4294 open_ops 0 -> 1
+2015-11-17 13:02:28.356146 7f477cfd5700  5 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fd3e4b0 seq 4294 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0 start
+2015-11-17 13:02:28.356149 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_transaction on 0x7f4790b7e1f8
+2015-11-17 13:02:28.356162 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:28.356193 7f477cfd5700 10 filestore oid: 11//head//4 not skipping op, *spos 4294.0.0
+2015-11-17 13:02:28.356195 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:28.356230 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:28.356234 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:28.356243 7f477cfd5700 10 filestore oid: 11//head//4 not skipping op, *spos 4294.0.1
+2015-11-17 13:02:28.356244 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:28.356256 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:28.356260 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:28.356268 7f477cfd5700 10 filestore oid: 11//head//4 not skipping op, *spos 4294.0.2
+2015-11-17 13:02:28.356269 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:28.356291 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:28.356316 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) write 4.11_head/a8f50a91/t12.dat/head//4 12582912~4194304
+2015-11-17 13:02:28.358445 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) write 4.11_head/a8f50a91/t12.dat/head//4 12582912~4194304 = 4194304
+2015-11-17 13:02:28.358493 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting '_'
+2015-11-17 13:02:28.358518 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting 'snapset'
+2015-11-17 13:02:28.358522 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4
+2015-11-17 13:02:28.358558 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4 = 0
+2015-11-17 13:02:28.358577 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting '_'
+2015-11-17 13:02:28.358580 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting 'snapset'
+2015-11-17 13:02:28.358582 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4
+2015-11-17 13:02:28.358589 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4 = 0
+2015-11-17 13:02:28.358592 7f477cfd5700 10 journal op_apply_finish 4294 open_ops 1 -> 0, max_applied_seq 4293 -> 4294
+2015-11-17 13:02:28.358593 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fd3e4b0 seq 4294 r = 0, finisher 0x7f478f366780 0
+2015-11-17 13:02:28.358595 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _finish_op 0x7f478fd3e4b0 seq 4294 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:28.358658 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'6 (0'0,27'6] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'5 crt=27'4 lcod 27'5 active] sub_op_modify_applied on 0x7f4790b7e000 op osd_repop(client.4172.0:4 4.11 a8f50a91/t12.dat/head//4 v 27'6) v1
+2015-11-17 13:02:28.358670 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'6 (0'0,27'6] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'5 crt=27'4 lcod 27'5 active] op_applied version 27'6
+2015-11-17 13:02:28.626559 7f4773673700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:28.627210 7f4774e76700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:28.738934 7f47807dc700  5 osd.1 27 tick
+2015-11-17 13:02:28.738983 7f47807dc700 25 osd.1 27 heartbeat_check osd.0 first_tx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:27.970503 last_rx_back 2015-11-17 13:02:27.970503 last_rx_front 2015-11-17 13:02:27.970503
+2015-11-17 13:02:28.739007 7f47807dc700 25 osd.1 27 heartbeat_check osd.2 first_tx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:27.970503 last_rx_back 2015-11-17 13:02:27.970503 last_rx_front 2015-11-17 13:02:27.970503
+2015-11-17 13:02:28.739027 7f47807dc700 20 osd.1 27 scrub_random_backoff lost coin flip, randomly backing off
+2015-11-17 13:02:28.739032 7f47807dc700 10 osd.1 27 do_waiters -- start
+2015-11-17 13:02:28.739035 7f47807dc700 10 osd.1 27 do_waiters -- finish
+2015-11-17 13:02:29.127361 7f4773673700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:29.127597 7f4774e76700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:29.414924 7f477efd9700 20 filestore(/var/lib/ceph/osd/ceph-1) sync_entry woke after 5.000139
+2015-11-17 13:02:29.414946 7f477efd9700 10 journal commit_start max_applied_seq 4294, open_ops 0
+2015-11-17 13:02:29.414948 7f477efd9700 10 journal commit_start blocked, all open_ops have completed
+2015-11-17 13:02:29.414948 7f477efd9700 10 journal commit_start committing 4294, still blocked
+2015-11-17 13:02:29.414950 7f477efd9700 10 journal commit_start
+2015-11-17 13:02:29.414954 7f477efd9700 15 filestore(/var/lib/ceph/osd/ceph-1) sync_entry committing 4294
+2015-11-17 13:02:29.414957 7f477efd9700 10 journal commit_started committing 4294, unblocking
+2015-11-17 13:02:29.414959 7f477efd9700 15 genericfilestorebackend(/var/lib/ceph/osd/ceph-1) syncfs: doing a full sync (syncfs(2) if possible)
+2015-11-17 13:02:29.739260 7f47807dc700  5 osd.1 27 tick
+2015-11-17 13:02:29.739281 7f47807dc700 25 osd.1 27 heartbeat_check osd.0 first_tx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:27.970503 last_rx_back 2015-11-17 13:02:27.970503 last_rx_front 2015-11-17 13:02:27.970503
+2015-11-17 13:02:29.739290 7f47807dc700 25 osd.1 27 heartbeat_check osd.2 first_tx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:27.970503 last_rx_back 2015-11-17 13:02:27.970503 last_rx_front 2015-11-17 13:02:27.970503
+2015-11-17 13:02:29.739297 7f47807dc700 20 osd.1 27 scrub_random_backoff lost coin flip, randomly backing off
+2015-11-17 13:02:29.739298 7f47807dc700 10 osd.1 27 do_waiters -- start
+2015-11-17 13:02:29.739299 7f47807dc700 10 osd.1 27 do_waiters -- finish
+2015-11-17 13:02:29.831570 7f477efd9700 10 filestore(/var/lib/ceph/osd/ceph-1) sync_entry commit took 0.416618, interval was 5.416786
+2015-11-17 13:02:29.831585 7f477efd9700 10 journal commit_finish thru 4294
+2015-11-17 13:02:29.831588 7f477efd9700  5 journal committed_thru 4294 (last_committed_seq 4288)
+2015-11-17 13:02:29.831591 7f477efd9700 10 journal header: block_size 4096 alignment 4096 max_size 5368709120
+2015-11-17 13:02:29.831592 7f477efd9700 10 journal header: start 118435840
+2015-11-17 13:02:29.831592 7f477efd9700 10 journal  write_pos 118435840
+2015-11-17 13:02:29.831593 7f477efd9700 10 journal committed_thru done
+2015-11-17 13:02:29.833043 7f477efd9700 15 filestore(/var/lib/ceph/osd/ceph-1) sync_entry committed to op_seq 4294
+2015-11-17 13:02:29.833048 7f477efd9700 20 filestore(/var/lib/ceph/osd/ceph-1) sync_entry waiting for max_interval 5.000000
+2015-11-17 13:02:30.739587 7f47807dc700  5 osd.1 27 tick
+2015-11-17 13:02:30.739638 7f47807dc700 25 osd.1 27 heartbeat_check osd.0 first_tx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:27.970503 last_rx_back 2015-11-17 13:02:27.970503 last_rx_front 2015-11-17 13:02:27.970503
+2015-11-17 13:02:30.739662 7f47807dc700 25 osd.1 27 heartbeat_check osd.2 first_tx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:27.970503 last_rx_back 2015-11-17 13:02:27.970503 last_rx_front 2015-11-17 13:02:27.970503
+2015-11-17 13:02:30.739686 7f47807dc700 20 osd.1 27 scrub_should_schedule should run between 0 - 24 now 13 = yes
+2015-11-17 13:02:30.739855 7f47807dc700 20 osd.1 27 scrub_should_schedule loadavg 0.08 < max 0.5 = yes
+2015-11-17 13:02:30.739884 7f47807dc700 20 osd.1 27 sched_scrub load_is_low=1
+2015-11-17 13:02:30.739889 7f47807dc700 10 osd.1 27 sched_scrub 1.0 at 2015-11-17 09:55:41.364624: 11209.4 < min (86400 seconds)
+2015-11-17 13:02:30.739909 7f47807dc700 20 osd.1 27 sched_scrub done
+2015-11-17 13:02:30.739914 7f47807dc700 10 osd.1 27 do_waiters -- start
+2015-11-17 13:02:30.739917 7f47807dc700 10 osd.1 27 do_waiters -- finish
+2015-11-17 13:02:30.871020 7f476865d700 20 osd.1 27 update_osd_stat osd_stat(119 MB used, 255 GB avail, 255 GB total, peers [0,2]/[] op hist [])
+2015-11-17 13:02:30.871074 7f476865d700  5 osd.1 27 heartbeat: osd_stat(119 MB used, 255 GB avail, 255 GB total, peers [0,2]/[] op hist [])
+2015-11-17 13:02:30.871191 7f476865d700 25 osd.1 27 heartbeat_check osd.0 first_tx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:30.871084 last_rx_back 2015-11-17 13:02:27.970503 last_rx_front 2015-11-17 13:02:27.970503
+2015-11-17 13:02:30.871204 7f476865d700 25 osd.1 27 heartbeat_check osd.2 first_tx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:30.871084 last_rx_back 2015-11-17 13:02:27.970503 last_rx_front 2015-11-17 13:02:27.970503
+2015-11-17 13:02:30.878301 7f4775e78700 25 osd.1 27 handle_osd_ping got reply from osd.0 first_rx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:30.871084 last_rx_back 2015-11-17 13:02:27.970503 -> 2015-11-17 13:02:30.871084 last_rx_front 2015-11-17 13:02:27.970503
+2015-11-17 13:02:30.878328 7f4775e78700 20 osd.1 27 share_map_peer 0x7f478e45db20 already has epoch 27
+2015-11-17 13:02:30.878358 7f4775e78700 25 osd.1 27 handle_osd_ping got reply from osd.0 first_rx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:30.871084 last_rx_back 2015-11-17 13:02:30.871084 last_rx_front 2015-11-17 13:02:27.970503 -> 2015-11-17 13:02:30.871084
+2015-11-17 13:02:30.878373 7f4775e78700 20 osd.1 27 share_map_peer 0x7f478e45db20 already has epoch 27
+2015-11-17 13:02:30.878395 7f4775e78700 25 osd.1 27 handle_osd_ping got reply from osd.2 first_rx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:30.871084 last_rx_back 2015-11-17 13:02:27.970503 -> 2015-11-17 13:02:30.871084 last_rx_front 2015-11-17 13:02:27.970503
+2015-11-17 13:02:30.878411 7f4775e78700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:30.878432 7f4775e78700 25 osd.1 27 handle_osd_ping got reply from osd.2 first_rx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:30.871084 last_rx_back 2015-11-17 13:02:30.871084 last_rx_front 2015-11-17 13:02:27.970503 -> 2015-11-17 13:02:30.871084
+2015-11-17 13:02:30.878446 7f4775e78700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:31.740244 7f47807dc700  5 osd.1 27 tick
+2015-11-17 13:02:31.740294 7f47807dc700 25 osd.1 27 heartbeat_check osd.0 first_tx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:30.871084 last_rx_back 2015-11-17 13:02:30.871084 last_rx_front 2015-11-17 13:02:30.871084
+2015-11-17 13:02:31.740319 7f47807dc700 25 osd.1 27 heartbeat_check osd.2 first_tx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:30.871084 last_rx_back 2015-11-17 13:02:30.871084 last_rx_front 2015-11-17 13:02:30.871084
+2015-11-17 13:02:31.740331 7f47807dc700  7 osd.1 27 do_mon_report
+2015-11-17 13:02:31.740335 7f47807dc700 10 osd.1 27 send_alive up_thru currently 18 want 15
+2015-11-17 13:02:31.740341 7f47807dc700 20 osd.1 27 send_pg_stats
+2015-11-17 13:02:31.740356 7f47807dc700 20 osd.1 27 scrub_random_backoff lost coin flip, randomly backing off
+2015-11-17 13:02:31.740360 7f47807dc700 10 osd.1 27 do_waiters -- start
+2015-11-17 13:02:31.740363 7f47807dc700 10 osd.1 27 do_waiters -- finish
+2015-11-17 13:02:32.600275 7f4773673700 20 osd.1 27 share_map_peer 0x7f478e45db20 already has epoch 27
+2015-11-17 13:02:32.602271 7f4774e76700 20 osd.1 27 share_map_peer 0x7f478e45db20 already has epoch 27
+2015-11-17 13:02:32.740522 7f47807dc700  5 osd.1 27 tick
+2015-11-17 13:02:32.740541 7f47807dc700 25 osd.1 27 heartbeat_check osd.0 first_tx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:30.871084 last_rx_back 2015-11-17 13:02:30.871084 last_rx_front 2015-11-17 13:02:30.871084
+2015-11-17 13:02:32.740548 7f47807dc700 25 osd.1 27 heartbeat_check osd.2 first_tx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:30.871084 last_rx_back 2015-11-17 13:02:30.871084 last_rx_front 2015-11-17 13:02:30.871084
+2015-11-17 13:02:32.740554 7f47807dc700 20 osd.1 27 scrub_random_backoff lost coin flip, randomly backing off
+2015-11-17 13:02:32.740555 7f47807dc700 10 osd.1 27 do_waiters -- start
+2015-11-17 13:02:32.740556 7f47807dc700 10 osd.1 27 do_waiters -- finish
+2015-11-17 13:02:32.800305 7f4763a42700 10 osd.1 27 handle_replica_op osd_repop(osd.2.0:5606 3.11 0/temp_3.11_0_4115_1/head//-1 v 0'0) v1 epoch 27
+2015-11-17 13:02:32.800400 7f4763a42700 20 osd.1 27 should_share_map osd.2 10.253.0.5:6801/3140 27
+2015-11-17 13:02:32.800431 7f4763a42700 15 osd.1 27 enqueue_op 0x7f478ef24200 prio 127 cost 8388890 latency 0.032524 osd_repop(osd.2.0:5606 3.11 0/temp_3.11_0_4115_1/head//-1 v 0'0) v1
+2015-11-17 13:02:32.800517 7f476b663700 10 osd.1 27 dequeue_op 0x7f478ef24200 prio 127 cost 8388890 latency 0.032610 osd_repop(osd.2.0:5606 3.11 0/temp_3.11_0_4115_1/head//-1 v 0'0) v1 pg pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active]
+2015-11-17 13:02:32.800549 7f476b663700 10 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] handle_message: 0x7f478ef24200
+2015-11-17 13:02:32.800555 7f476b663700 10 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] sub_op_modify trans 0/temp_3.11_0_4115_1/head//-1 v 0'0 (transaction) 4
+2015-11-17 13:02:32.800569 7f476b663700 20 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] sub_op_modify_impl start tracking temp 0/temp_3.11_0_4115_1/head//-1
+2015-11-17 13:02:32.800591 7f476b663700 15 filestore(/var/lib/ceph/osd/ceph-1) collection_stat /var/lib/ceph/osd/ceph-1/current/3.11_TEMP
+2015-11-17 13:02:32.800612 7f476b663700 10 filestore(/var/lib/ceph/osd/ceph-1) collection_stat /var/lib/ceph/osd/ceph-1/current/3.11_TEMP = -2
+2015-11-17 13:02:32.800617 7f476b663700 10 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] append_log log((0'0,0'0], crt=0'0) []
+2015-11-17 13:02:32.800621 7f476b663700 10 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] append_log  adding 0 keys
+2015-11-17 13:02:32.800627 7f476b663700 10 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] append_log: trimming to 0'0 entries 
+2015-11-17 13:02:32.800641 7f476b663700 10 log is not dirty
+2015-11-17 13:02:32.800651 7f476b663700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions existing osr(3.11 0x7f478fc6b450)/0x7f478fc6b450
+2015-11-17 13:02:32.800667 7f476b663700 10 journal op_submit_start 4295
+2015-11-17 13:02:32.800668 7f476b663700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions (writeahead) 4295 0x7f4790b7e5b8
+2015-11-17 13:02:32.800669 7f476b663700 10 journal op_journal_transactions 4295 0x7f4790b7e5b8
+2015-11-17 13:02:32.800672 7f476b663700  5 journal submit_entry seq 4295 len 8389960 (0x7f478f83ff80)
+2015-11-17 13:02:32.800682 7f476b663700 10 journal op_submit_finish 4295
+2015-11-17 13:02:32.800683 7f476b663700 10 osd.1 27 dequeue_op 0x7f478ef24200 finish
+2015-11-17 13:02:32.800690 7f477e7d8700 20 journal write_thread_entry woke up
+2015-11-17 13:02:32.800693 7f477e7d8700 10 journal room 5368705023 max_size 5368709120 pos 118435840 header.start 118435840 top 4096
+2015-11-17 13:02:32.800694 7f477e7d8700 10 journal check_for_full at 118435840 : 8396800 < 5368705023
+2015-11-17 13:02:32.800695 7f477e7d8700 15 journal prepare_single_write 1 will write 118435840 : seq 4295 len 8389960 -> 8396800 (head 40 pre_pad 4046 ebl 8389960 post_pad 2714 tail 40) (ebl alignment 4086)
+2015-11-17 13:02:32.805567 7f477e7d8700 20 journal prepare_multi_write queue_pos now 126832640
+2015-11-17 13:02:32.805575 7f477e7d8700 15 journal do_aio_write writing 118435840~8396800 + header
+2015-11-17 13:02:32.805576 7f477e7d8700 20 journal write_aio_bl 0~4096 seq 0
+2015-11-17 13:02:32.805578 7f477e7d8700 20 journal write_aio_bl .. 0~4096 in 1
+2015-11-17 13:02:32.805731 7f477dfd7700 20 journal write_finish_thread_entry waiting for aio(s)
+2015-11-17 13:02:32.808917 7f477e7d8700 10 journal align_bl total memcopy: 8396800
+2015-11-17 13:02:32.808950 7f477e7d8700 20 journal write_aio_bl 118435840~8396800 seq 4295
+2015-11-17 13:02:32.808954 7f477e7d8700 20 journal write_aio_bl .. 118435840~8396800 in 1
+2015-11-17 13:02:32.809508 7f477e7d8700  5 journal put_throttle finished 1 ops and 8389960 bytes, now 0 ops and 0 bytes
+2015-11-17 13:02:32.809521 7f477e7d8700 20 journal write_thread_entry going to sleep
+2015-11-17 13:02:32.841281 7f4763a42700 10 osd.1 27 handle_replica_op osd_repop(osd.2.0:5607 3.11 0/temp_3.11_0_4115_1/head//-1 v 0'0) v1 epoch 27
+2015-11-17 13:02:32.841360 7f4763a42700 20 osd.1 27 should_share_map osd.2 10.253.0.5:6801/3140 27
+2015-11-17 13:02:32.841396 7f4763a42700 15 osd.1 27 enqueue_op 0x7f4790b57d00 prio 127 cost 8388818 latency 0.027528 osd_repop(osd.2.0:5607 3.11 0/temp_3.11_0_4115_1/head//-1 v 0'0) v1
+2015-11-17 13:02:32.841439 7f476de68700 10 osd.1 27 dequeue_op 0x7f4790b57d00 prio 127 cost 8388818 latency 0.027572 osd_repop(osd.2.0:5607 3.11 0/temp_3.11_0_4115_1/head//-1 v 0'0) v1 pg pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active]
+2015-11-17 13:02:32.841456 7f476de68700 10 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] handle_message: 0x7f4790b57d00
+2015-11-17 13:02:32.841462 7f476de68700 10 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] sub_op_modify trans 0/temp_3.11_0_4115_1/head//-1 v 0'0 (transaction) 4
+2015-11-17 13:02:32.841486 7f476de68700 20 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] sub_op_modify_impl start tracking temp 0/temp_3.11_0_4115_1/head//-1
+2015-11-17 13:02:32.841493 7f476de68700 10 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] append_log log((0'0,0'0], crt=0'0) []
+2015-11-17 13:02:32.841496 7f476de68700 10 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] append_log  adding 0 keys
+2015-11-17 13:02:32.841503 7f476de68700 10 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] append_log: trimming to 0'0 entries 
+2015-11-17 13:02:32.841517 7f476de68700 10 log is not dirty
+2015-11-17 13:02:32.841527 7f476de68700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions existing osr(3.11 0x7f478fc6b450)/0x7f478fc6b450
+2015-11-17 13:02:32.841535 7f476de68700 10 journal op_submit_start 4296
+2015-11-17 13:02:32.841535 7f476de68700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions (writeahead) 4296 0x7f4790c503b8
+2015-11-17 13:02:32.841536 7f476de68700 10 journal op_journal_transactions 4296 0x7f4790c503b8
+2015-11-17 13:02:32.841540 7f476de68700  5 journal submit_entry seq 4296 len 8389816 (0x7f478f82c9a0)
+2015-11-17 13:02:32.841558 7f476de68700 10 journal op_submit_finish 4296
+2015-11-17 13:02:32.841560 7f476de68700 10 osd.1 27 dequeue_op 0x7f4790b57d00 finish
+2015-11-17 13:02:32.841568 7f477e7d8700 20 journal write_thread_entry woke up
+2015-11-17 13:02:32.841574 7f477e7d8700 20 journal write_thread_entry aio throttle: aio num 2 bytes 8400896 ... exp 4 min_new 16 ... pending 8389816
+2015-11-17 13:02:32.841581 7f477e7d8700 10 journal room 5360308223 max_size 5368709120 pos 126832640 header.start 118435840 top 4096
+2015-11-17 13:02:32.841583 7f477e7d8700 10 journal check_for_full at 126832640 : 8396800 < 5360308223
+2015-11-17 13:02:32.841584 7f477e7d8700 15 journal prepare_single_write 1 will write 126832640 : seq 4296 len 8389816 -> 8396800 (head 40 pre_pad 4046 ebl 8389816 post_pad 2858 tail 40) (ebl alignment 4086)
+2015-11-17 13:02:32.842168 7f4763a42700 10 osd.1 27 handle_replica_op osd_repop(osd.2.12:3 3.11 a8f50a91/t12.dat/head//3 v 27'1) v1 epoch 27
+2015-11-17 13:02:32.842203 7f4763a42700 20 osd.1 27 should_share_map osd.2 10.253.0.5:6801/3140 27
+2015-11-17 13:02:32.842231 7f4763a42700 15 osd.1 27 enqueue_op 0x7f4790b55e00 prio 127 cost 724 latency 0.000211 osd_repop(osd.2.12:3 3.11 a8f50a91/t12.dat/head//3 v 27'1) v1
+2015-11-17 13:02:32.842276 7f476b663700 10 osd.1 27 dequeue_op 0x7f4790b55e00 prio 127 cost 724 latency 0.000256 osd_repop(osd.2.12:3 3.11 a8f50a91/t12.dat/head//3 v 27'1) v1 pg pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active]
+2015-11-17 13:02:32.842301 7f476b663700 10 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] handle_message: 0x7f4790b55e00
+2015-11-17 13:02:32.842314 7f476b663700 10 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] sub_op_modify trans a8f50a91/t12.dat/head//3 v 27'1 (transaction) 287
+2015-11-17 13:02:32.842330 7f476b663700 20 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=0 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] sub_op_modify_impl stop tracking temp 0/temp_3.11_0_4115_1/head//-1
+2015-11-17 13:02:32.842360 7f476b663700 10 osd.1 pg_epoch: 27 pg[3.11( empty local-les=27 n=1 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 crt=0'0 active] append_log log((0'0,0'0], crt=0'0) [27'1 (0'0) modify   a8f50a91/t12.dat/head//3 by osd.2.12:3 2015-11-17 13:02:28.187104]
+2015-11-17 13:02:32.842387 7f476b663700 10 osd.1 pg_epoch: 27 pg[3.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] add_log_entry 27'1 (0'0) modify   a8f50a91/t12.dat/head//3 by osd.2.12:3 2015-11-17 13:02:28.187104
+2015-11-17 13:02:32.842411 7f476b663700 10 osd.1 pg_epoch: 27 pg[3.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] append_log  adding 1 keys
+2015-11-17 13:02:32.842423 7f476b663700 10 osd.1 pg_epoch: 27 pg[3.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] append_log: trimming to 0'0 entries 
+2015-11-17 13:02:32.842436 7f476b663700 10 write_log with: dirty_to: 0'0, dirty_from: 4294967295'18446744073709551615, dirty_divergent_priors: 0, writeout_from: 27'1, trimmed: 
+2015-11-17 13:02:32.842456 7f476b663700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions existing osr(3.11 0x7f478fc6b450)/0x7f478fc6b450
+2015-11-17 13:02:32.842461 7f476b663700 10 journal op_submit_start 4297
+2015-11-17 13:02:32.842462 7f476b663700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions (writeahead) 4297 0x7f4790b81678
+2015-11-17 13:02:32.842463 7f476b663700 10 journal op_journal_transactions 4297 0x7f4790b81678
+2015-11-17 13:02:32.842467 7f476b663700  5 journal submit_entry seq 4297 len 2519 (0x7f478f83f620)
+2015-11-17 13:02:32.842481 7f476b663700 10 journal op_submit_finish 4297
+2015-11-17 13:02:32.842482 7f476b663700 10 osd.1 27 dequeue_op 0x7f4790b55e00 finish
+2015-11-17 13:02:32.847191 7f477e7d8700 10 journal room 5351911423 max_size 5368709120 pos 135229440 header.start 118435840 top 4096
+2015-11-17 13:02:32.847193 7f477e7d8700 10 journal check_for_full at 135229440 : 4096 < 5351911423
+2015-11-17 13:02:32.847194 7f477e7d8700 15 journal prepare_single_write 2 will write 135229440 : seq 4297 len 2519 -> 4096 (head 40 pre_pad 0 ebl 2519 post_pad 1497 tail 40) (ebl alignment -1)
+2015-11-17 13:02:32.847210 7f477e7d8700 20 journal prepare_multi_write queue_pos now 135233536
+2015-11-17 13:02:32.847212 7f477e7d8700 15 journal do_aio_write writing 126832640~8400896
+2015-11-17 13:02:32.853006 7f477e7d8700 10 journal align_bl total memcopy: 8400896
+2015-11-17 13:02:32.853039 7f477e7d8700 20 journal write_aio_bl 126832640~8400896 seq 4297
+2015-11-17 13:02:32.853045 7f477e7d8700 20 journal write_aio_bl .. 126832640~8400896 in 1
+2015-11-17 13:02:32.853683 7f477e7d8700  5 journal put_throttle finished 2 ops and 8392335 bytes, now 0 ops and 0 bytes
+2015-11-17 13:02:32.853697 7f477e7d8700 20 journal write_thread_entry going to sleep
+2015-11-17 13:02:33.205847 7f477dfd7700 10 journal write_finish_thread_entry aio 0~4096 done
+2015-11-17 13:02:33.205860 7f477dfd7700 20 journal check_aio_completion
+2015-11-17 13:02:33.205861 7f477dfd7700 20 journal check_aio_completion completed seq 0 0~4096
+2015-11-17 13:02:33.205865 7f477dfd7700 20 journal write_finish_thread_entry waiting for aio(s)
+2015-11-17 13:02:33.227065 7f4773673700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:33.227302 7f4774e76700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:33.667096 7f477dfd7700 10 journal write_finish_thread_entry aio 118435840~8396800 done
+2015-11-17 13:02:33.667114 7f477dfd7700 10 journal write_finish_thread_entry aio 126832640~8400896 done
+2015-11-17 13:02:33.667115 7f477dfd7700 20 journal check_aio_completion
+2015-11-17 13:02:33.667117 7f477dfd7700 20 journal check_aio_completion completed seq 4295 118435840~8396800
+2015-11-17 13:02:33.667123 7f477dfd7700 20 journal check_aio_completion completed seq 4297 126832640~8400896
+2015-11-17 13:02:33.667125 7f477dfd7700 20 journal check_aio_completion queueing finishers through seq 4297
+2015-11-17 13:02:33.667127 7f477dfd7700 10 journal queue_completions_thru seq 4297 queueing seq 4295 0x7f478f83ff80 lat 0.866448
+2015-11-17 13:02:33.667147 7f477dfd7700 10 journal queue_completions_thru seq 4297 queueing seq 4296 0x7f478f82c9a0 lat 0.825581
+2015-11-17 13:02:33.667151 7f477dfd7700 10 journal queue_completions_thru seq 4297 queueing seq 4297 0x7f478f83f620 lat 0.824654
+2015-11-17 13:02:33.667155 7f477dfd7700 20 journal write_finish_thread_entry sleeping
+2015-11-17 13:02:33.667161 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) _journaled_ahead 0x7f478fa70f80 seq 4295 osr(3.11 0x7f478fc6b450) 0x7f4790b7e5b8
+2015-11-17 13:02:33.667165 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_op 0x7f478fa70f80 seq 4295 osr(3.11 0x7f478fc6b450) 8389946 bytes   (queue has 3 ops and 16782253 bytes)
+2015-11-17 13:02:33.667169 7f477d7d6700 10 filestore(/var/lib/ceph/osd/ceph-1)  queueing ondisk 0x7f478f306480
+2015-11-17 13:02:33.667172 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) _journaled_ahead 0x7f47900ed6b0 seq 4296 osr(3.11 0x7f478fc6b450) 0x7f4790c503b8
+2015-11-17 13:02:33.667173 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_op 0x7f47900ed6b0 seq 4296 osr(3.11 0x7f478fc6b450) 8389802 bytes   (queue has 3 ops and 16782253 bytes)
+2015-11-17 13:02:33.667175 7f477d7d6700 10 filestore(/var/lib/ceph/osd/ceph-1)  queueing ondisk 0x7f478f1fd360
+2015-11-17 13:02:33.667176 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) _journaled_ahead 0x7f47900ed7a0 seq 4297 osr(3.11 0x7f478fc6b450) 0x7f4790b81678
+2015-11-17 13:02:33.667177 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_op 0x7f47900ed7a0 seq 4297 osr(3.11 0x7f478fc6b450) 2505 bytes   (queue has 3 ops and 16782253 bytes)
+2015-11-17 13:02:33.667178 7f477d7d6700 10 filestore(/var/lib/ceph/osd/ceph-1)  queueing ondisk 0x7f478f306e20
+2015-11-17 13:02:33.667187 7f477b7d2700 10 osd.1 pg_epoch: 27 pg[3.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] sub_op_modify_commit on op osd_repop(osd.2.0:5606 3.11 0/temp_3.11_0_4115_1/head//-1 v 0'0) v1, sending commit to osd.2
+2015-11-17 13:02:33.667205 7f477b7d2700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:33.667221 7f477b7d2700 10 osd.1 pg_epoch: 27 pg[3.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] sub_op_modify_commit on op osd_repop(osd.2.0:5607 3.11 0/temp_3.11_0_4115_1/head//-1 v 0'0) v1, sending commit to osd.2
+2015-11-17 13:02:33.667227 7f477b7d2700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:33.667243 7f477b7d2700 10 osd.1 pg_epoch: 27 pg[3.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] sub_op_modify_commit on op osd_repop(osd.2.12:3 3.11 a8f50a91/t12.dat/head//3 v 27'1) v1, sending commit to osd.2
+2015-11-17 13:02:33.667248 7f477b7d2700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:33.667417 7f477cfd5700 10 journal op_apply_start 4295 open_ops 0 -> 1
+2015-11-17 13:02:33.667420 7f477cfd5700  5 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fa70f80 seq 4295 osr(3.11 0x7f478fc6b450)/0x7f478fc6b450 start
+2015-11-17 13:02:33.667422 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_transaction on 0x7f4790b7e5b8
+2015-11-17 13:02:33.667429 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) create_collection /var/lib/ceph/osd/ceph-1/current/3.11_TEMP
+2015-11-17 13:02:33.667498 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) create_collection /var/lib/ceph/osd/ceph-1/current/3.11_TEMP = 0
+2015-11-17 13:02:33.667529 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _set_replay_guard 4295.0.0
+2015-11-17 13:02:33.669251 7f4763a42700 10 osd.1 27 handle_replica_op osd_repop(osd.2.0:5609 4.11 a8f50a91/t12.dat/head//4 v 27'7) v1 epoch 27
+2015-11-17 13:02:33.669295 7f4763a42700 20 osd.1 27 should_share_map osd.2 10.253.0.5:6801/3140 27
+2015-11-17 13:02:33.669324 7f4763a42700 15 osd.1 27 enqueue_op 0x7f4790b56100 prio 127 cost 564 latency 0.000168 osd_repop(osd.2.0:5609 4.11 a8f50a91/t12.dat/head//4 v 27'7) v1
+2015-11-17 13:02:33.669361 7f476de68700 10 osd.1 27 dequeue_op 0x7f4790b56100 prio 127 cost 564 latency 0.000205 osd_repop(osd.2.0:5609 4.11 a8f50a91/t12.dat/head//4 v 27'7) v1 pg pg[4.11( v 27'6 (0'0,27'6] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=27'4 lcod 27'5 active]
+2015-11-17 13:02:33.669375 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'6 (0'0,27'6] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=27'4 lcod 27'5 active] handle_message: 0x7f4790b56100
+2015-11-17 13:02:33.669381 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'6 (0'0,27'6] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=27'4 lcod 27'5 active] sub_op_modify trans a8f50a91/t12.dat/head//4 v 27'7 (transaction) 147
+2015-11-17 13:02:33.669394 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'6 (0'0,27'6] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 crt=27'4 lcod 27'5 active] append_log log((0'0,27'6], crt=27'4) [27'7 (27'6) clean    a8f50a91/t12.dat/head//4 by osd.2.0:5609 2015-11-17 13:02:33.669248]
+2015-11-17 13:02:33.669403 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'7 (0'0,27'7] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'6 crt=27'4 lcod 27'5 active] add_log_entry 27'7 (27'6) clean    a8f50a91/t12.dat/head//4 by osd.2.0:5609 2015-11-17 13:02:33.669248
+2015-11-17 13:02:33.669413 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'7 (0'0,27'7] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'6 crt=27'5 lcod 27'5 active] append_log  adding 1 keys
+2015-11-17 13:02:33.669419 7f476de68700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'7 (0'0,27'7] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'6 crt=27'5 lcod 27'5 active] append_log: trimming to 27'5 entries 27'5 (27'4) modify   a8f50a91/t12.dat/head//4 by client.4172.0:3 2015-11-17 13:02:27.974838
+2015-11-17 13:02:33.669441 7f476de68700 10 write_log with: dirty_to: 0'0, dirty_from: 4294967295'18446744073709551615, dirty_divergent_priors: 0, writeout_from: 27'7, trimmed: 
+2015-11-17 13:02:33.669457 7f476de68700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions existing osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:33.669462 7f476de68700 10 journal op_submit_start 4298
+2015-11-17 13:02:33.669463 7f476de68700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_transactions (writeahead) 4298 0x7f478f977c38
+2015-11-17 13:02:33.669464 7f476de68700 10 journal op_journal_transactions 4298 0x7f478f977c38
+2015-11-17 13:02:33.669475 7f476de68700  5 journal submit_entry seq 4298 len 2113 (0x7f478f82bce0)
+2015-11-17 13:02:33.669499 7f476de68700 10 journal op_submit_finish 4298
+2015-11-17 13:02:33.669502 7f476de68700 10 osd.1 27 dequeue_op 0x7f4790b56100 finish
+2015-11-17 13:02:33.669517 7f477e7d8700 20 journal write_thread_entry woke up
+2015-11-17 13:02:33.669523 7f477e7d8700 10 journal room 5351907327 max_size 5368709120 pos 135233536 header.start 118435840 top 4096
+2015-11-17 13:02:33.669525 7f477e7d8700 10 journal check_for_full at 135233536 : 4096 < 5351907327
+2015-11-17 13:02:33.669526 7f477e7d8700 15 journal prepare_single_write 1 will write 135233536 : seq 4298 len 2113 -> 4096 (head 40 pre_pad 0 ebl 2113 post_pad 1903 tail 40) (ebl alignment -1)
+2015-11-17 13:02:33.669542 7f477e7d8700 20 journal prepare_multi_write queue_pos now 135237632
+2015-11-17 13:02:33.669543 7f477e7d8700 15 journal do_aio_write writing 135233536~4096
+2015-11-17 13:02:33.669549 7f477e7d8700 10 journal align_bl total memcopy: 4096
+2015-11-17 13:02:33.669549 7f477e7d8700 20 journal write_aio_bl 135233536~4096 seq 4298
+2015-11-17 13:02:33.669551 7f477e7d8700 20 journal write_aio_bl .. 135233536~4096 in 1
+2015-11-17 13:02:33.669574 7f477e7d8700  5 journal put_throttle finished 1 ops and 2113 bytes, now 0 ops and 0 bytes
+2015-11-17 13:02:33.669576 7f477e7d8700 20 journal write_thread_entry going to sleep
+2015-11-17 13:02:33.669580 7f477dfd7700 20 journal write_finish_thread_entry waiting for aio(s)
+2015-11-17 13:02:33.700700 7f477dfd7700 10 journal write_finish_thread_entry aio 135233536~4096 done
+2015-11-17 13:02:33.700713 7f477dfd7700 20 journal check_aio_completion
+2015-11-17 13:02:33.700714 7f477dfd7700 20 journal check_aio_completion completed seq 4298 135233536~4096
+2015-11-17 13:02:33.700718 7f477dfd7700 20 journal check_aio_completion queueing finishers through seq 4298
+2015-11-17 13:02:33.700720 7f477dfd7700 10 journal queue_completions_thru seq 4298 queueing seq 4298 0x7f478f82bce0 lat 0.031234
+2015-11-17 13:02:33.700736 7f477dfd7700 20 journal write_finish_thread_entry sleeping
+2015-11-17 13:02:33.700751 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) _journaled_ahead 0x7f47900ed660 seq 4298 osr(4.11 0x7f478fc6c2f0) 0x7f478f977c38
+2015-11-17 13:02:33.700754 7f477d7d6700  5 filestore(/var/lib/ceph/osd/ceph-1) queue_op 0x7f47900ed660 seq 4298 osr(4.11 0x7f478fc6c2f0) 2099 bytes   (queue has 4 ops and 16784352 bytes)
+2015-11-17 13:02:33.700756 7f477d7d6700 10 filestore(/var/lib/ceph/osd/ceph-1)  queueing ondisk 0x7f4790c70120
+2015-11-17 13:02:33.700767 7f477b7d2700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'7 (0'0,27'7] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'6 crt=27'5 lcod 27'5 active] sub_op_modify_commit on op osd_repop(osd.2.0:5609 4.11 a8f50a91/t12.dat/head//4 v 27'7) v1, sending commit to osd.2
+2015-11-17 13:02:33.700782 7f477b7d2700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:33.726810 7f477cfd5700 20 filestore dbobjectmap: seq is 321
+2015-11-17 13:02:33.727378 7f4774e76700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:33.727408 7f4773673700 20 osd.1 27 share_map_peer 0x7f478e4bf600 already has epoch 27
+2015-11-17 13:02:33.740673 7f47807dc700  5 osd.1 27 tick
+2015-11-17 13:02:33.740694 7f47807dc700 25 osd.1 27 heartbeat_check osd.0 first_tx 2015-11-06 10:20:14.628827 last_tx 2015-11-17 13:02:30.871084 last_rx_back 2015-11-17 13:02:30.871084 last_rx_front 2015-11-17 13:02:30.871084
+2015-11-17 13:02:33.740702 7f47807dc700 25 osd.1 27 heartbeat_check osd.2 first_tx 2015-11-06 10:20:34.530110 last_tx 2015-11-17 13:02:30.871084 last_rx_back 2015-11-17 13:02:30.871084 last_rx_front 2015-11-17 13:02:30.871084
+2015-11-17 13:02:33.740709 7f47807dc700 20 osd.1 27 scrub_should_schedule should run between 0 - 24 now 13 = yes
+2015-11-17 13:02:33.740764 7f47807dc700 20 osd.1 27 scrub_should_schedule loadavg 0.24 < max 0.5 = yes
+2015-11-17 13:02:33.740773 7f47807dc700 20 osd.1 27 sched_scrub load_is_low=1
+2015-11-17 13:02:33.740774 7f47807dc700 10 osd.1 27 sched_scrub 1.0 at 2015-11-17 09:55:41.364624: 11212.4 < min (86400 seconds)
+2015-11-17 13:02:33.740780 7f47807dc700 20 osd.1 27 sched_scrub done
+2015-11-17 13:02:33.740781 7f47807dc700 10 osd.1 27 do_waiters -- start
+2015-11-17 13:02:33.740782 7f47807dc700 10 osd.1 27 do_waiters -- finish
+2015-11-17 13:02:33.774142 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _set_replay_guard 4295.0.0 done
+2015-11-17 13:02:33.774183 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3
+2015-11-17 13:02:33.774216 7f477cfd5700 10 filestore oid: 11//head//3 not skipping op, *spos 4295.0.1
+2015-11-17 13:02:33.774217 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:33.774240 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3 = 0
+2015-11-17 13:02:33.774243 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3
+2015-11-17 13:02:33.774252 7f477cfd5700 10 filestore oid: 11//head//3 not skipping op, *spos 4295.0.2
+2015-11-17 13:02:33.774253 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:33.774272 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3 = 0
+2015-11-17 13:02:33.774274 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) touch 3.11_TEMP/0/temp_3.11_0_4115_1/head//-1
+2015-11-17 13:02:33.774350 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) touch 3.11_TEMP/0/temp_3.11_0_4115_1/head//-1 = 0
+2015-11-17 13:02:33.774354 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) write 3.11_TEMP/0/temp_3.11_0_4115_1/head//-1 0~8388608
+2015-11-17 13:02:33.778124 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) write 3.11_TEMP/0/temp_3.11_0_4115_1/head//-1 0~8388608 = 8388608
+2015-11-17 13:02:33.778166 7f477cfd5700 10 journal op_apply_finish 4295 open_ops 1 -> 0, max_applied_seq 4294 -> 4295
+2015-11-17 13:02:33.778191 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f478fa70f80 seq 4295 r = 0, finisher 0x7f478f304840 0
+2015-11-17 13:02:33.778216 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _finish_op 0x7f478fa70f80 seq 4295 osr(3.11 0x7f478fc6b450)/0x7f478fc6b450
+2015-11-17 13:02:33.778243 7f477c7d4700 10 journal op_apply_start 4296 open_ops 0 -> 1
+2015-11-17 13:02:33.778246 7f477c7d4700  5 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f47900ed6b0 seq 4296 osr(3.11 0x7f478fc6b450)/0x7f478fc6b450 start
+2015-11-17 13:02:33.778247 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_transaction on 0x7f4790c503b8
+2015-11-17 13:02:33.778303 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3
+2015-11-17 13:02:33.778336 7f477c7d4700 10 filestore oid: 11//head//3 not skipping op, *spos 4296.0.0
+2015-11-17 13:02:33.778337 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:33.778367 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3 = 0
+2015-11-17 13:02:33.778371 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3
+2015-11-17 13:02:33.778380 7f477c7d4700 10 filestore oid: 11//head//3 not skipping op, *spos 4296.0.1
+2015-11-17 13:02:33.778380 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:33.778401 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3 = 0
+2015-11-17 13:02:33.778404 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) write 3.11_TEMP/0/temp_3.11_0_4115_1/head//-1 8388608~8388608
+2015-11-17 13:02:33.781999 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) write 3.11_TEMP/0/temp_3.11_0_4115_1/head//-1 8388608~8388608 = 8388608
+2015-11-17 13:02:33.782015 7f477c7d4700 10 journal op_apply_finish 4296 open_ops 1 -> 0, max_applied_seq 4295 -> 4296
+2015-11-17 13:02:33.782016 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f47900ed6b0 seq 4296 r = 0, finisher 0x7f478f72e5a0 0
+2015-11-17 13:02:33.782091 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[3.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] sub_op_modify_applied on 0x7f4790b7e3c0 op osd_repop(osd.2.0:5606 3.11 0/temp_3.11_0_4115_1/head//-1 v 0'0) v1
+2015-11-17 13:02:33.782104 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[3.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] op_applied version 0'0
+2015-11-17 13:02:33.782187 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _finish_op 0x7f47900ed6b0 seq 4296 osr(3.11 0x7f478fc6b450)/0x7f478fc6b450
+2015-11-17 13:02:33.782202 7f477c7d4700 10 journal op_apply_start 4298 open_ops 0 -> 1
+2015-11-17 13:02:33.782204 7f477c7d4700  5 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f47900ed660 seq 4298 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0 start
+2015-11-17 13:02:33.782206 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_transaction on 0x7f478f977c38
+2015-11-17 13:02:33.782216 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:33.782214 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[3.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] sub_op_modify_applied on 0x7f4790c501c0 op osd_repop(osd.2.0:5607 3.11 0/temp_3.11_0_4115_1/head//-1 v 0'0) v1
+2015-11-17 13:02:33.782220 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[3.11( v 27'1 (0'0,27'1] local-les=27 n=1 ec=16 les/c 27/27 16/16/16) [2,1,0] r=1 lpr=27 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 active] op_applied version 0'0
+2015-11-17 13:02:33.782234 7f477cfd5700 10 journal op_apply_start 4297 open_ops 1 -> 2
+2015-11-17 13:02:33.782244 7f477c7d4700 10 filestore oid: 11//head//4 not skipping op, *spos 4298.0.0
+2015-11-17 13:02:33.782245 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:33.782235 7f477cfd5700  5 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f47900ed7a0 seq 4297 osr(3.11 0x7f478fc6b450)/0x7f478fc6b450 start
+2015-11-17 13:02:33.782249 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_transaction on 0x7f4790b81678
+2015-11-17 13:02:33.782259 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3
+2015-11-17 13:02:33.782277 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:33.782281 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:33.782283 7f477cfd5700 10 filestore oid: 11//head//3 not skipping op, *spos 4297.0.0
+2015-11-17 13:02:33.782284 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:33.782290 7f477c7d4700 10 filestore oid: 11//head//4 not skipping op, *spos 4298.0.1
+2015-11-17 13:02:33.782291 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:33.782313 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3 = 0
+2015-11-17 13:02:33.782317 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3
+2015-11-17 13:02:33.782327 7f477cfd5700 10 filestore oid: 11//head//3 not skipping op, *spos 4297.0.1
+2015-11-17 13:02:33.782328 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:33.782820 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:33.782830 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4
+2015-11-17 13:02:33.782854 7f477c7d4700 10 filestore oid: 11//head//4 not skipping op, *spos 4298.0.2
+2015-11-17 13:02:33.782855 7f477c7d4700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:33.782865 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3 = 0
+2015-11-17 13:02:33.782873 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 4.11_head/11//head//4 = 0
+2015-11-17 13:02:33.782873 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3
+2015-11-17 13:02:33.782889 7f477cfd5700 10 filestore oid: 11//head//3 not skipping op, *spos 4297.0.2
+2015-11-17 13:02:33.782889 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting '_'
+2015-11-17 13:02:33.782890 7f477cfd5700 10 filestore  > header.spos 0.0.0
+2015-11-17 13:02:33.782893 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting 'snapset'
+2015-11-17 13:02:33.782896 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4
+2015-11-17 13:02:33.782909 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4 = 0
+2015-11-17 13:02:33.782911 7f477cfd5700 20 filestore(/var/lib/ceph/osd/ceph-1) _omap_setkeys 3.11_head/11//head//3 = 0
+2015-11-17 13:02:33.782915 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting '_'
+2015-11-17 13:02:33.782918 7f477c7d4700 20 filestore(/var/lib/ceph/osd/ceph-1) fgetattrs 89 getting 'snapset'
+2015-11-17 13:02:33.782919 7f477c7d4700 15 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4
+2015-11-17 13:02:33.782921 7f477cfd5700 15 filestore(/var/lib/ceph/osd/ceph-1) _collection_move_rename 3.11_head/a8f50a91/t12.dat/head//3 from 3.11_TEMP/0/temp_3.11_0_4115_1/head//-1
+2015-11-17 13:02:33.782925 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) setattrs 4.11_head/a8f50a91/t12.dat/head//4 = 0
+2015-11-17 13:02:33.782927 7f477c7d4700 10 journal op_apply_finish 4298 open_ops 2 -> 1, max_applied_seq 4296 -> 4298
+2015-11-17 13:02:33.782928 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _do_op 0x7f47900ed660 seq 4298 r = 0, finisher 0x7f478e9ddf80 0
+2015-11-17 13:02:33.782928 7f477cfd5700 10 filestore(/var/lib/ceph/osd/ceph-1) _set_replay_guard 4297.0.3 START
+2015-11-17 13:02:33.782930 7f477c7d4700 10 filestore(/var/lib/ceph/osd/ceph-1) _finish_op 0x7f47900ed660 seq 4298 osr(4.11 0x7f478fc6c2f0)/0x7f478fc6c2f0
+2015-11-17 13:02:33.782981 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'7 (0'0,27'7] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'6 crt=27'5 lcod 27'6 active] sub_op_modify_applied on 0x7f478f977a40 op osd_repop(osd.2.0:5609 4.11 a8f50a91/t12.dat/head//4 v 27'7) v1
+2015-11-17 13:02:33.782989 7f477bfd3700 10 osd.1 pg_epoch: 27 pg[4.11( v 27'7 (0'0,27'7] local-les=27 n=2 ec=17 les/c 27/27 17/17/17) [2,0,1] r=2 lpr=27 luod=0'0 lua=27'6 crt=27'5 lcod 27'6 active] op_applied version 27'7
+2015-11-17 13:02:34.525567 7f477cfd5700 20 filestore dbobjectmap: seq is 321
