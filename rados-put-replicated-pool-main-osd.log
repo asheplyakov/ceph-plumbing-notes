@@ -561,14 +561,80 @@
 ##
 2015-11-23 08:48:50.793581 7f6f544e0700 10 filestore(/var/lib/ceph/osd/ceph-0)  queueing ondisk 0x7f6f669e47a0
 ##
-
+## JournalingObjectStore.cc:127     uint64_t JournalingObjectStore::ApplyManager::op_apply_start(uint64_t)
+## FileStore.cc:1800                void FileStore::_do_op(OpSequencer *, ThreadPool::TPHandle &)
+## FileStore.h:359                  void FileStore::OpWq::_process(OpSequencer *, ThreadPool::TPHandle &)
+## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
+## // FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
+## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
+##
 2015-11-23 08:48:50.793597 7f6f534de700 10 journal op_apply_start 2665 open_ops 0 -> 1
+##
+## FileStore.cc:1801                void FileStore::_do_op(OpSequencer *, ThreadPool::TPHandle &)
+## FileStore.h:359                  void FileStore::OpWq::_process(OpSequencer *, ThreadPool::TPHandle &)
+## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
+## // FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
+## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
+##
 2015-11-23 08:48:50.793599 7f6f534de700  5 filestore(/var/lib/ceph/osd/ceph-0) _do_op 0x7f6f64f854f0 seq 2665 osr(1.2d 0x7f6f64cfdee0)/0x7f6f64cfdee0 start
+##
+## FileStore.cc:2267                unsigned FileStore::_do_transaction(Transaction &, uint64_t, int, ThreadPool::TPHandle *)
+## FileStore.cc:1997                int  FileStore::_do_transactions(list<Transaction *> &, uint64_t, ThreadPool::TPHandle *)
+## FileStore.cc:1802                void FileStore::_do_op(OpSequencer *, ThreadPool::TPHandle &)
+## FileStore.h:359                  void FileStore::OpWq::_process(OpSequencer *, ThreadPool::TPHandle &)
+## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
+## // FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
+## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
+##
 2015-11-23 08:48:50.793601 7f6f534de700 10 filestore(/var/lib/ceph/osd/ceph-0) _do_transaction on 0x7f6f657e0d80
+##
+## FileStore.cc:4999                int  FileStore::_omap_setkeys(coll_t, const ghobject_t &, const map<string, bufferlist> &, const SequencerPosition &)
+## FileStore.cc:2601                unsigned FileStore::_do_transaction(Transaction &, uint64_t, int, ThreadPool::TPHandle *)
+## FileStore.cc:1997                int  FileStore::_do_transactions(list<Transaction *> &, uint64_t, ThreadPool::TPHandle *)
+## FileStore.cc:1802                void FileStore::_do_op(OpSequencer *, ThreadPool::TPHandle &)
+## FileStore.h:359                  void FileStore::OpWq::_process(OpSequencer *, ThreadPool::TPHandle &)
+## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
+## // FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
+## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
+##
 2015-11-23 08:48:50.793612 7f6f534de700 15 filestore(/var/lib/ceph/osd/ceph-0) _omap_setkeys 1.2d_head/2d//head//1
 2015-11-23 08:48:50.793611 7f6f524dc700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_commit: 1901
+##
+## DBObjectMap.cc:1233              bool DBObjectMap::check_spos(const ghobject_t &, Header, const SequencerPosition *)
+## DBObjectMap.cc:450               int  DBObjectMap::set_keys(const ghobject_t &, const map<string, bufferlist> &, const SequencerPosition *)
+## FileStore.cc:5015                int  FileStore::_omap_setkeys(coll_t, const ghobject_t &, const map<string, bufferlist> &, const SequencerPosition &)
+## FileStore.cc:2601                unsigned FileStore::_do_transaction(Transaction &, uint64_t, int, ThreadPool::TPHandle *)
+## FileStore.cc:1997                int  FileStore::_do_transactions(list<Transaction *> &, uint64_t, ThreadPool::TPHandle *)
+## FileStore.cc:1802                void FileStore::_do_op(OpSequencer *, ThreadPool::TPHandle &)
+## FileStore.h:359                  void FileStore::OpWq::_process(OpSequencer *, ThreadPool::TPHandle &)
+## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
+## // FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
+## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
+##
 2015-11-23 08:48:50.793648 7f6f534de700 10 filestore oid: 2d//head//1 not skipping op, *spos 2665.0.0
+##
+## DBObjectMap.cc:1238              bool DBObjectMap::check_spos(const ghobject_t &, Header, const SequencerPosition *)
+## DBObjectMap.cc:450               int  DBObjectMap::set_keys(const ghobject_t &, const map<string, bufferlist> &, const SequencerPosition *)
+## FileStore.cc:5015                int  FileStore::_omap_setkeys(coll_t, const ghobject_t &, const map<string, bufferlist> &, const SequencerPosition &)
+## FileStore.cc:2601                unsigned FileStore::_do_transaction(Transaction &, uint64_t, int, ThreadPool::TPHandle *)
+## FileStore.cc:1997                int  FileStore::_do_transactions(list<Transaction *> &, uint64_t, ThreadPool::TPHandle *)
+## FileStore.cc:1802                void FileStore::_do_op(OpSequencer *, ThreadPool::TPHandle &)
+## FileStore.h:359                  void FileStore::OpWq::_process(OpSequencer *, ThreadPool::TPHandle &)
+## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
+## // FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
+## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
+##
 2015-11-23 08:48:50.793649 7f6f534de700 10 filestore  > header.spos 0.0.0
+##
+## FileStore.cc:5016                int  FileStore::_omap_setkeys(coll_t, const ghobject_t &, const map<string, bufferlist> &, const SequencerPosition &)
+## FileStore.cc:2601                unsigned FileStore::_do_transaction(Transaction &, uint64_t, int, ThreadPool::TPHandle *)
+## FileStore.cc:1997                int  FileStore::_do_transactions(list<Transaction *> &, uint64_t, ThreadPool::TPHandle *)
+## FileStore.cc:1802                void FileStore::_do_op(OpSequencer *, ThreadPool::TPHandle &)
+## FileStore.h:359                  void FileStore::OpWq::_process(OpSequencer *, ThreadPool::TPHandle &)
+## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
+## // FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
+## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
+##
 2015-11-23 08:48:50.793822 7f6f534de700 20 filestore(/var/lib/ceph/osd/ceph-0) _omap_setkeys 1.2d_head/2d//head//1 = 0
 2015-11-23 08:48:50.793838 7f6f534de700 15 filestore(/var/lib/ceph/osd/ceph-0) _omap_setkeys 1.2d_head/2d//head//1
 2015-11-23 08:48:50.793850 7f6f534de700 10 filestore oid: 2d//head//1 not skipping op, *spos 2665.0.1
@@ -578,16 +644,59 @@
 2015-11-23 08:48:50.793933 7f6f534de700 10 filestore oid: 2d//head//1 not skipping op, *spos 2665.0.2
 2015-11-23 08:48:50.793934 7f6f534de700 10 filestore  > header.spos 0.0.0
 2015-11-23 08:48:50.793975 7f6f534de700 20 filestore(/var/lib/ceph/osd/ceph-0) _omap_setkeys 1.2d_head/2d//head//1 = 0
+##
+## FileStore.cc:3006                int  FileStore::_write(coll_t, const ghobject_t &, uint64_t, size_t, const bufferlist &, uint32_t)
+## FileStore.cc:2310                unsigned FileStore::_do_transaction(Transaction &, uint64_t, int, ThreadPool::TPHandle *)
+## FileStore.cc:1997                int  FileStore::_do_transactions(list<Transaction *> &, uint64_t, ThreadPool::TPHandle *)
+## FileStore.cc:1802                void FileStore::_do_op(OpSequencer *, ThreadPool::TPHandle &)
+## FileStore.h:359                  void FileStore::OpWq::_process(OpSequencer *, ThreadPool::TPHandle &)
+## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
+## // FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
+## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
+##
 2015-11-23 08:48:50.793988 7f6f534de700 15 filestore(/var/lib/ceph/osd/ceph-0) write 1.2d_head/a3002fad/t2.dat/head//1 0~4194304
+##
+## FileStore.cc:3053                int  FileStore::_write(coll_t, const ghobject_t &, uint64_t, size_t, const bufferlist &, uint32_t)
+## FileStore.cc:2310                unsigned FileStore::_do_transaction(Transaction &, uint64_t, int, ThreadPool::TPHandle *)
+## FileStore.cc:1997                int  FileStore::_do_transactions(list<Transaction *> &, uint64_t, ThreadPool::TPHandle *)
+## FileStore.cc:1802                void FileStore::_do_op(OpSequencer *, ThreadPool::TPHandle &)
+## FileStore.h:359                  void FileStore::OpWq::_process(OpSequencer *, ThreadPool::TPHandle &)
+## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
+## // FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
+## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
+##
 2015-11-23 08:48:50.795918 7f6f534de700 10 filestore(/var/lib/ceph/osd/ceph-0) write 1.2d_head/a3002fad/t2.dat/head//1 0~4194304 = 4194304
 2015-11-23 08:48:50.796001 7f6f534de700 15 filestore(/var/lib/ceph/osd/ceph-0) setattrs 1.2d_head/a3002fad/t2.dat/head//1
 2015-11-23 08:48:50.796023 7f6f534de700 10 filestore(/var/lib/ceph/osd/ceph-0) setattrs 1.2d_head/a3002fad/t2.dat/head//1 = 0
 2015-11-23 08:48:50.796033 7f6f534de700 20 filestore(/var/lib/ceph/osd/ceph-0) fgetattrs 145 getting '_'
 2015-11-23 08:48:50.796037 7f6f534de700 15 filestore(/var/lib/ceph/osd/ceph-0) setattrs 1.2d_head/a3002fad/t2.dat/head//1
 2015-11-23 08:48:50.796042 7f6f534de700 10 filestore(/var/lib/ceph/osd/ceph-0) setattrs 1.2d_head/a3002fad/t2.dat/head//1 = 0
+##
+## JournalingObjectStore.cc:137     void JournalingObjectStore::ApplyManager::op_apply_finish(uint64_t)
+## FileStore.cc:1803                void FileStore::_do_op(OpSequencer *, ThreadPool::TPHandle &)
+## FileStore.h:359                  void FileStore::OpWq::_process(OpSequencer *, ThreadPool::TPHandle &)
+## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
+## // FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
+## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
+##
 2015-11-23 08:48:50.796046 7f6f534de700 10 journal op_apply_finish 2665 open_ops 1 -> 0, max_applied_seq 2664 -> 2665
+##
+## FileStore.cc:1804                void FileStore::_do_op(OpSequencer *, ThreadPool::TPHandle &)
+## FileStore.h:359                  void FileStore::OpWq::_process(OpSequencer *, ThreadPool::TPHandle &)
+## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
+## // FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
+## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
+##
 2015-11-23 08:48:50.796047 7f6f534de700 10 filestore(/var/lib/ceph/osd/ceph-0) _do_op 0x7f6f64f854f0 seq 2665 r = 0, finisher 0x7f6f669e2b80 0x7f6f669cea00
+##
+## FileStore.cc:1813                void FileStore::_op_finish(OpSequencer *) // queues onreadable callback in a different thread
+## FileStore.h:361                  void FileStore::OpWq::_process_finish(OpSequencer *)
+## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
+## // FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
+## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
+##
 2015-11-23 08:48:50.796050 7f6f534de700 10 filestore(/var/lib/ceph/osd/ceph-0) _finish_op 0x7f6f64f854f0 seq 2665 osr(1.2d 0x7f6f64cfdee0)/0x7f6f64cfdee0
+
 2015-11-23 08:48:50.796188 7f6f52cdd700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_applied: 1901
 2015-11-23 08:48:50.796216 7f6f52cdd700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_applied version 30'1
 2015-11-23 08:48:50.813447 7f6f3aa4f700 10 osd.0 30 handle_replica_op osd_repop_reply(client.4141.0:1 1.2d ondisk, result = 0) v1 epoch 30
@@ -617,6 +726,9 @@
 2015-11-23 08:48:50.882973 7f6f4336f700 20 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean]  obc obc(a3002fad/t2.dat/head//1 rwstate(write n=1 w=0))
 2015-11-23 08:48:50.883005 7f6f4336f700 10 osd.0 30 dequeue_op 0x7f6f64d2dd00 finish
 2015-11-23 08:48:50.896872 7f6f3a74c700 20 osd.0 30 should_share_map client.4141 10.253.0.2:0/1007850 30
+##
+## Processing of the next 4 MB chunk starts here
+## 
 2015-11-23 08:48:50.896894 7f6f3a74c700 15 osd.0 30 enqueue_op 0x7f6f64d2b100 prio 63 cost 4194304 latency 0.006778 osd_op(client.4141.0:2 t2.dat [write 4194304~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5
 2015-11-23 08:48:50.896915 7f6f45b74700 10 osd.0 30 dequeue_op 0x7f6f64d2b100 prio 63 cost 4194304 latency 0.006799 osd_op(client.4141.0:2 t2.dat [write 4194304~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5 pg pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean]
 2015-11-23 08:48:50.896930 7f6f45b74700 20 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_has_sufficient_caps pool=1 (simple ) owner=0 need_read_cap=0 need_write_cap=1 need_class_read_cap=0 need_class_write_cap=0 -> yes
