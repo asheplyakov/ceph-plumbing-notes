@@ -219,7 +219,10 @@
 ##
 2015-11-23 08:48:50.619121 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( empty local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 mlcod 0'0 active+clean] new_repop rep_tid 1901 on osd_op(client.4141.0:1 t2.dat [writefull 0~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5
 ##
-## ReplicatedPG.cc:7421 void ReplicatedPG::issue_repop(RepGather *)
+## ReplicatedPG.cc:7421 void ReplicatedPG::issue_repop(RepGather *) // sets callbacks:
+##                                                                  //      onapplied_sync: reset disk write lock
+##                                                                  //      on_all_applied: void ReplicatedPG::repop_all_applied(RepGather *)
+##                                                                  //      on_all_commit: void ReplicatedPG::repop_all_committed(RepGather *)
 ## ReplicatedPG.cc:2364 void ReplicatedPG::execute_ctx(OpContext *)
 ## ReplicatedPG.cc:1750 void ReplicatedPG::do_op(OpRequestRef &)
 ## ReplicatedPG.cc:1296 void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
@@ -298,6 +301,11 @@
 ## ObjectStore.h:1711       int ObjectStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
 ## ObjectStore.h:1698       int ObjectStore::queue_transaction(Sequencer *, Transaction *, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
 ## ReplicatedPG.h:329       void ReplicatedPG::queue_transaction(ObjectStore::Transaction *, OpRequestRef)
+##
+## // sets callbacks:
+## //      on_commit  void ReplicatedBackend::op_commit(InProgressOp *)
+## //      on_applied void ReplicatedBackend::op_applied(InProgressOp *)
+##
 ## ReplicatedBackend.cc:632 void ReplicatedBackend::submit_transaction(const hobject_t &, const eversion_t &, PGTransaction *, const eversion_t &, const eversion_t &, const vector<pg_log_entry_t> &, Context *, Context *, Context *, ceph_tid_t, osd_reqid_t, OpRequestRef)
 ## ReplicatedPG.cc:7467     void ReplicatedPG::issue_repop(RepGather *)
 ## ReplicatedPG.cc:2364     void ReplicatedPG::execute_ctx(OpContext *)
@@ -598,6 +606,12 @@
 ## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
 ##
 2015-11-23 08:48:50.793612 7f6f534de700 15 filestore(/var/lib/ceph/osd/ceph-0) _omap_setkeys 1.2d_head/2d//head//1
+##
+## ReplicatedBackend.cc:659         void ReplicatedBackend::op_commit(InProgressOp *)
+## // callback set by
+## // ReplicatedBackend.cc:632 void ReplicatedBackend::submit_transaction(const hobject_t &, const eversion_t &, PGTransaction *, const eversion_t &, const eversion_t &, const vector<pg_log_entry_t> &, Context *, Context *, Context *, ceph_tid_t, osd_reqid_t, OpRequestRef)
+## // XXX: which thread is this?
+##
 2015-11-23 08:48:50.793611 7f6f524dc700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_commit: 1901
 ##
 ## DBObjectMap.cc:1233              bool DBObjectMap::check_spos(const ghobject_t &, Header, const SequencerPosition *)
@@ -696,6 +710,9 @@
 ## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
 ##
 2015-11-23 08:48:50.796050 7f6f534de700 10 filestore(/var/lib/ceph/osd/ceph-0) _finish_op 0x7f6f64f854f0 seq 2665 osr(1.2d 0x7f6f64cfdee0)/0x7f6f64cfdee0
+##
+## ReplicatedPG.cc:639              void ReplicatedBackend::op_applied(InProgressOp *)
+##
 
 2015-11-23 08:48:50.796188 7f6f52cdd700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_applied: 1901
 2015-11-23 08:48:50.796216 7f6f52cdd700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_applied version 30'1
