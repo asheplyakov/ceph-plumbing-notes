@@ -219,10 +219,13 @@
 ##
 2015-11-23 08:48:50.619121 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( empty local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 mlcod 0'0 active+clean] new_repop rep_tid 1901 on osd_op(client.4141.0:1 t2.dat [writefull 0~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5
 ##
-## ReplicatedPG.cc:7421 void ReplicatedPG::issue_repop(RepGather *) // sets callbacks:
-##                                                                  //      onapplied_sync: reset disk write lock
-##                                                                  //      on_all_applied: void ReplicatedPG::repop_all_applied(RepGather *)
-##                                                                  //      on_all_commit: void ReplicatedPG::repop_all_committed(RepGather *)
+## ReplicatedPG.cc:7421 void ReplicatedPG::issue_repop(RepGather *)
+##
+## // sets callbacks:
+## //      onapplied_sync: C_OSD_OndiskWriteUnlock::finish(), unlock obc (think of inode) disk write lock
+## //      on_all_applied: void ReplicatedPG::repop_all_applied(RepGather *)
+## //      on_all_commit: void ReplicatedPG::repop_all_committed(RepGather *)
+##
 ## ReplicatedPG.cc:2364 void ReplicatedPG::execute_ctx(OpContext *)
 ## ReplicatedPG.cc:1750 void ReplicatedPG::do_op(OpRequestRef &)
 ## ReplicatedPG.cc:1296 void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
@@ -298,13 +301,22 @@
 2015-11-23 08:48:50.620510 7f6f4336f700 10 write_log with: dirty_to: 0'0, dirty_from: 4294967295'18446744073709551615, dirty_divergent_priors: 0, writeout_from: 30'1, trimmed: 
 ##
 ## FileStore.cc:1872        int FileStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
+##
+## // wraps callbacks set by ReplicatedPG::queue_transaction
+## // onreadable      <- on_applied
+## // onreadable_sync <- onapplied_sync
+## // ondisk          <- on_commit
+##
 ## ObjectStore.h:1711       int ObjectStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
 ## ObjectStore.h:1698       int ObjectStore::queue_transaction(Sequencer *, Transaction *, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
 ## ReplicatedPG.h:329       void ReplicatedPG::queue_transaction(ObjectStore::Transaction *, OpRequestRef)
 ##
 ## // sets callbacks:
-## //      on_commit  void ReplicatedBackend::op_commit(InProgressOp *)
-## //      on_applied void ReplicatedBackend::op_applied(InProgressOp *)
+## //      on_commit  void ReplicatedBackend::op_commit(InProgressOp *),
+## //           wraps void ReplicatedPG::repop_all_committed(RepGather *)
+## //      on_applied void ReplicatedBackend::op_applied(InProgressOp *),
+## //           wraps void ReplicatedPG::repop_all_applied(RepGather *)
+## //      on_applied_sync void C_OSD_OndiskWriteUnlock::finish(int)
 ##
 ## ReplicatedBackend.cc:632 void ReplicatedBackend::submit_transaction(const hobject_t &, const eversion_t &, PGTransaction *, const eversion_t &, const eversion_t &, const vector<pg_log_entry_t> &, Context *, Context *, Context *, ceph_tid_t, osd_reqid_t, OpRequestRef)
 ## ReplicatedPG.cc:7467     void ReplicatedPG::issue_repop(RepGather *)
@@ -361,6 +373,9 @@
 2015-11-23 08:48:50.620533 7f6f4336f700 10 journal op_journal_transactions 2665 0x7f6f657e0d80
 ##
 ## FileJournal.cc:1494          void FileJournal::submit_entry(uint64_t, bufferlist&, int, Context *, TrackedOpRef) // transactions reach the journal queue, journal thread signaled
+##
+## // onjournal <- ondisk <- oncommit, which is void ReplicatedPG::repop_all_committed(RepGather *)
+##
 ## JournalingObjectStore.cc:273 void JournalingObjectStore::_op_journal_transactions(list<ObjectStore::Transaction *> &, uint64_t, Context *, TrackedOpRef)
 ## FileStore.cc:1907            int FileStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
 ## ObjectStore.h:1711		int ObjectStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
@@ -406,6 +421,7 @@
 2015-11-23 08:48:50.620582 7f6f4336f700 10 osd.0 30 dequeue_op 0x7f6f64d2bc00 finish
 ##
 ## FileJournal.cc:1167          void FileJournal::write_thread_entry()
+## // kicked by FileJournal::submit_entry()
 ##
 2015-11-23 08:48:50.620595 7f6f554e2700 20 journal write_thread_entry woke up
 ##
@@ -517,7 +533,14 @@
 ## FileStore.h:173                void *FileStore::SyncThread::entry()
 ##
 2015-11-23 08:48:50.682615 7f6f55ce3700 15 genericfilestorebackend(/var/lib/ceph/osd/ceph-0) syncfs: doing a full sync (syncfs(2) if possible)
+##
+## OSD.cc:671                     void OSD::update_osd_stat(vector<int> &)
+## OSD.cc:3819                    void OSD::heartbeat()
+##
 2015-11-23 08:48:50.721336 7f6f3f367700 20 osd.0 30 update_osd_stat osd_stat(37592 kB used, 255 GB avail, 255 GB total, peers [1,2]/[] op hist [0,0,0,0,0,0,0,1])
+##
+## OSD.cc:3821                    void OSD::heartbeat()
+##
 2015-11-23 08:48:50.721353 7f6f3f367700  5 osd.0 30 heartbeat: osd_stat(37592 kB used, 255 GB avail, 255 GB total, peers [1,2]/[] op hist [0,0,0,0,0,0,0,1])
 2015-11-23 08:48:50.721902 7f6f4cb82700 20 osd.0 30 share_map_peer 0x7f6f64eb9440 already has epoch 30
 2015-11-23 08:48:50.721912 7f6f4cb82700 20 osd.0 30 share_map_peer 0x7f6f64eb9440 already has epoch 30
@@ -713,8 +736,11 @@
 ##
 ## ReplicatedPG.cc:639              void ReplicatedBackend::op_applied(InProgressOp *)
 ##
-
 2015-11-23 08:48:50.796188 7f6f52cdd700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_applied: 1901
+##
+## ReplicatedPG.cc:7249             void ReplicatedPG::op_applied(const eversion_t &)
+## ReplicatedBackend.cc:639         void ReplicatedBackend::op_applied(InProgressOp *)
+##
 2015-11-23 08:48:50.796216 7f6f52cdd700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_applied version 30'1
 2015-11-23 08:48:50.813447 7f6f3aa4f700 10 osd.0 30 handle_replica_op osd_repop_reply(client.4141.0:1 1.2d ondisk, result = 0) v1 epoch 30
 2015-11-23 08:48:50.813467 7f6f3aa4f700 20 osd.0 30 should_share_map osd.2 10.253.0.5:6801/3128 30
