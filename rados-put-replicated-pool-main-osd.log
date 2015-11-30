@@ -22,7 +22,7 @@
 ## ObjectStore.h:1931   int ObjectStore::getattr(coll_t, const ghobject_t &, const string &, bufferlist &)
 ## PGBackend.cc:190     int PGBackend::objects_get_attr(const hobject_t &, const string &, bufferlist *)
 ## ReplicatedPG.cc:7746 ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
-## ReplicatedPG.cc:7877 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *) 
+## ReplicatedPG.cc:7877 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
 ## ReplicatedPG.cc:1494 void ReplicatedPG::do_op(OpRequestRef &)
 ## ReplicatedPG.cc:1296 void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
 ## OSD.cc:8438          void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
@@ -39,7 +39,7 @@
 ## PGBackend.cc:190     int PGBackend::objects_get_attr(const hobject_t &, const string &, bufferlist *)
 ## ReplicatedPG.cc:8151 SnapSetContext* ReplicatedPG::get_snapset_context(const hobject_t &, bool, map<string, bufferlist> *)
 ## ReplicatedPG.cc:7760 ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
-## ReplicatedPG.cc:7877 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *) 
+## ReplicatedPG.cc:7877 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
 ## ReplicatedPG.cc:1494 void ReplicatedPG::do_op(OpRequestRef &)
 ## ReplicatedPG.cc:1296 void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
 ## OSD.cc:8438          void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
@@ -53,7 +53,7 @@
 ##
 ## ReplicatedPG.cc:7716 ObjectContextRef ReplicatedPG::create_object_context(const object_info_t &, SnapSetContext *)
 ## ReplicatedPG.cc:7763 ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
-## ReplicatedPG.cc:7853 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *) 
+## ReplicatedPG.cc:7853 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
 ## ReplicatedPG.cc:1494 void ReplicatedPG::do_op(OpRequestRef &)
 ## ReplicatedPG.cc:1296 void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
 ## OSD.cc:8438          void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
@@ -64,7 +64,7 @@
 ## ReplicatedPG.cc:7615 void ReplicatedPG::populate_obc_watchers(ObjectContextRef)
 ## ReplicatedPG.cc:7718 ObjectContextRef ReplicatedPG::create_object_context(const object_info_t &, SnapSetContext *)
 ## ReplicatedPG.cc:7763 ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
-## ReplicatedPG.cc:7853 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *) 
+## ReplicatedPG.cc:7853 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
 ## ReplicatedPG.cc:1494 void ReplicatedPG::do_op(OpRequestRef &)
 ## ReplicatedPG.cc:1296 void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
 ## OSD.cc:8438          void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
@@ -76,7 +76,7 @@
 ## ReplicatedPG.cc:7636 void ReplicatedPG::populate_obc_watchers(ObjectContextRef)
 ## ReplicatedPG.cc:7718 ObjectContextRef ReplicatedPG::create_object_context(const object_info_t &, SnapSetContext *)
 ## ReplicatedPG.cc:7763 ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
-## ReplicatedPG.cc:7853 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *) 
+## ReplicatedPG.cc:7853 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
 ## ReplicatedPG.cc:1494 void ReplicatedPG::do_op(OpRequestRef &)
 ## ReplicatedPG.cc:1296 void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
 ## OSD.cc:8438          void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
@@ -85,7 +85,7 @@
 2015-11-23 08:48:50.617124 7f6f4336f700 20 osd.0 pg_epoch: 30 pg[1.2d( empty local-les=15 n=0 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 mlcod 0'0 active+clean] ReplicatedPG::check_blacklisted_obc_watchers for obc a3002fad/t2.dat/head//1
 ##
 ## ReplicatedPG.cc:7764 ObjectContextRef ReplicatedPG::get_object_context(const hobject_t &, bool, map<string, bufferlist> *)
-## ReplicatedPG.cc:7853 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *) 
+## ReplicatedPG.cc:7853 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
 ## ReplicatedPG.cc:1494 void ReplicatedPG::do_op(OpRequestRef &)
 ## ReplicatedPG.cc:1296 void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
 ## OSD.cc:8438          void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
@@ -93,7 +93,7 @@
 ##
 2015-11-23 08:48:50.617128 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( empty local-les=15 n=0 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 mlcod 0'0 active+clean] get_object_context: 0x7f6f65725e40 a3002fad/t2.dat/head//1 rwstate(none n=0 w=0) oi: a3002fad/t2.dat/head//1(0'0 unknown.0.0:0 wrlock_by=unknown.0.0:0 s 0 uv 0) ssc: 0x7f6f64d23fe0 snapset: 0=[]:[]
 ##
-## ReplicatedPG.cc:7855 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *) 
+## ReplicatedPG.cc:7855 int ReplicatedPG::find_object_context(const hobject_t &, ObjectContextRef *, bool, bool, hobject_t *)
 ## ReplicatedPG.cc:1494 void ReplicatedPG::do_op(OpRequestRef &)
 ## ReplicatedPG.cc:1296 void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
 ## OSD.cc:8438          void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
@@ -495,7 +495,7 @@
 ## FileJournal.cc:1407          void FileJournal::write_finish_thread_entry() // kicked by FileJournal::write_aio_bl (FileJournal.cc:1364)
 ##
 2015-11-23 08:48:50.624988 7f6f54ce1700 20 journal write_finish_thread_entry waiting for aio(s)
-## 
+##
 ## FileStore.cc:3480            void FileStore::sync_entry() // woke up by a timer
 ## FileStore.h:173              void *FileStore::SyncThread::entry()
 ##
@@ -591,13 +591,13 @@
 ## // onreadable_sync: C_OSD_OndiskWriteLock::finish(int)
 ## // onreadable:      ReplicatedBackend::op_applied(InProgressOp *) <- ReplicatedPG::repop_all_applied(RepGather *)
 
-## 
+##
 2015-11-23 08:48:50.793567 7f6f544e0700  5 filestore(/var/lib/ceph/osd/ceph-0) _journaled_ahead 0x7f6f64f854f0 seq 2665 osr(1.2d 0x7f6f64cfdee0) 0x7f6f657e0d80
 ##
 ## FileStore.cc:1725             void FileStore::queue_op(OpSequencer *, Op *)
 ## FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
 ## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
-## 
+##
 2015-11-23 08:48:50.793576 7f6f544e0700  5 filestore(/var/lib/ceph/osd/ceph-0) queue_op 0x7f6f64f854f0 seq 2665 osr(1.2d 0x7f6f64cfdee0) 4196441 bytes   (queue has 1 ops and 4196441 bytes)
 ##
 ## FileStore.cc:1978             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
