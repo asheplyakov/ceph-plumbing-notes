@@ -360,7 +360,11 @@
 ## JournalingObjectStore.cc:257 void JournalingObjectStore::_op_journal_transactions(list<ObjectStore::Transaction *> &, uint64_t, Context *, TrackedOpRef)
 ## FileStore.cc:1907            int FileStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
 ##
-## // callback: FileStore::_journaled_ahead(Sequencer *, Op *, Context *) which wraps ondisk = on_commit <- ReplicatedBackend::op_commit(InProgressOp *) <- ReplicatedPG::repop_all_committed(RepGather *)
+## // callback: FileStore::_journaled_ahead(Sequencer *, Op *, Context *)
+## // which wraps ondisk = on_commit <- ReplicatedBackend::op_commit(InProgressOp *) <- ReplicatedPG::repop_all_committed(RepGather *)
+## // Op contains:
+## // onreadable <- on_applied <- ReplicatedBackend::op_applied(InProgressOp *) <- ReplicatedPG::repop_all_applied(RepGather *)
+## // onreadable_sync <- onapplied_sync <- C_OSD_OndiskWriteUnlock::finish(int)
 ##
 ## ObjectStore.h:1711		int ObjectStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
 ## ObjectStore.h:1698		int ObjectStore::queue_transaction(Sequencer *, Transaction *, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
@@ -735,7 +739,11 @@
 ##
 2015-11-23 08:48:50.796047 7f6f534de700 10 filestore(/var/lib/ceph/osd/ceph-0) _do_op 0x7f6f64f854f0 seq 2665 r = 0, finisher 0x7f6f669e2b80 0x7f6f669cea00
 ##
-## FileStore.cc:1813                void FileStore::_op_finish(OpSequencer *) // queues onreadable callback in a different thread
+## FileStore.cc:1813                void FileStore::_finish_op(OpSequencer *)
+## //
+## // queues onreadable callback in a different thread
+## // onreadable <- on_applied <- ReplicatedBackend::op_applied(InProgressOp *) <- ReplicatedPG::repop_all_applied(RepGather *)
+## //
 ## FileStore.h:361                  void FileStore::OpWq::_process_finish(OpSequencer *)
 ## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
 ## // FileStore.cc:1970             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
@@ -751,19 +759,108 @@
 ## ReplicatedBackend.cc:639         void ReplicatedBackend::op_applied(InProgressOp *)
 ##
 2015-11-23 08:48:50.796216 7f6f52cdd700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_applied version 30'1
+##
+#### OSD #2 reports the operation has been committed
+##
+## OSD.cc:8209                      void OSD::handle_replica_op<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef &, OSDMapRef &)
+## OSD.cc:5740                      bool OSD::dispatch_op_fast(OpRequestRef &, OSDMapRef &)
+## OSD.cc:5374                      void OSD::dispatch_session_waiting(Session *, OSDMapRef)
+##
 2015-11-23 08:48:50.813447 7f6f3aa4f700 10 osd.0 30 handle_replica_op osd_repop_reply(client.4141.0:1 1.2d ondisk, result = 0) v1 epoch 30
+##
+## OSD.cc:799                       bool OSDService::should_share_map(entity_name_t, Connection *, epoch_t, OSDRefMap&, const epoch_t *)
+## OSD.cc:8228                      void OSD::handle_replica_op<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef &, OSDMapRef &)
+## OSD.cc:5740                      bool OSD::dispatch_op_fast(OpRequestRef &, OSDMapRef &)
+## OSD.cc:5374                      void OSD::dispatch_session_waiting(Session *, OSDMapRef)
+##
 2015-11-23 08:48:50.813467 7f6f3aa4f700 20 osd.0 30 should_share_map osd.2 10.253.0.5:6801/3128 30
+##
+## OSD.cc:8262                      void OSD::enqueue_op(PG *, OpRequestRef &)
+## OSD.cc:8241                      void OSD::handle_replica_op<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef &, OSDMapRef &)
+## OSD.cc:5740                      bool OSD::dispatch_op_fast(OpRequestRef &, OSDMapRef &)
+## OSD.cc:5374                      void OSD::dispatch_session_waiting(Session *, OSDMapRef)
+##
 2015-11-23 08:48:50.813472 7f6f3aa4f700 15 osd.0 30 enqueue_op 0x7f6f64d2de00 prio 196 cost 0 latency 0.000115 osd_repop_reply(client.4141.0:1 1.2d ondisk, result = 0) v1
+##
+## OSD.cc:8408          void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332          void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.813492 7f6f45b74700 10 osd.0 30 dequeue_op 0x7f6f64d2de00 prio 196 cost 0 latency 0.000135 osd_repop_reply(client.4141.0:1 1.2d ondisk, result = 0) v1 pg pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean]
+##
+## ReplicatedBackend.cc:162        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.813506 7f6f45b74700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] handle_message: 0x7f6f64d2de00
+##
+## // Note: ack_type 4 == CEPH_OSD_FLAG_ONDISK
+## ReplicatedBackend.cc:698        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.813515 7f6f45b74700  7 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] sub_op_modify_reply: tid 1901 op  ack_type 4 from 2
+##
+## // End of "OSD #2 reports the operation has been committed"
+## OSD.cc:8441                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.813529 7f6f45b74700 10 osd.0 30 dequeue_op 0x7f6f64d2de00 finish
+##
+#### OSD #1 reports the operation has been committed
+##
+## OSD.cc:8209                      void OSD::handle_replica_op<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef &, OSDMapRef &)
+## OSD.cc:5740                      bool OSD::dispatch_op_fast(OpRequestRef &, OSDMapRef &)
+## OSD.cc:5374                      void OSD::dispatch_session_waiting(Session *, OSDMapRef)
+##
 2015-11-23 08:48:50.882665 7f6f3b85d700 10 osd.0 30 handle_replica_op osd_repop_reply(client.4141.0:1 1.2d ondisk, result = 0) v1 epoch 30
+##
+## OSD.cc:799                       bool OSDService::should_share_map(entity_name_t, Connection *, epoch_t, OSDRefMap&, const epoch_t *)
+## OSD.cc:8228                      void OSD::handle_replica_op<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef &, OSDMapRef &)
+## OSD.cc:5740                      bool OSD::dispatch_op_fast(OpRequestRef &, OSDMapRef &)
+## OSD.cc:5374                      void OSD::dispatch_session_waiting(Session *, OSDMapRef)
+##
 2015-11-23 08:48:50.882669 7f6f3b85d700 20 osd.0 30 should_share_map osd.1 10.253.0.4:6801/3119 30
+##
+## OSD.cc:8262                      void OSD::enqueue_op(PG *, OpRequestRef &)
+## OSD.cc:8241                      void OSD::handle_replica_op<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef &, OSDMapRef &)
+## OSD.cc:5740                      bool OSD::dispatch_op_fast(OpRequestRef &, OSDMapRef &)
+## OSD.cc:5374                      void OSD::dispatch_session_waiting(Session *, OSDMapRef)
+##
 2015-11-23 08:48:50.882673 7f6f3b85d700 15 osd.0 30 enqueue_op 0x7f6f64d2dd00 prio 196 cost 0 latency 0.000115 osd_repop_reply(client.4141.0:1 1.2d ondisk, result = 0) v1
+##
+## OSD.cc:8408          void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332          void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882845 7f6f4336f700 10 osd.0 30 dequeue_op 0x7f6f64d2dd00 prio 196 cost 0 latency 0.000287 osd_repop_reply(client.4141.0:1 1.2d ondisk, result = 0) v1 pg pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean]
+##
+## ReplicatedBackend.cc:162        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882863 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] handle_message: 0x7f6f64d2dd00
+##
+## // Note: ack_type 4 == CEPH_OSD_FLAG_ONDISK
+## ReplicatedBackend.cc:698        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882871 7f6f4336f700  7 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] sub_op_modify_reply: tid 1901 op  ack_type 4 from 1
+##
+## ReplicatedPG.cc:7209            void ReplicatedPG::repop_all_applied(RepGather *)
+## // in_op->on_applied = ReplicatedPG::repop_all_applied(RepGather *)
+## // invoked via InProgressOp->on_applied->complete(0)
+## ReplicatedBackend.cc:727        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882896 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] repop_all_applied: repop tid 1901 all applied 
 2015-11-23 08:48:50.882901 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] eval_repop repgather(0x7f6f6575b3c0 30'1 rep_tid=1901 committed?=0 applied?=1 lock=0 op=osd_op(client.4141.0:1 t2.dat [writefull 0~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5) wants=d
 2015-11-23 08:48:50.882911 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] repop_all_committed: repop tid 1901 all committed 
@@ -777,10 +874,10 @@
 2015-11-23 08:48:50.882968 7f6f4336f700 20 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] remove_repop repgather(0x7f6f6575b3c0 30'1 rep_tid=1901 committed?=1 applied?=1 lock=0 op=osd_op(client.4141.0:1 t2.dat [writefull 0~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5)
 2015-11-23 08:48:50.882973 7f6f4336f700 20 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean]  obc obc(a3002fad/t2.dat/head//1 rwstate(write n=1 w=0))
 2015-11-23 08:48:50.883005 7f6f4336f700 10 osd.0 30 dequeue_op 0x7f6f64d2dd00 finish
-2015-11-23 08:48:50.896872 7f6f3a74c700 20 osd.0 30 should_share_map client.4141 10.253.0.2:0/1007850 30
 ##
 ## Processing of the next 4 MB chunk starts here
-## 
+##
+2015-11-23 08:48:50.896872 7f6f3a74c700 20 osd.0 30 should_share_map client.4141 10.253.0.2:0/1007850 30
 2015-11-23 08:48:50.896894 7f6f3a74c700 15 osd.0 30 enqueue_op 0x7f6f64d2b100 prio 63 cost 4194304 latency 0.006778 osd_op(client.4141.0:2 t2.dat [write 4194304~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5
 2015-11-23 08:48:50.896915 7f6f45b74700 10 osd.0 30 dequeue_op 0x7f6f64d2b100 prio 63 cost 4194304 latency 0.006799 osd_op(client.4141.0:2 t2.dat [write 4194304~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5 pg pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean]
 2015-11-23 08:48:50.896930 7f6f45b74700 20 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_has_sufficient_caps pool=1 (simple ) owner=0 need_read_cap=0 need_write_cap=1 need_class_read_cap=0 need_class_write_cap=0 -> yes
