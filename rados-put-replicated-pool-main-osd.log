@@ -303,9 +303,9 @@
 ## FileStore.cc:1872        int FileStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
 ##
 ## // wraps callbacks set by ReplicatedPG::queue_transaction
-## // onreadable      <- on_applied
-## // onreadable_sync <- onapplied_sync
-## // ondisk          <- on_commit
+## // onreadable      <- on_applied     <- ReplicatedBackend::op_applied(InProgressOp *) <- ReplicatedPG::repop_all_applied(RepGather *)
+## // onreadable_sync <- onapplied_sync <- C_OSD_OndiskWriteUnlock::finish(int)
+## // ondisk          <- on_commit      <- ReplicatedBackend::op_commit(InProgressOp *) <- ReplicatedPG::repop_all_committed(RepGather *)
 ##
 ## ObjectStore.h:1711       int ObjectStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
 ## ObjectStore.h:1698       int ObjectStore::queue_transaction(Sequencer *, Transaction *, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
@@ -359,6 +359,9 @@
 ##
 ## JournalingObjectStore.cc:257 void JournalingObjectStore::_op_journal_transactions(list<ObjectStore::Transaction *> &, uint64_t, Context *, TrackedOpRef)
 ## FileStore.cc:1907            int FileStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
+##
+## // callback: FileStore::_journaled_ahead(Sequencer *, Op *, Context *) which wraps ondisk = on_commit <- ReplicatedBackend::op_commit(InProgressOp *) <- ReplicatedPG::repop_all_committed(RepGather *)
+##
 ## ObjectStore.h:1711		int ObjectStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
 ## ObjectStore.h:1698		int ObjectStore::queue_transaction(Sequencer *, Transaction *, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
 ## ReplicatedPG.h:329		void ReplicatedPG::queue_transaction(ObjectStore::Transaction *, OpRequestRef)
@@ -374,7 +377,9 @@
 ##
 ## FileJournal.cc:1494          void FileJournal::submit_entry(uint64_t, bufferlist&, int, Context *, TrackedOpRef) // transactions reach the journal queue, journal thread signaled
 ##
-## // onjournal <- ondisk <- oncommit, which is void ReplicatedPG::repop_all_committed(RepGather *)
+## // callback: onjournal = FileJournal::_journaled_ahead(OpSequencer *, Op *, Context *)
+##    with a nested callback: ondisk <- oncommit = void ReplicatedPG::repop_all_committed(RepGather *)
+##    The latter will be invoked by a dedicated thread (ondisk_finisher)
 ##
 ## JournalingObjectStore.cc:273 void JournalingObjectStore::_op_journal_transactions(list<ObjectStore::Transaction *> &, uint64_t, Context *, TrackedOpRef)
 ## FileStore.cc:1907            int FileStore::queue_transactions(Sequencer *, list<Transaction *> &, Context *, Context *, Context *, TrackedOpRef, ThreadPool::TPHandle *)
@@ -576,8 +581,12 @@
 ##
 2015-11-23 08:48:50.793463 7f6f54ce1700 20 journal write_finish_thread_entry sleeping
 ##
-## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
 ## FileStore.cc:1967             void FileStore::_journaled_ahead(OpSequencer *, Op *, Context *)
+## // callback invoked by finisher thread, set at FileStore::queue_transactions() (FileStore.cc:1907)
+## // Op holds the following callbacks:
+## // onreadable_sync: C_OSD_OndiskWriteLock::finish(int)
+## // onreadable:      ReplicatedBackend::op_applied(InProgressOp *) <- ReplicatedPG::repop_all_applied(RepGather *)
+
 ## 
 2015-11-23 08:48:50.793567 7f6f544e0700  5 filestore(/var/lib/ceph/osd/ceph-0) _journaled_ahead 0x7f6f64f854f0 seq 2665 osr(1.2d 0x7f6f64cfdee0) 0x7f6f657e0d80
 ##
