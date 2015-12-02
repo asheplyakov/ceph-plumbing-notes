@@ -622,8 +622,10 @@
 ##
 2015-11-23 08:48:50.793599 7f6f534de700  5 filestore(/var/lib/ceph/osd/ceph-0) _do_op 0x7f6f64f854f0 seq 2665 osr(1.2d 0x7f6f64cfdee0)/0x7f6f64cfdee0 start
 ##
+## // XXX: FileStore::_do_transaction() either assert()'s, or returns 0
 ## FileStore.cc:2267                unsigned FileStore::_do_transaction(Transaction &, uint64_t, int, ThreadPool::TPHandle *)
 ## FileStore.cc:1997                int  FileStore::_do_transactions(list<Transaction *> &, uint64_t, ThreadPool::TPHandle *)
+## // XXX: FileStore::_do_op() ignores the error code returned by FileStore::_do_transactions()
 ## FileStore.cc:1802                void FileStore::_do_op(OpSequencer *, ThreadPool::TPHandle &)
 ## FileStore.h:359                  void FileStore::OpWq::_process(OpSequencer *, ThreadPool::TPHandle &)
 ## // FileStore.cc:1730             void FileStore::queue_op(OpSequencer *, Op *)
@@ -739,6 +741,7 @@
 ##
 2015-11-23 08:48:50.796047 7f6f534de700 10 filestore(/var/lib/ceph/osd/ceph-0) _do_op 0x7f6f64f854f0 seq 2665 r = 0, finisher 0x7f6f669e2b80 0x7f6f669cea00
 ##
+## // XXX: no error code passed to callbacks
 ## FileStore.cc:1813                void FileStore::_finish_op(OpSequencer *)
 ## //
 ## // queues onreadable callback in a different thread
@@ -752,11 +755,15 @@
 2015-11-23 08:48:50.796050 7f6f534de700 10 filestore(/var/lib/ceph/osd/ceph-0) _finish_op 0x7f6f64f854f0 seq 2665 osr(1.2d 0x7f6f64cfdee0)/0x7f6f64cfdee0
 ##
 ## ReplicatedPG.cc:639              void ReplicatedBackend::op_applied(InProgressOp *)
+## // indirectly invoked from FileStore::_finish_op(OpSequencer *)
+## Finisher.cc:59                   void *Finisher::finisher_thread_entry()
 ##
 2015-11-23 08:48:50.796188 7f6f52cdd700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_applied: 1901
 ##
 ## ReplicatedPG.cc:7249             void ReplicatedPG::op_applied(const eversion_t &)
 ## ReplicatedBackend.cc:639         void ReplicatedBackend::op_applied(InProgressOp *)
+## // indirectly invoked from FileStore::_finish_op(OpSequencer *)
+## Finisher.cc:59                   void *Finisher::finisher_thread_entry()
 ##
 2015-11-23 08:48:50.796216 7f6f52cdd700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 lua=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] op_applied version 30'1
 ##
@@ -862,17 +869,145 @@
 ## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
 ##
 2015-11-23 08:48:50.882896 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] repop_all_applied: repop tid 1901 all applied 
+##
+## ReplicatedPG.cc:7234            void ReplicatedPG::repop_all_committed(RepGather *)
+## // in_op->on_commit = ReplicatedPG::repop_all_committed(RepGather *)
+## // invoked via InProgressOp->on_commit->complete(0)
+## ReplicatedBackend.cc:732        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882901 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] eval_repop repgather(0x7f6f6575b3c0 30'1 rep_tid=1901 committed?=0 applied?=1 lock=0 op=osd_op(client.4141.0:1 t2.dat [writefull 0~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5) wants=d
+##
+## ReplicatedPG.cc:7234            void ReplicatedPG::repop_all_committed(RepGather *)
+## // in_op->on_commit = ReplicatedPG::repop_all_committed(RepGather *)
+## // invoked via InProgressOp->on_commit->complete(0)
+## ReplicatedBackend.cc:732        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882911 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 luod=0'0 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] repop_all_committed: repop tid 1901 all committed 
+##
+## ReplicatedPG.cc:7280            void ReplicatedPG::eval_repop(RepGather *)
+## ReplicatedPG.cc:7243            void ReplicatedPG::repop_all_committed(RepGather *)
+## // in_op->on_commit = ReplicatedPG::repop_all_committed(RepGather *)
+## // invoked via InProgressOp->on_commit->complete(0)
+## ReplicatedBackend.cc:732        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882914 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] eval_repop repgather(0x7f6f6575b3c0 30'1 rep_tid=1901 committed?=1 applied?=1 lock=0 op=osd_op(client.4141.0:1 t2.dat [writefull 0~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5) wants=d
+##
+## ReplicatedPG.cc:2434            void ReplicatedPG::log_op_stats(OpContext *)
+## ReplicatedPG.cc:7295            void ReplicatedPG::eval_repop(RepGather *)
+## ReplicatedPG.cc:7243            void ReplicatedPG::repop_all_committed(RepGather *)
+## // in_op->on_commit = ReplicatedPG::repop_all_committed(RepGather *)
+## // invoked via InProgressOp->on_commit->complete(0)
+## ReplicatedBackend.cc:732        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882920 7f6f4336f700 15 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] log_op_stats osd_op(client.4141.0:1 t2.dat [writefull 0~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5 inb 4194304 outb 0 rlat 0.276591 lat 0.276603
+## 
+## PG.cc:2467                      void PG::publish_stats_to_osd()
+## ReplicatedPG.cc:7298            void ReplicatedPG::eval_repop(RepGather *)
+## ReplicatedPG.cc:7243            void ReplicatedPG::repop_all_committed(RepGather *)
+## // in_op->on_commit = ReplicatedPG::repop_all_committed(RepGather *)
+## // invoked via InProgressOp->on_commit->complete(0)
+## ReplicatedBackend.cc:732        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882928 7f6f4336f700 15 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] publish_stats_to_osd 30:13
+##
+## ReplicatedPG.cc:7330            void ReplicatedPG::eval_repop(RepGather *)
+## ReplicatedPG.cc:7243            void ReplicatedPG::repop_all_committed(RepGather *)
+## // in_op->on_commit = ReplicatedPG::repop_all_committed(RepGather *)
+## // invoked via InProgressOp->on_commit->complete(0)
+## ReplicatedBackend.cc:732        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882931 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean]  sending commit on repgather(0x7f6f6575b3c0 30'1 rep_tid=1901 committed?=1 applied?=1 lock=0 op=osd_op(client.4141.0:1 t2.dat [writefull 0~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5) 0x7f6f65726100
+##
+## ReplicatedPG.cc:5517            void ReplicatedPG::do_osd_op_effects(OpContext *, const ConnectionRef &)
+## ReplicatedPG.cc:7386            void ReplicatedPG::eval_repop(RepGather *)
+## ReplicatedPG.cc:7243            void ReplicatedPG::repop_all_committed(RepGather *)
+## // in_op->on_commit = ReplicatedPG::repop_all_committed(RepGather *)
+## // invoked via InProgressOp->on_commit->complete(0)
+## ReplicatedBackend.cc:732        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882951 7f6f4336f700 15 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] do_osd_op_effects client.4141 con 0x7f6f66884680
+##
+## ReplicatedPG.cc:7398            void ReplicatedPG::eval_repop(RepGather *)
+## ReplicatedPG.cc:7243            void ReplicatedPG::repop_all_committed(RepGather *)
+## // in_op->on_commit = ReplicatedPG::repop_all_committed(RepGather *)
+## // invoked via InProgressOp->on_commit->complete(0)
+## ReplicatedBackend.cc:732        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882958 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean]  removing repgather(0x7f6f6575b3c0 30'1 rep_tid=1901 committed?=1 applied?=1 lock=0 op=osd_op(client.4141.0:1 t2.dat [writefull 0~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5)
+##
+## ReplicatedPG.cc:7400            void ReplicatedPG::eval_repop(RepGather *)
+## ReplicatedPG.cc:7243            void ReplicatedPG::repop_all_committed(RepGather *)
+## // in_op->on_commit = ReplicatedPG::repop_all_committed(RepGather *)
+## // invoked via InProgressOp->on_commit->complete(0)
+## ReplicatedBackend.cc:732        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882963 7f6f4336f700 20 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean]    q front is repgather(0x7f6f6575b3c0 30'1 rep_tid=1901 committed?=1 applied?=1 lock=0 op=osd_op(client.4141.0:1 t2.dat [writefull 0~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5)
+##
+## ReplicatedPG.cc:7507            void ReplicatedPG::remove_repop(RepGather *)
+## ReplicatedPG.cc:7407            void ReplicatedPG::eval_repop(RepGather *)
+## ReplicatedPG.cc:7243            void ReplicatedPG::repop_all_committed(RepGather *)
+## // in_op->on_commit = ReplicatedPG::repop_all_committed(RepGather *)
+## // invoked via InProgressOp->on_commit->complete(0)
+## ReplicatedBackend.cc:732        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882968 7f6f4336f700 20 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean] remove_repop repgather(0x7f6f6575b3c0 30'1 rep_tid=1901 committed?=1 applied?=1 lock=0 op=osd_op(client.4141.0:1 t2.dat [writefull 0~4194304] 1.a3002fad ondisk+write+known_if_redirected e30) v5)
+##
+## ReplicatedPG.cc:7509            void ReplicatedPG::remove_repop(RepGather *)
+## ReplicatedPG.cc:7407            void ReplicatedPG::eval_repop(RepGather *)
+## ReplicatedPG.cc:7243            void ReplicatedPG::repop_all_committed(RepGather *)
+## // in_op->on_commit = ReplicatedPG::repop_all_committed(RepGather *)
+## // invoked via InProgressOp->on_commit->complete(0)
+## ReplicatedBackend.cc:732        void ReplicatedBackend::sub_op_modify_reply<MOSDRepOpReply, MSG_OSD_REPOPREPLY>(OpRequestRef)
+## ReplicatedBackend.cc:221        bool ReplicatedBackend::handle_message(OpRequestRef)
+## ReplicatedPG.cc:1274            void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
+## OSD.cc:8438                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.882973 7f6f4336f700 20 osd.0 pg_epoch: 30 pg[1.2d( v 30'1 (0'0,30'1] local-les=15 n=1 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 lcod 0'0 mlcod 0'0 active+clean]  obc obc(a3002fad/t2.dat/head//1 rwstate(write n=1 w=0))
+##
+## OSD.cc:8441                     void OSD::dequeue_op(PGRef, OpRequestRef, ThreadPool::TPHandle &)
+## OSD.cc:8332                     void OSD::ShardedOpWQ::_process(uint32_t, heartbeat_handle_d *)
+##
 2015-11-23 08:48:50.883005 7f6f4336f700 10 osd.0 30 dequeue_op 0x7f6f64d2dd00 finish
 ##
 ## Processing of the next 4 MB chunk starts here
