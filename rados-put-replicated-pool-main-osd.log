@@ -132,6 +132,7 @@
 ##
 2015-11-23 08:48:50.617201 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( empty local-les=15 n=0 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 mlcod 0'0 active+clean] do_osd_op a3002fad/t2.dat/head//1 [writefull 0~4194304]
 ##
+## // quota handling notes: ReplicatedPG.cc:4245-4251 updates ctx->delta_stats (num_bytes, num_wr_kb, etc)
 ## ReplicatedPG.cc:3344 int ReplicatedPG::do_osd_ops(OpContext *, vector<OSDOp> &)
 ## ReplicatedPG.cc:5640 int ReplicatedPG::prepare_transaction(OpContext *)
 ## ReplicatedPG.cc:2258 void ReplicatedPG::execute_ctx(OpContext *)
@@ -192,6 +193,7 @@
 ##
 2015-11-23 08:48:50.619094 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( empty local-les=15 n=0 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 mlcod 0'0 active+clean]  set mtime to 2015-11-23 08:48:50.476478
 ##
+## // ReplicatedPG.cc:5850 -- updates PG info (num_bytes, num_objects)
 ## ReplicatedPG.cc:5787 void ReplicatedPG::finish_ctx(OpContext *, int, bool, bool)
 ## ReplicatedPG.cc:5654 int ReplicatedPG::prepare_transaction(OpContext *)
 ## ReplicatedPG.cc:2258 void ReplicatedPG::execute_ctx(OpContext *)
@@ -202,6 +204,8 @@
 ##
 2015-11-23 08:48:50.619106 7f6f4336f700 10 osd.0 pg_epoch: 30 pg[1.2d( empty local-les=15 n=0 ec=14 les/c 15/27 14/14/14) [0,1,2] r=0 lpr=14 crt=0'0 mlcod 0'0 active+clean]  final snapset 0=[]:[]+head in a3002fad/t2.dat/head//1
 ##
+## // ReplicatedPG.cc:2289 checks if the pool is full.
+## // XXX: the flag is set by *monitor* (which have no idea of the current change so far)
 ## ReplicatedPG.cc:2309 void ReplicatedPG::execute_ctx(OpContext *)  // error handling happens here
 ## ReplicatedPG.cc:1750 void ReplicatedPG::do_op(OpRequestRef &)
 ## ReplicatedPG.cc:1296 void ReplicatedPG::do_request(OpRequestRef &, ThreadPool::TPHandle &)
@@ -1444,19 +1448,81 @@
 2015-11-23 08:48:53.468332 7f6f574e6700 20 osd.0 30 sched_scrub done
 2015-11-23 08:48:53.468337 7f6f574e6700 10 osd.0 30 do_waiters -- start
 2015-11-23 08:48:53.468341 7f6f574e6700 10 osd.0 30 do_waiters -- finish
+##
+## OSD.cc:3918                          void OSD::tick()
+##
 2015-11-23 08:48:54.468777 7f6f574e6700  5 osd.0 30 tick
+##
+## OSD.cc:4256                          void OSD::do_mon_report()
+## OSD.cc:3946                          void OSD::tick()
+##
 2015-11-23 08:48:54.468828 7f6f574e6700  7 osd.0 30 do_mon_report
+##
+## OSD.cc:4641                          void OSD::send_alive()
+## OSD.cc:4262                          void OSD::do_mon_report()
+## OSD.cc:3946                          void OSD::tick()
+##
 2015-11-23 08:48:54.468833 7f6f574e6700 10 osd.0 30 send_alive up_thru currently 22 want 17
+##
+## OSD.cc:4680                          void OSD::send_pg_stats(const utime_t &)
+## OSD.cc:4265                          void OSD::do_mon_report()
+## OSD.cc:3946                          void OSD::tick()
+##
 2015-11-23 08:48:54.468839 7f6f574e6700 20 osd.0 30 send_pg_stats
+##
+## OSD.cc:4692                          void OSD::send_pg_stats(const utime_t &)
+## OSD.cc:4265                          void OSD::do_mon_report()
+## OSD.cc:3946                          void OSD::tick()
+##
 2015-11-23 08:48:54.468847 7f6f574e6700 10 osd.0 30 send_pg_stats - 1 pgs updated
+##
+## OSD.cc:5916                          bool OSD::scrub_random_backoff()
+## OSD.cc:3964                          void OSD::tick()
+##
 2015-11-23 08:48:54.468913 7f6f574e6700 20 osd.0 30 scrub_random_backoff lost coin flip, randomly backing off
+##
+## OSD.cc:5595                          void OSD::do_waiters()
+## OSD.cc:3976                          void OSD::tick()
+##
 2015-11-23 08:48:54.468918 7f6f574e6700 10 osd.0 30 do_waiters -- start
+##
+## OSD.cc:5605                          void OSD::do_waiters()
+## OSD.cc:3976                          void OSD::tick()
+##
 2015-11-23 08:48:54.468921 7f6f574e6700 10 osd.0 30 do_waiters -- finish
+##
+## OSD.cc:5595                          void OSD::do_waiters()
+## OSD.cc:5357                          bool OSD::ms_dispatch(Message *)
+## // XXX: who calls ms_dispatch()?
+##
 2015-11-23 08:48:54.852773 7f6f4fb88700 10 osd.0 30 do_waiters -- start
+##
+## OSD.cc:5605                          void OSD::do_waiters()
+## OSD.cc:5357                          bool OSD::ms_dispatch(Message *)
+## // XXX: who calls ms_dispatch()?
+##
 2015-11-23 08:48:54.852774 7f6f4fb88700 10 osd.0 30 do_waiters -- finish
+##
+## OSD.cc:5778                          void OSD::_dispatch(Message *)
+## OSD.cc:5358                          bool OSD::ms_dispatch(Message *)
+##
 2015-11-23 08:48:54.852776 7f6f4fb88700 20 osd.0 30 _dispatch 0x7f6f6699f000 pg_stats_ack(1 pgs tid 2881) v1
+##
+## // Note: monitor updates PG disk usage and possibly sets "pool full" flag
+## OSD.cc:4734                          void OSD::handle_pg_stats_ack(MPGStatsAck *)
+## OSD.cc:5799                          void OSD::_dispatch(Message *)
+## OSD.cc:5358                          bool OSD::ms_dispatch(Message *)
+##
 2015-11-23 08:48:54.852777 7f6f4fb88700 10 osd.0 30 handle_pg_stats_ack 
+##
+## OSD.cc:5595                          void OSD::do_waiters()
+## OSD.cc:5359                          bool OSD::ms_dispatch(Message *)
+##
 2015-11-23 08:48:54.852781 7f6f4fb88700 10 osd.0 30 do_waiters -- start
+##
+## OSD.cc:5605                          void OSD::do_waiters()
+## OSD.cc:5359                          bool OSD::ms_dispatch(Message *)
+##
 2015-11-23 08:48:54.852781 7f6f4fb88700 10 osd.0 30 do_waiters -- finish
 2015-11-23 08:48:55.421627 7f6f3f367700 20 osd.0 30 update_osd_stat osd_stat(71492 kB used, 255 GB avail, 255 GB total, peers [1,2]/[] op hist [])
 2015-11-23 08:48:55.421648 7f6f3f367700  5 osd.0 30 heartbeat: osd_stat(71492 kB used, 255 GB avail, 255 GB total, peers [1,2]/[] op hist [])
